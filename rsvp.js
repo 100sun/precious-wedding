@@ -65,6 +65,14 @@
   function detectLang() {
     var q = params.get("lang");
     if (q === "ko" || q === "en") return q;
+    // ko.html (the Korean share link) always opens in Korean
+    var pageDefault =
+      document.documentElement.getAttribute("data-default-lang");
+    var switched = false;
+    try {
+      switched = !!sessionStorage.getItem(LANG_KEY);
+    } catch (e) {}
+    if (pageDefault === "ko" && !switched) return "ko";
     var saved = store(LANG_KEY);
     if (saved === "ko" || saved === "en") return saved;
     var langs = navigator.languages || [navigator.language || ""];
@@ -156,6 +164,9 @@
   var langBtn = document.getElementById("langBtn");
   if (langBtn) {
     langBtn.addEventListener("click", function () {
+      try {
+        sessionStorage.setItem(LANG_KEY, "1"); // a manual switch wins this visit
+      } catch (e) {}
       applyLang(lang === "ko" ? "en" : "ko");
     });
   }

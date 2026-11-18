@@ -1,6 +1,8 @@
 // Renders the link-preview image images/og-envelope.png (1200x630) from the
 // real intro markup and CSS in its sealed state, so it always matches the site.
-// Usage (from the repo root): node tools/og/render-og.mjs
+// Usage (from the repo root): node tools/og/render-og.mjs [ko]
+//   no argument: images/og-envelope.png (English)
+//   ko:          images/og-envelope-ko.png (Korean envelope text)
 // Needs Node 22+ and Google Chrome (set CHROME=/path/to/chrome to override).
 import http from "node:http";
 import fs from "node:fs";
@@ -12,7 +14,12 @@ const ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../..",
 );
-const OUT = path.join(ROOT, "images", "og-envelope.png");
+const LANG = process.argv[2] === "ko" ? "ko" : "en";
+const OUT = path.join(
+  ROOT,
+  "images",
+  LANG === "ko" ? "og-envelope-ko.png" : "og-envelope.png",
+);
 const CHROME =
   process.env.CHROME ||
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -114,15 +121,18 @@ await send("Emulation.setDeviceMetricsOverride", {
 await send("Emulation.setEmulatedMedia", {
   features: [{ name: "prefers-reduced-motion", value: "no-preference" }],
 });
-await send("Page.navigate", { url: base });
-await sleep(1500);
+// the Korean text comes from rsvp.js, which is on by default on 127.0.0.1
+await send("Page.navigate", {
+  url: LANG === "ko" ? base + "?lang=ko" : base,
+});
+await sleep(LANG === "ko" ? 3000 : 1500);
 
 // sealed state only, as on the site: "You have mail from", the names in
 // script and the lace envelope; Skip and the tap hint are left out
 const css = `
   .intro { --w: 450px !important; min-height: 630px !important; padding: 0 !important; }
   .mail { margin-bottom: 8px !important; }
-  .intro__skip, .intro__hint, .nav { display: none !important; }
+  .intro__skip, .intro__hint, .nav, .dev-badge { display: none !important; }
   .intro__eyebrow { font-size: 15px !important; }
   .intro__names { font-size: 76px !important; }
   .envelope__seal { --seal: 112px !important; }
