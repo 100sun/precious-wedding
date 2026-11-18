@@ -10,9 +10,10 @@
   --sand: #e3d8c5;
   --ink: #3a342d; /* warm taupe-brown text and headings, 12.3:1 on white */
   --muted: #6b6257; /* taupe, 6.0:1 on white */
-  --accent-soft: #7fb3d5; /* Malibu sky: hairlines, seal highlight */
-  --accent: #3b7499; /* Pacific blue: links, buttons, countdown, 5.1:1 on white */
-  --accent-deep: #2e5f80; /* hover / pressed, 6.9:1 on white */
+  --accent-soft: #7fb3d5; /* Malibu sky: hairlines, sea wash, sky accents */
+  --accent-sky: #6496bb; /* countdown digits and other large accents, 3.2:1 on white (large text) */
+  --accent: #41769c; /* links and buttons, 4.9:1 on white, 4.6:1 on ivory */
+  --accent-deep: #345f80; /* hover, small accent text on the card, 6.6:1 on white */
   --green: #4e6350; /* eucalyptus, secondary details */
   --sage: #a9b8a2; /* botanical line art and dividers */
   --line: #ebe5da;
@@ -43,7 +44,7 @@
       transparent 42%
     ),
     linear-gradient(#cfe2f0, #e6eef1 55%, #eee3cf);
-  --sky-wash: #eef5fa;
+  --sky-wash: #eef5fa; /* pale sky */
   --sand-wash: #f8f3ea;
   --blush: #fbf4f1; /* a whisper of blush-white */
   /* original lace motif (filigree flower tile) and scalloped trim */
@@ -58,11 +59,11 @@
   --pearls: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 10'%3E%3Cdefs%3E%3CradialGradient id='p' cx='35%25' cy='35%25' r='70%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.6' stop-color='%23f7efe9'/%3E%3Cstop offset='1' stop-color='%23e6dbd0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='8' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='17' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='26' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='35' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='44' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='53' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='62' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='71' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='80' cy='5' r='2.9' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='89' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='98' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='107' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='116' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='125' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='134' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='143' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='152' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3C/svg%3E");
   --lace-scallop: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' viewBox='0 0 16 9'%3E%3Cpath d='M0 0h16v2a8 6.5 0 0 1-16 0z' fill='%23fff' fill-opacity='.92'/%3E%3Ccircle cx='8' cy='3.6' r='1.1' fill='none' stroke='%23cfe0ec' stroke-width='.7'/%3E%3C/svg%3E");
   --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-  /* wax seal: Malibu blue */
-  --wax-hi: #9cc6e2;
-  --wax-mid: #4a86b0;
-  --wax-lo: #2f6189;
-  --wax-deep: #1d4362;
+  /* wax seal: soft dusty Malibu sky blue; deep tone only in rim/monogram */
+  --wax-hi: #bad6ea;
+  --wax-mid: #8fb9d6;
+  --wax-lo: #6d9ec4;
+  --wax-deep: #3f6f94;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -496,7 +497,7 @@ h3 {
   font-size: clamp(1.1rem, 5vw, 1.6rem);
   letter-spacing: 0.08em;
   line-height: 1.1;
-  color: var(--accent);
+  color: var(--accent-deep);
   font-variant-numeric: lining-nums;
 }
 /* hand-addressed front */
@@ -925,7 +926,7 @@ h3 {
   font-size: clamp(2.4rem, 11vw, 4.25rem);
   font-weight: 400;
   line-height: 1;
-  color: var(--accent);
+  color: var(--accent-sky);
   font-variant-numeric: lining-nums tabular-nums;
 }
 .countdown__item span {
