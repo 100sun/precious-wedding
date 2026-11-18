@@ -8,9 +8,34 @@
    Leave the list empty to show the "Photo coming soon" placeholders.
    ------------------------------------------------------------ */
 var PROPOSAL_PHOTOS = [
-  // "proposal-01.jpg",
-  // "proposal-02.jpg",
-  // { file: "proposal-03.jpg", alt: "Sofia and Blake on the day of the proposal", caption: "" },
+  {
+    file: "proposal-01.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
+  {
+    file: "proposal-02.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
+  {
+    file: "proposal-03.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
+  {
+    file: "proposal-04.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
+  {
+    file: "proposal-05.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
+  {
+    file: "proposal-06.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
+  {
+    file: "proposal-07.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+  },
 ];
 var PROPOSAL_DIR = "images/proposal/";
 var PLACEHOLDER_COUNT = 6;
