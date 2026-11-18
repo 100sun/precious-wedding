@@ -88,7 +88,6 @@ var PLACEHOLDER_COUNT = 6;
     document.addEventListener("keydown", function (e) {
       if (introState === "sealed" && e.key === "Escape") openEnvelope();
     });
-    envelope.focus({ preventScroll: true });
   }
 
   // --- Music: the vinyl record plays audio/song.mp3 (never autoplays) ---
