@@ -1,0 +1,1 @@
+Regenerate the link preview `images/og-envelope.png` (1200x630, sealed envelope from the live intro markup) with `node tools/og/render-og.mjs` from the repo root (Node 22+, Google Chrome; set `CHROME=` to override the browser path).
