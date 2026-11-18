@@ -40,7 +40,7 @@ window.SITE_KO = {
   "details.dress.h": "복장",
   "details.dress.p": "칵테일 복장으로 와 주세요.",
   "details.dress.dev":
-    "칵테일 복장으로 와 주세요. 예식이 오션 론(잔디)에서 열리니 날씨에 맞게 준비해 주세요.",
+    "칵테일 복장으로 와 주세요. 예식이 오션 론(잔디)에서 열리니 날씨에 맞게 준비해 주세요 (아래 당일 날씨 참고).",
   "details.arrive.h": "도착",
   "details.arrive.p":
     "4:30에 맞춰 와 주세요. 그 이전에는 입장할 수 없습니다. PCH 정체가 잦으니 여유 있게 출발하세요.",
@@ -70,7 +70,6 @@ window.SITE_KO = {
     "차량 호출이 가장 편합니다. 자차로 오시면 발레파킹이 필수입니다.",
   "travel.day.h": "당일 날씨",
   "travel.sunset": "일몰",
-  "travel.forecast": "예식 당일 일기예보",
 
   "photos.eyebrow": "저희 이야기",
   "photos.title": "프러포즈",

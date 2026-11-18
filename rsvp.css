@@ -319,14 +319,6 @@
   color: var(--muted);
 }
 
-/* forecast link inside the Dress Code card */
-.is-dev .card__link {
-  display: block;
-  width: fit-content;
-  margin: 0.4rem auto 0;
-  color: var(--accent);
-}
-
 /* dinner: 2 x 2 on phones, one row on wider screens */
 .is-dev .choice__row--grid {
   display: grid;
