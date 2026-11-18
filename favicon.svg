@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="w" cx="36%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#9cc6e2" />
+      <stop offset="0.45" stop-color="#4a86b0" />
+      <stop offset="1" stop-color="#2f6189" />
+    </radialGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9cc6e2" />
+      <stop offset="1" stop-color="#1d4362" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#w)"
+    d="M97.7 50C97.8 54.3 95.5 58.8 93.8 62.9C92.1 66.9 89.9 70.5 87.6 74.2C85.3 77.8 83 81.5 79.9 84.5C76.9 87.6 73.4 91.2 69.5 92.6C65.5 94 60.4 92.5 56.1 92.7C51.9 92.9 47.9 93.9 43.7 93.6C39.6 93.3 35.4 92.3 31.3 91C27.2 89.6 23 87.9 19.4 85.3C15.8 82.8 11.8 79.6 9.8 75.8C7.8 72 7.5 66.9 7.1 62.6C6.8 58.3 7.7 54.2 7.7 50C7.8 45.8 7.1 41.8 7.4 37.5C7.8 33.2 7.6 27.7 9.9 24.2C12.1 20.7 17.5 19.1 21 16.5C24.5 13.9 27.3 10.7 31.1 8.5C34.8 6.4 39.1 4.3 43.3 3.6C47.6 3 52.1 4 56.5 4.5C60.9 5.1 66.1 4.8 69.7 6.9C73.3 9 75.7 13.9 78.3 17.3C81 20.7 83 23.9 85.5 27.2C88 30.5 91.5 33.4 93.5 37.2C95.5 41 97.7 45.7 97.7 50Z"
+  />
+  <circle cx="50" cy="50" r="34" fill="none" stroke="url(#r)" stroke-width="4" />
+  <circle cx="50" cy="50" r="31" fill="#3a74a0" />
+  <text
+    x="50"
+    y="61"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-size="30"
+    fill="#eaf3fa"
+  >S&amp;B</text>
+</svg>
