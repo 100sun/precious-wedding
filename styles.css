@@ -10,20 +10,20 @@
 
 :root {
   /* palette: warm neutrals, Malibu blue signature accent, sage greenery */
-  --bg: #ffffff;
+  --bg: #f5f9fc; /* page base, pale cool sky white */
   --paper: #ffffff;
   --ivory: #fbf8f2;
-  --cream: #f4efe5; /* linen */
-  --sand: #e3d8c5;
-  --ink: #3a342d; /* warm taupe-brown text and headings, 12.3:1 on white */
-  --muted: #6b6257; /* taupe, 6.0:1 on white */
+  --cream: #e6f0f7; /* deeper pale sky */
+  --sand: #d7e7f2;
+  --ink: #23303c; /* cool deep slate for text and headings */
+  --muted: #4a5967; /* cool slate for secondary text */
   --accent-soft: #7fb3d5; /* Malibu sky: hairlines, sea wash, sky accents */
   --accent-sky: #6496bb; /* countdown digits and other large accents, 3.2:1 on white (large text) */
-  --accent: #41769c; /* links and buttons, 4.9:1 on white, 4.6:1 on ivory */
+  --accent: #3a6e93; /* links and buttons, 5.0:1 on #eef5fa, 4.7:1 on #e6f0f7 */
   --accent-deep: #345f80; /* hover, small accent text on the card, 6.6:1 on white */
   --green: #4e6350; /* eucalyptus, secondary details */
   --sage: #a9b8a2; /* botanical line art and dividers */
-  --line: #ebe5da;
+  --line: #d9e6ef;
   --overlay: rgba(36, 34, 32, 0.42); /* hero photo tint */
   /* fine-line botanical sprig (original drawing) used as a divider */
   --sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24'%3E%3Cg fill='none' stroke='%23a9b8a2' stroke-width='.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M58 12C46 11.2 30 12.6 12 11M62 12C74 11.2 90 12.6 108 11M54 12C51 6.5 46 5.5 43 6C45 10 50 11.4 54 12M44 12C41 17.5 36 18.5 33 18C35 14 40 12.6 44 12M34 12C31 6.5 26 5.5 23 6C25 10 30 11.4 34 12M24 12C21 17.5 16 18.5 13 18C15 14 20 12.6 24 12M66 12C69 6.5 74 5.5 77 6C75 10 70 11.4 66 12M76 12C79 17.5 84 18.5 87 18C85 14 80 12.6 76 12M86 12C89 6.5 94 5.5 97 6C95 10 90 11.4 86 12M96 12C99 17.5 104 18.5 107 18C105 14 100 12.6 96 12'/%3E%3C/g%3E%3Ccircle cx='60' cy='12' r='1.6' fill='none' stroke='%239cc3e0' stroke-width='.9'/%3E%3C/svg%3E");
@@ -50,9 +50,9 @@
       rgba(170, 202, 226, 0.35),
       transparent 42%
     ),
-    linear-gradient(#cfe2f0, #e6eef1 55%, #eee3cf);
+    linear-gradient(#cfe2f0, #e3eef6 55%, #e6f0f7);
   --sky-wash: #eef5fa; /* pale sky */
-  --sand-wash: #f8f3ea;
+  --sand-wash: #e6f0f7; /* deeper pale sky, occasional section */
   /* original lace motif (filigree flower tile) and scalloped trim */
   --lace: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23fff' stroke-width='.65' stroke-linecap='round'%3E%3Cpath d='M4 28Q13 21 28 4M7.4 25.2L11.3 26.8M7.4 25.2L6.4 21.1M10 22.8L13.7 24.2M10 22.8L9 19M12.8 20.1L16.2 21.3M12.8 20.1L11.8 16.7M15.8 17.1L18.9 18.2M15.8 17.1L14.8 14.1M19 13.9L21.8 14.7M19 13.9L18 11.1M22.4 10.2L24.9 11M22.4 10.2L21.4 7.8M25.9 6.3L28.1 6.9M25.9 6.3L25.1 4.2'/%3E%3Cpath d='M20 30Q25 27 31 21M21.8 28.8L23.9 30M21.8 28.8L21.5 26.4M25.9 25.7L27.6 26.5M25.9 25.7L25.4 23.9M30.2 21.8L31.4 22.3M30.2 21.8L29.8 20.6' opacity='.7'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Ccircle cx='4' cy='6' r='.7'/%3E%3Ccircle cx='26' cy='26' r='.7'/%3E%3Ccircle cx='10' cy='12' r='.45'/%3E%3Ccircle cx='22' cy='18' r='.45'/%3E%3C/g%3E%3C/svg%3E");
   --pocket-sea: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200' preserveAspectRatio='xMidYMax meet'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1' stroke-linecap='round' opacity='.85'%3E%3Cpath d='M20 138H380'/%3E%3Cpath d='M188 138a12 12 0 0 1 24 0'/%3E%3Cpath d='M200 118v-6M186 123l-4-4M214 123l4-4' /%3E%3Cpath d='M40 150q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0' /%3E%3Cpath d='M64 160q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0' /%3E%3Cpath d='M88 170q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0q6 -2.4 12 0t12 0' /%3E%3C/g%3E%3C/svg%3E");
@@ -64,7 +64,7 @@
   --spray: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 70'%3E%3Cpath d='M58 40Q76 34 98 40M84 30Q86 36 82 40M60 44Q74 52 92 56M30 52Q22 60 8 62M74 37Q81.6 38 85.8 31.5Q78.1 30.5 74 37M75.8 36.2L83.4 32.6M90 41Q94.8 45.4 100.8 42.9Q96 38.5 90 41M91.6 41.3L98.7 42.5M68 48Q71.3 54.3 78.4 54Q75.1 47.7 68 48M69.6 48.9L76.3 52.8M84 54Q88 58.4 93.7 56.6Q89.7 52.2 84 54M85.4 54.4L91.7 56.1M24 58Q18.2 56.7 14.6 61.4Q20.4 62.7 24 58M22.6 58.5L16.5 60.7M32 24Q29.5 18 23 17.7Q25.5 23.7 32 24M30.6 23.1L24.8 19M60 22Q65.3 19.3 65 13.3Q59.7 16.1 60 22M60.8 20.7L64 15.1' fill='none' stroke='%239fb19a' stroke-width='.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M47.6 36A2.1 1.8 0 0 1 44 36.3A2.7 2.3 0 0 1 48.6 35.3A3.6 3 0 0 1 42.8 37.4A4.7 4 0 0 1 49.8 33.6A6.3 5.3 0 0 1 41.6 39.8A8.3 7 0 0 1 50.9 30.3A10.9 9.3 0 0 1 41.1 44.2M58.4 39.3Q57.3 46.5 48.9 46.9M48.9 46.9Q41.1 49.7 36.5 43.6M36.5 43.6Q29.8 39.2 33.6 32.7M33.6 32.7Q34.7 25.5 43.1 25.1M43.1 25.1Q50.9 22.3 55.5 28.4M55.5 28.4Q62.2 32.8 58.4 39.3M37.9 38Q46 45.8 54.1 38M82.1 26.7Q88.3 28.4 88.4 17.7Q78.4 21.4 82.1 26.7M81.4 22.9Q85.6 21.7 88.7 20.6M18.9 48A1.2 1 0 0 1 16.8 48.2A1.6 1.3 0 0 1 19.5 47.6A2.1 1.8 0 0 1 16.2 48.8A2.7 2.3 0 0 1 20.2 46.6A3.6 3.1 0 0 1 15.4 50.2A4.8 4 0 0 1 20.8 44.7A6.3 5.3 0 0 1 15.1 52.8M25.2 49.9Q24.5 54.1 19.7 54.3M19.7 54.3Q15.2 55.9 12.5 52.4M12.5 52.4Q8.6 49.8 10.8 46.1M10.8 46.1Q11.5 41.9 16.3 41.7M16.3 41.7Q20.8 40.1 23.5 43.6M23.5 43.6Q27.4 46.2 25.2 49.9M13.3 49.1Q18 53.6 22.6 49.1' fill='%23fffdfb' stroke='%23a39584' stroke-width='.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   --pearls: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 10'%3E%3Cdefs%3E%3CradialGradient id='p' cx='35%25' cy='35%25' r='70%25'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.6' stop-color='%23f7efe9'/%3E%3Cstop offset='1' stop-color='%23e6dbd0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='8' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='17' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='26' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='35' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='44' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='53' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='62' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='71' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='80' cy='5' r='2.9' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='89' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='98' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='107' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='116' cy='5' r='2.2' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='125' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='134' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='143' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3Ccircle cx='152' cy='5' r='1.7' fill='url(%23p)' stroke='%23cbbfae' stroke-width='.4'/%3E%3C/svg%3E");
   --lace-scallop: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' viewBox='0 0 16 9'%3E%3Cpath d='M0 0h16v2a8 6.5 0 0 1-16 0z' fill='%23fff' fill-opacity='.92'/%3E%3Ccircle cx='8' cy='3.6' r='1.1' fill='none' stroke='%23cfe0ec' stroke-width='.7'/%3E%3C/svg%3E");
-  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .4 0 0 0 0 .5 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   /* richer lace for the envelope front and flap, with scalloped trim */
   --lace-rich: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cdefs%3E%3Cg id='m' fill='none' stroke-width='.7' stroke-linecap='round'%3E%3Cpath id='p' d='M18 16.6c-1.5-1.9-1.5-4.4 0-6.2c1.5 1.8 1.5 4.3 0 6.2z'/%3E%3Cuse href='%23p' transform='rotate(60 18 18)'/%3E%3Cuse href='%23p' transform='rotate(120 18 18)'/%3E%3Cuse href='%23p' transform='rotate(180 18 18)'/%3E%3Cuse href='%23p' transform='rotate(240 18 18)'/%3E%3Cuse href='%23p' transform='rotate(300 18 18)'/%3E%3Ccircle cx='18' cy='18' r='1.2'/%3E%3Ccircle cx='18' cy='18' r='9.2' stroke-dasharray='.1 1.9'/%3E%3Cpath d='M0 6.5A6.5 6.5 0 0 0 6.5 0M29.5 0A6.5 6.5 0 0 0 36 6.5M36 29.5A6.5 6.5 0 0 0 29.5 36M6.5 36A6.5 6.5 0 0 0 0 29.5'/%3E%3Cpath d='M0 9.5A9.5 9.5 0 0 0 9.5 0M26.5 0A9.5 9.5 0 0 0 36 9.5M36 26.5A9.5 9.5 0 0 0 26.5 36M9.5 36A9.5 9.5 0 0 0 0 26.5' stroke-dasharray='.1 1.9'/%3E%3Cpath d='M18 0v4.5M18 31.5V36M0 18h4.5M31.5 18H36M4.2 4.2l2.4 2.4M31.8 4.2l-2.4 2.4M31.8 31.8l-2.4-2.4M4.2 31.8l2.4-2.4'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23m' x='.45' y='.55' stroke='%23866f50' stroke-opacity='.3'/%3E%3Cuse href='%23m' stroke='%23fff'/%3E%3C/svg%3E");
   --flap-trim: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke-linecap='round' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 0 50 100 100 0' stroke='%23fff' stroke-opacity='.7' stroke-width='12' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M-4 -11 50 87 104 -11' stroke='%23fff' stroke-opacity='.7' stroke-width='5' stroke-dasharray='.1 5.4' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M-2 -6 50 93.5 102 -6' stroke='%23c9b99f' stroke-opacity='.75' stroke-width='1.8' stroke-dasharray='.1 4.4' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M0 0 50 100 100 0' stroke='%23b9a888' stroke-opacity='.3' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3C/svg%3E");
@@ -182,7 +182,7 @@ h3 {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(245, 249, 252, 0.97);
   border-bottom: 1px solid var(--line);
   transition:
     background-color 0.3s var(--ease),
@@ -197,7 +197,7 @@ h3 {
 }
 .nav--scrolled,
 .nav:has(.nav__links.is-open) {
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(245, 249, 252, 0.96);
   border-bottom-color: var(--line);
 }
 .nav {
@@ -323,7 +323,7 @@ h3 {
       rgba(207, 226, 240, 0.45),
       transparent 60%
     ),
-    linear-gradient(#f8f5ee, #f7f1e6);
+    linear-gradient(#f5f9fc, #eaf2f8);
   overflow-x: clip;
   text-align: center;
 }
@@ -459,8 +459,8 @@ h3 {
     var(--watercolor);
   border: 1px solid var(--env-gold);
   box-shadow:
-    0 1px 2px rgba(60, 50, 35, 0.08),
-    0 18px 40px -12px rgba(60, 50, 35, 0.28);
+    0 1px 2px rgba(40, 62, 82, 0.1),
+    0 18px 40px -12px rgba(40, 62, 82, 0.34);
 }
 .envelope__back::after {
   content: "";
@@ -487,7 +487,7 @@ h3 {
       rgba(255, 255, 255, 0.35),
       transparent 45%
     ),
-    linear-gradient(to top, #cfe2f0, #e6eef1 55%, #eee3cf);
+    linear-gradient(to top, #cfe2f0, #e3eef6 55%, #e6f0f7);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
   transform: perspective(1200px) rotateX(90deg);
@@ -754,7 +754,7 @@ h3 {
   top: calc(var(--w) * -0.62);
   width: calc(var(--w) * 0.5);
   aspect-ratio: 100 / 140;
-  filter: drop-shadow(0 6px 10px rgba(70, 55, 40, 0.2));
+  filter: drop-shadow(0 6px 10px rgba(40, 62, 82, 0.24));
 }
 .oval__frame {
   position: absolute;
@@ -772,6 +772,20 @@ h3 {
   border-radius: 50%;
   overflow: hidden;
   background: var(--sand);
+  /* inset look: soft inner shadow with a faint light rim */
+  box-shadow:
+    inset 0 3px 7px rgba(35, 60, 85, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.oval__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 3px 7px rgba(35, 60, 85, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
 }
 .oval__photo img {
   width: 100%;
@@ -790,8 +804,8 @@ h3 {
   padding: calc(var(--w) * 0.022) calc(var(--w) * 0.022) calc(var(--w) * 0.09);
   background: #fffdf9;
   box-shadow:
-    0 1px 2px rgba(60, 50, 35, 0.15),
-    0 8px 16px -6px rgba(60, 50, 35, 0.3);
+    0 1px 2px rgba(40, 62, 82, 0.2),
+    0 8px 16px -6px rgba(40, 62, 82, 0.32);
 }
 .ks--polaroid img {
   width: 100%;
@@ -948,7 +962,7 @@ h3 {
   aspect-ratio: 170 / 120;
   overflow: visible;
   pointer-events: none;
-  filter: drop-shadow(0 2px 3px rgba(70, 55, 40, 0.2));
+  filter: drop-shadow(0 2px 3px rgba(40, 62, 82, 0.24));
 }
 .intro--open .ks--florals {
   pointer-events: none;
@@ -1064,7 +1078,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 2px 8px rgba(60, 50, 35, 0.15);
+  box-shadow: 0 2px 8px rgba(40, 62, 82, 0.2);
   color: var(--accent);
   cursor: pointer;
 }
@@ -1760,7 +1774,7 @@ h3 {
 .footer {
   padding: 4.5rem var(--pad) calc(3.5rem + env(safe-area-inset-bottom));
   border-top: 1px solid var(--line);
-  background: var(--paper);
+  background: var(--bg);
   text-align: center;
 }
 .footer .spray {
