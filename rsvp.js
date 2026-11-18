@@ -26,7 +26,9 @@
   var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(
     window.location.hostname,
   );
-  if (!isLocal && store(FLAG) !== "1") return;
+  // the GitHub Pages copy of this branch lives under /preview/ and is always on
+  var isPreview = /\/preview\//.test(window.location.pathname);
+  if (!isLocal && !isPreview && store(FLAG) !== "1") return;
 
   // rsvp.css only styles under .is-dev, so live pages are untouched by it
   document.documentElement.classList.add("is-dev");
