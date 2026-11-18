@@ -1334,6 +1334,59 @@ h3 {
   }
 }
 
+/* Stay card: expandable hotel picks */
+.hotels {
+  margin-top: 0.9rem;
+}
+.hotels summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  list-style: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.hotels summary::-webkit-details-marker {
+  display: none;
+}
+.hotels summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s var(--ease);
+}
+.hotels[open] summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+.hotels__list {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+}
+.hotels__list li {
+  padding: 0.55rem 0;
+}
+.hotels__list a {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration-color: var(--accent-soft);
+  text-underline-offset: 3px;
+}
+.hotels__list a:hover {
+  color: var(--accent);
+}
+.hotels__note {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
 /* ===== Proposal gallery ===== */
 .proposal__story {
   font-family: var(--serif);
