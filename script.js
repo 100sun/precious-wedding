@@ -27,81 +27,160 @@ var PLACEHOLDER_COUNT = 6;
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // --- Opening-the-letter intro ---
+  // --- Opening: "You have mail" envelope ---
+  // Sealed: page is locked on the envelope. Tap / click / Enter / Space (or a
+  // swipe up / scroll) opens it: the seal splits, the flap lifts, keepsakes
+  // rise out, and the names and countdown appear below. Skip jumps ahead.
   var intro = document.getElementById("intro");
   var envelope = document.getElementById("envelope");
   var skipBtn = document.getElementById("introSkip");
-  var introState = "idle"; // idle -> open -> done
-  var introTimers = [];
+  var introState = "sealed"; // sealed -> open
 
-  function introLater(fn, ms) {
-    introTimers.push(window.setTimeout(fn, ms));
-  }
-  function finishIntro() {
-    if (introState === "done") return;
-    introState = "done";
-    introTimers.forEach(window.clearTimeout);
-    document.body.classList.remove("intro-playing", "is-locked");
-    if (intro) intro.classList.add("intro--hidden");
-    window.scrollTo(0, 0);
-  }
   function openEnvelope() {
-    if (introState !== "idle") return;
+    if (introState !== "sealed") return;
     introState = "open";
-    introTimers.forEach(window.clearTimeout);
+    intro.classList.remove("intro--press");
     intro.classList.add("intro--open");
-    // seal cracks apart, flap opens to the lace liner, card slides out and
-    // comes forward, then the intro fades into the site
-    introLater(function () {
-      intro.classList.add("intro--card");
-    }, 1550);
-    introLater(function () {
-      intro.classList.add("intro--leaving");
-      document.body.classList.remove("intro-playing");
-    }, 3300);
-    introLater(finishIntro, 3900);
+    document.body.classList.remove("is-locked");
+    envelope.setAttribute("aria-label", "Envelope, opened");
+    envelope.setAttribute("aria-disabled", "true");
   }
   if (intro && envelope) {
-    if (reduceMotion) {
-      intro.classList.add("intro--hidden");
-      introState = "done";
-    } else {
-      document.body.classList.add("intro-playing", "is-locked");
-      envelope.addEventListener("click", openEnvelope);
-      // press feedback, and drag upward to break the seal
-      var dragY = null;
-      envelope.addEventListener("pointerdown", function (e) {
-        dragY = e.clientY;
-        intro.classList.add("intro--press");
+    document.body.classList.add("is-locked");
+    envelope.addEventListener("click", openEnvelope);
+    // press feedback, and drag upward to break the seal
+    var dragY = null;
+    envelope.addEventListener("pointerdown", function (e) {
+      if (introState !== "sealed") return;
+      dragY = e.clientY;
+      intro.classList.add("intro--press");
+    });
+    envelope.addEventListener("pointermove", function (e) {
+      if (dragY !== null && dragY - e.clientY > 40) {
+        dragY = null;
+        openEnvelope();
+      }
+    });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(function (n) {
+      envelope.addEventListener(n, function () {
+        dragY = null;
+        intro.classList.remove("intro--press");
       });
-      envelope.addEventListener("pointermove", function (e) {
-        if (dragY !== null && dragY - e.clientY > 40) {
-          dragY = null;
-          openEnvelope();
-        }
+    });
+    // trying to scroll the sealed page opens the envelope
+    window.addEventListener(
+      "wheel",
+      function (e) {
+        if (introState === "sealed" && e.deltaY > 8) openEnvelope();
+      },
+      { passive: true },
+    );
+    if (skipBtn) {
+      skipBtn.addEventListener("click", function () {
+        openEnvelope();
+        var top = document.getElementById("top");
+        if (top) top.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
       });
-      ["pointerup", "pointercancel", "pointerleave"].forEach(function (n) {
-        envelope.addEventListener(n, function () {
-          dragY = null;
-          intro.classList.remove("intro--press");
-        });
-      });
-      if (skipBtn) skipBtn.addEventListener("click", finishIntro);
-      document.addEventListener("keydown", function (e) {
-        if (introState !== "done" && e.key === "Escape") finishIntro();
-      });
-      introLater(openEnvelope, 6000); // auto-open fallback
-      envelope.focus({ preventScroll: true });
     }
+    document.addEventListener("keydown", function (e) {
+      if (introState === "sealed" && e.key === "Escape") openEnvelope();
+    });
+    envelope.focus({ preventScroll: true });
   }
 
-  // --- Sticky nav styling on scroll ---
+  // --- Music: the vinyl record plays audio/song.mp3 (never autoplays) ---
+  var record = document.getElementById("record");
+  var recordText = document.getElementById("recordText");
+  var muteBtn = document.getElementById("muteBtn");
+  var SONG = "audio/song.mp3";
+  var song = null;
+  var resumeOnShow = false;
+  var fadeTimer = null;
+
+  function fadeIn() {
+    window.clearInterval(fadeTimer);
+    song.volume = 0;
+    fadeTimer = window.setInterval(function () {
+      var v = Math.min(0.5, song.volume + 0.05);
+      song.volume = v;
+      if (v >= 0.5) window.clearInterval(fadeTimer);
+    }, 120);
+  }
+  function showPlaying(playing) {
+    record.classList.toggle("is-playing", playing);
+    record.setAttribute("aria-pressed", playing ? "true" : "false");
+    record.setAttribute("aria-label", playing ? "Pause music" : "Play music");
+    if (recordText) recordText.textContent = playing ? "Tap to pause" : "Tap to play";
+  }
+  function playSong() {
+    if (!song) {
+      song = new Audio(SONG);
+      song.loop = true;
+      song.preload = "auto";
+      song.addEventListener("play", function () {
+        showPlaying(true);
+      });
+      song.addEventListener("pause", function () {
+        showPlaying(false);
+      });
+    }
+    var p = song.play();
+    fadeIn();
+    if (muteBtn) muteBtn.hidden = false;
+    if (p && p.catch) {
+      p.catch(function () {
+        showPlaying(false);
+      });
+    }
+  }
+  if (record) {
+    record.addEventListener("click", function () {
+      if (record.disabled) return;
+      if (song && !song.paused) song.pause();
+      else playSong();
+    });
+    // only offer the record as a player when the song file is there
+    if (window.fetch) {
+      fetch(SONG, { method: "HEAD" })
+        .then(function (r) {
+          var type = r.headers.get("content-type") || "";
+          if (r.ok && type.indexOf("text/html") === -1) {
+            record.disabled = false;
+          }
+        })
+        .catch(function () {});
+    }
+  }
+  if (muteBtn) {
+    muteBtn.addEventListener("click", function () {
+      if (!song) return;
+      song.muted = !song.muted;
+      muteBtn.classList.toggle("is-muted", song.muted);
+      muteBtn.setAttribute("aria-pressed", song.muted ? "true" : "false");
+      muteBtn.setAttribute("aria-label", song.muted ? "Unmute music" : "Mute music");
+    });
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (!song) return;
+    if (document.hidden) {
+      resumeOnShow = !song.paused;
+      song.pause();
+    } else if (resumeOnShow) {
+      resumeOnShow = false;
+      playSong();
+    }
+  });
+
+  // --- Sticky nav: hidden while the opening envelope fills the screen ---
   var nav = document.getElementById("nav");
   function onScroll() {
     if (window.scrollY > 60) nav.classList.add("nav--scrolled");
     else nav.classList.remove("nav--scrolled");
+    var away = intro && window.scrollY < intro.offsetHeight - 80;
+    nav.classList.toggle("nav--away", !!away);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
   onScroll();
 
   // --- Mobile menu toggle ---
@@ -188,9 +267,13 @@ var PLACEHOLDER_COUNT = 6;
     set("minutes", minutes);
     set("seconds", seconds);
   }
+  // shown as DDD : HH : MM : SS
   function set(unit, value) {
     var el = cd.querySelector('[data-unit="' + unit + '"]');
-    if (el) el.textContent = value < 10 ? "0" + value : String(value);
+    var width = unit === "days" ? 3 : 2;
+    var text = String(value);
+    while (text.length < width) text = "0" + text;
+    if (el) el.textContent = text;
   }
   tick();
   setInterval(tick, 1000);

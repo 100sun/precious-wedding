@@ -116,24 +116,22 @@ await send("Emulation.setEmulatedMedia", {
 await send("Page.navigate", { url: base });
 await sleep(1500);
 
-// sealed state only: hide Skip / hint, enlarge the envelope, add the caption
+// sealed state only, as on the site: "You have mail from", the names in
+// script and the lace envelope; Skip and the tap hint are left out
 const css = `
-  .intro { padding: 0 !important; gap: 34px !important; justify-content: center !important; }
-  .intro__skip, .intro__hint { display: none !important; }
-  .envelope { width: 600px !important; transform: none !important; }
-  .envelope__seal { --seal: 132px !important; }
-  .og-caption { font-family: "Jost", sans-serif; font-size: 17px; letter-spacing: .32em;
-    text-transform: uppercase; color: #6b6257; margin: 0; }
+  .intro { --w: 450px !important; min-height: 630px !important; padding: 0 !important; }
+  .mail { margin-bottom: 8px !important; }
+  .intro__skip, .intro__hint, .nav { display: none !important; }
+  .intro__eyebrow { font-size: 15px !important; }
+  .intro__names { font-size: 76px !important; }
+  .envelope__seal { --seal: 112px !important; }
 `;
 await send("Runtime.evaluate", {
   expression: `(() => {
     const s = document.createElement("style");
     s.textContent = ${JSON.stringify(css)};
     document.head.appendChild(s);
-    const p = document.createElement("p");
-    p.className = "og-caption";
-    p.textContent = "Sofia & Blake · Save the Date · 08.05.2027";
-    document.getElementById("intro").appendChild(p);
+    window.scrollTo(0, 0);
     return document.fonts.ready.then(() => true);
   })()`,
   awaitPromise: true,
