@@ -62,7 +62,7 @@ var PLACEHOLDER_COUNT = 6;
 
   // --- Opening: "You have mail" envelope ---
   // Sealed: page is locked on the envelope. Tap / click / Enter / Space (or a
-  // swipe up / scroll) opens it: the seal splits, the flap lifts, keepsakes
+  // swipe up / scroll) opens it: the seal lifts away, the flap opens, keepsakes
   // rise out, and the names and countdown appear below. Skip jumps ahead.
   var intro = document.getElementById("intro");
   var envelope = document.getElementById("envelope");
@@ -87,7 +87,7 @@ var PLACEHOLDER_COUNT = 6;
       openEnvelope();
       startMusicOnOpen();
     });
-    // press feedback, and drag upward to break the seal
+    // press feedback, and drag upward to open
     var dragY = null;
     envelope.addEventListener("pointerdown", function (e) {
       if (introState !== "sealed") return;
