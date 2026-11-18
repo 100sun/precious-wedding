@@ -1735,62 +1735,26 @@ body.intro-playing .hero__names * {
   color: var(--ocean-deep);
   margin-bottom: 0.4rem;
 }
-.hotels {
-  list-style: none;
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 640px) {
-  .hotels {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1000px) {
-  .hotels {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-.hotels a {
-  display: block;
-  height: 100%;
-  padding: 1.2rem;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--ink);
-  text-decoration: none;
-  transition:
-    transform 0.3s var(--ease),
-    box-shadow 0.3s var(--ease);
-}
-.hotels a:hover,
-.hotels a:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(13, 59, 97, 0.12);
-}
-.hotels a:focus-visible {
-  outline: 3px solid var(--ocean);
-  outline-offset: 2px;
-}
-.hotels strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--ocean-deep);
-  margin-bottom: 0.3rem;
-}
-.hotels span {
+.travel__stay-text {
+  max-width: 640px;
+  margin: 0.6rem auto 0;
   color: #3f5a70;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
-@media (prefers-reduced-motion: reduce) {
-  .hotels a,
-  .hotels a:hover,
-  .hotels a:focus-visible {
-    transform: none;
-    transition: none;
-  }
+.travel__thanks {
+  max-width: 680px;
+  margin: 4rem auto 0;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: var(--ocean-deep);
+}
+.travel__thanks p + p {
+  margin-top: 0.8rem;
+  font-size: 1.1rem;
 }
