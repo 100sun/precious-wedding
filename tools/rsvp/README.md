@@ -22,7 +22,7 @@
 `doPost` writes one row per guest. Both rows share a `Party ID` (8 characters,
 made by the script), so a +1 is always linked to the main guest.
 
-Columns: Received, Party ID, Guest (1 = main, 2 = +1), Party size, Name,
+Columns: Received, Party ID, Guest ("Main" or "+1"), Party size, Name,
 Attending, Entree, Dietary, Car, Language. There is no email column.
 
 If you change the columns, start a fresh sheet tab (or clear the old header

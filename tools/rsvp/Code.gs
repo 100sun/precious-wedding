@@ -38,7 +38,7 @@ function doPost(e) {
     rows.push([
       now,
       partyId,
-      g,
+      g === 1 ? "Main" : "+1",
       size,
       clean(p[k + "name"]),
       clean(p[k + "attending"]),
@@ -56,9 +56,15 @@ function doPost(e) {
     var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
     if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
     // one write, so a party's rows always sit together
-    sheet
-      .getRange(sheet.getLastRow() + 1, 1, rows.length, HEADERS.length)
-      .setValues(rows);
+    var range = sheet.getRange(
+      sheet.getLastRow() + 1,
+      1,
+      rows.length,
+      HEADERS.length,
+    );
+    // plain text for the Guest column, or Sheets turns "+1" into the number 1
+    range.offset(0, 2, rows.length, 1).setNumberFormat("@");
+    range.setValues(rows);
   } finally {
     lock.releaseLock();
   }

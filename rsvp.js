@@ -4,7 +4,8 @@
    Turn it off again with ?dev=0. To launch, delete this gate (see README). */
 (function () {
   // Apps Script web app URL (see tools/rsvp/README.md). Empty = not connected.
-  var RSVP_ENDPOINT = "";
+  var RSVP_ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbzn5Xpi3FxwWerCW2_KNO0fGwWPWdxg_YWnqtD13NstrCGC6A0ua4B2HUYoLeSmiISjOQ/exec";
 
   var FLAG = "weddingDev";
   var LANG_KEY = "weddingLang";
