@@ -1382,6 +1382,11 @@ h3 {
 .hotels__list a:hover {
   color: var(--accent);
 }
+.hotels__fine {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
 .hotels__note {
   display: block;
   font-size: 0.85rem;
