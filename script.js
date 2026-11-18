@@ -50,12 +50,16 @@ var PLACEHOLDER_COUNT = 6;
     introState = "open";
     introTimers.forEach(window.clearTimeout);
     intro.classList.add("intro--open");
-    // seal cracks apart, flap opens, card rises, then the intro fades
+    // seal cracks apart, flap opens to the lace liner, card slides out and
+    // comes forward, then the intro fades into the site
+    introLater(function () {
+      intro.classList.add("intro--card");
+    }, 1550);
     introLater(function () {
       intro.classList.add("intro--leaving");
       document.body.classList.remove("intro-playing");
-    }, 1800);
-    introLater(finishIntro, 2400);
+    }, 3300);
+    introLater(finishIntro, 3900);
   }
   if (intro && envelope) {
     if (reduceMotion) {
