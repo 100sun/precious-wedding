@@ -1156,35 +1156,47 @@ h3 {
   position: relative;
   z-index: 1;
   padding: 1.5rem var(--pad);
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
+/* same type as the opening envelope: script names, tracked sans caps,
+   italic serif date */
 .hero__eyebrow {
-  font-size: 0.78rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .hero__names {
-  font-style: italic;
-  font-size: clamp(3rem, 11vw, 6.5rem);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  font-family: "Pinyon Script", var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.9rem, 13vw, 6.5rem);
+  line-height: 1.2;
+  white-space: nowrap;
   color: #fff;
 }
 .hero__names .amp {
+  /* Cormorant italic ampersand, as on the envelope */
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.82em;
   color: inherit;
 }
+.hero__content .hero__pearls {
+  width: 120px;
+  margin-top: 0.9rem;
+}
 .hero__meta {
-  margin-top: 1.5rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  margin-top: 0.9rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 4.8vw, 1.5rem);
 }
 .hero__place {
-  margin-top: 0.6rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
+  margin-top: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
 }
 @media (max-width: 639px) {
@@ -1193,16 +1205,9 @@ h3 {
     height: 70svh;
     min-height: 380px;
   }
-  .hero__meta span {
-    display: block;
-  }
-  .hero__meta .hero__dot {
-    display: none;
-  }
-  .hero__meta,
   .hero__place {
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
     text-wrap: balance;
   }
 }

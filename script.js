@@ -80,7 +80,13 @@ var PLACEHOLDER_COUNT = 6;
   }
   if (intro && envelope) {
     document.body.classList.add("is-locked");
-    envelope.addEventListener("click", openEnvelope);
+    // a tap / click / Enter / Space on the envelope is a user gesture, so the
+    // song can start here (Skip opens the site without music)
+    envelope.addEventListener("click", function () {
+      if (introState !== "sealed") return;
+      openEnvelope();
+      startMusicOnOpen();
+    });
     // press feedback, and drag upward to break the seal
     var dragY = null;
     envelope.addEventListener("pointerdown", function (e) {
@@ -121,23 +127,52 @@ var PLACEHOLDER_COUNT = 6;
     });
   }
 
-  // --- Music: the vinyl record plays audio/song.mp3 (never autoplays) ---
+  // --- Music: audio/song.mp3 starts when the guest opens the envelope (unless
+  // they muted on an earlier visit); the vinyl record pauses / resumes it ---
   var record = document.getElementById("record");
   var recordText = document.getElementById("recordText");
   var muteBtn = document.getElementById("muteBtn");
   var SONG = "audio/song.mp3";
+  var MUTE_KEY = "sb-music-muted";
+  var VOLUME = 0.3;
   var song = null;
-  var resumeOnShow = false;
   var fadeTimer = null;
+  var muted = false;
+  try {
+    muted = window.localStorage.getItem(MUTE_KEY) === "1";
+  } catch (e) {}
 
   function fadeIn() {
     window.clearInterval(fadeTimer);
     song.volume = 0;
+    // 0 -> 0.3 over about 2.4 s (iOS ignores volume; it just plays)
     fadeTimer = window.setInterval(function () {
-      var v = Math.min(0.5, song.volume + 0.05);
+      var v = Math.min(VOLUME, song.volume + VOLUME / 20);
       song.volume = v;
-      if (v >= 0.5) window.clearInterval(fadeTimer);
+      if (v >= VOLUME) window.clearInterval(fadeTimer);
     }, 120);
+  }
+  function showMuted() {
+    if (!muteBtn) return;
+    muteBtn.classList.toggle("is-muted", muted);
+    muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
+    muteBtn.setAttribute("aria-label", muted ? "Unmute music" : "Mute music");
+  }
+  function setMuted(m) {
+    muted = m;
+    if (song) song.muted = m;
+    try {
+      window.localStorage.setItem(MUTE_KEY, m ? "1" : "0");
+    } catch (e) {}
+    showMuted();
+  }
+  function startMusicOnOpen() {
+    if (muted) {
+      // remembered choice: no music, but keep the unmute button handy
+      if (muteBtn && record && !record.disabled) muteBtn.hidden = false;
+      return;
+    }
+    playSong();
   }
   function showPlaying(playing) {
     record.classList.toggle("is-playing", playing);
@@ -153,14 +188,20 @@ var PLACEHOLDER_COUNT = 6;
       song.preload = "auto";
       song.addEventListener("play", function () {
         showPlaying(true);
+        if (muteBtn) muteBtn.hidden = false;
       });
       song.addEventListener("pause", function () {
         showPlaying(false);
       });
     }
-    var p = song.play();
+    song.muted = muted;
+    var p;
+    try {
+      p = song.play();
+    } catch (e) {
+      return;
+    }
     fadeIn();
-    if (muteBtn) muteBtn.hidden = false;
     if (p && p.catch) {
       p.catch(function () {
         showPlaying(false);
@@ -171,7 +212,11 @@ var PLACEHOLDER_COUNT = 6;
     record.addEventListener("click", function () {
       if (record.disabled) return;
       if (song && !song.paused) song.pause();
-      else playSong();
+      else {
+        // choosing to play on the record counts as unmuting
+        if (muted) setMuted(false);
+        playSong();
+      }
     });
     // only offer the record as a player when the song file is there
     if (window.fetch) {
@@ -186,26 +231,19 @@ var PLACEHOLDER_COUNT = 6;
     }
   }
   if (muteBtn) {
+    showMuted();
     muteBtn.addEventListener("click", function () {
-      if (!song) return;
-      song.muted = !song.muted;
-      muteBtn.classList.toggle("is-muted", song.muted);
-      muteBtn.setAttribute("aria-pressed", song.muted ? "true" : "false");
-      muteBtn.setAttribute(
-        "aria-label",
-        song.muted ? "Unmute music" : "Mute music",
-      );
+      if (muted) {
+        setMuted(false);
+        if (!song || song.paused) playSong();
+      } else {
+        setMuted(true);
+      }
     });
   }
+  // pause when the page is hidden; the guest resumes from the record
   document.addEventListener("visibilitychange", function () {
-    if (!song) return;
-    if (document.hidden) {
-      resumeOnShow = !song.paused;
-      song.pause();
-    } else if (resumeOnShow) {
-      resumeOnShow = false;
-      playSong();
-    }
+    if (song && document.hidden) song.pause();
   });
 
   // --- Sticky nav: hidden while the opening envelope fills the screen ---
