@@ -45,12 +45,12 @@ var PLACEHOLDER_COUNT = 6;
     introState = "open";
     introTimers.forEach(window.clearTimeout);
     intro.classList.add("intro--open");
-    // card slides out, then card scales up while the intro fades
+    // flap opens, card rises, then the intro fades
     introLater(function () {
       intro.classList.add("intro--leaving");
       document.body.classList.remove("intro-playing");
-    }, 2200);
-    introLater(finishIntro, 3200);
+    }, 1500);
+    introLater(finishIntro, 2100);
   }
   if (intro && envelope) {
     if (reduceMotion) {
@@ -95,37 +95,13 @@ var PLACEHOLDER_COUNT = 6;
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // --- Subtle parallax on hero scene (sun, palms) ---
-  var sun = document.querySelector(".hero__sun");
-  var palmL = document.querySelector(".palm--left");
-  var palmR = document.querySelector(".palm--right");
-  if (!reduceMotion && (sun || palmL || palmR)) {
-    var ticking = false;
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(function () {
-          var y = window.scrollY;
-          if (sun)
-            sun.style.transform =
-              "translateX(-50%) translateY(" + y * 0.25 + "px)";
-          if (palmL) palmL.style.transform = "translateY(" + y * 0.12 + "px)";
-          if (palmR) palmR.style.transform = "translateY(" + y * 0.12 + "px)";
-          ticking = false;
-        });
-      },
-      { passive: true },
-    );
-  }
-
   // --- Mobile menu toggle ---
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
   toggle.addEventListener("click", function () {
     var open = links.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
   links.querySelectorAll("a").forEach(function (a) {
     a.addEventListener("click", function () {
@@ -134,9 +110,61 @@ var PLACEHOLDER_COUNT = 6;
     });
   });
 
+  // --- Directions / Add to calendar menus ---
+  var openMenu = null; // { btn, list }
+  function menuItems(list) {
+    return Array.prototype.slice.call(
+      list.querySelectorAll('[role="menuitem"]'),
+    );
+  }
+  function closeMenu(returnFocus) {
+    if (!openMenu) return;
+    var m = openMenu;
+    openMenu = null;
+    m.list.hidden = true;
+    m.btn.setAttribute("aria-expanded", "false");
+    if (returnFocus) m.btn.focus();
+  }
+  document.querySelectorAll('[aria-haspopup="menu"]').forEach(function (btn) {
+    var list = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!list) return;
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var wasOpen = openMenu && openMenu.btn === btn;
+      closeMenu(false);
+      if (wasOpen) return;
+      list.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      openMenu = { btn: btn, list: list };
+      menuItems(list)[0].focus();
+    });
+    list.addEventListener("click", function (e) {
+      if (e.target.closest('[role="menuitem"]')) closeMenu(true);
+    });
+    list.addEventListener("keydown", function (e) {
+      var items = menuItems(list);
+      var i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        var step = e.key === "ArrowDown" ? 1 : -1;
+        items[(i + step + items.length) % items.length].focus();
+      } else if (e.key === "Home" || e.key === "End") {
+        e.preventDefault();
+        items[e.key === "Home" ? 0 : items.length - 1].focus();
+      } else if (e.key === "Tab") {
+        closeMenu(false);
+      }
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (openMenu && !openMenu.list.contains(e.target)) closeMenu(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (openMenu && e.key === "Escape") closeMenu(true);
+  });
+
   // --- Countdown to the wedding ---
   // August 5, 2027 at 5:00 PM Pacific (UTC-7 during PDT)
-  // PLACEHOLDER: the ceremony time is not confirmed yet.
   var target = new Date("2027-08-05T17:00:00-07:00").getTime();
   var cd = document.getElementById("countdown");
   function tick() {
@@ -181,14 +209,8 @@ var PLACEHOLDER_COUNT = 6;
   // --- Proposal gallery ---
   var gallery = document.getElementById("gallery");
   var galleryNote = document.getElementById("galleryNote");
-  var RATIOS = [
-    [4, 5],
-    [1, 1],
-    [3, 4],
-    [4, 3],
-    [2, 3],
-    [5, 4],
-  ];
+  // one portrait ratio keeps the grid even
+  var RATIOS = [[4, 5]];
   var items = PROPOSAL_PHOTOS.map(function (p, i) {
     var o = typeof p === "string" ? { file: p } : p;
     var r = RATIOS[i % RATIOS.length];
@@ -320,6 +342,26 @@ var PLACEHOLDER_COUNT = 6;
     lb.addEventListener("click", function (e) {
       if (e.target === lb) closeLightbox();
     });
+    // swipe left/right on touch screens
+    var swipeX = null;
+    var swipeY = null;
+    lb.addEventListener(
+      "touchstart",
+      function (e) {
+        swipeX = e.touches[0].clientX;
+        swipeY = e.touches[0].clientY;
+      },
+      { passive: true },
+    );
+    lb.addEventListener("touchend", function (e) {
+      if (swipeX === null) return;
+      var dx = e.changedTouches[0].clientX - swipeX;
+      var dy = e.changedTouches[0].clientY - swipeY;
+      swipeX = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        stepLb(dx < 0 ? 1 : -1);
+      }
+    });
     document.addEventListener("keydown", function (e) {
       if (lb.hidden) return;
       if (e.key === "Escape") closeLightbox();
@@ -347,64 +389,17 @@ var PLACEHOLDER_COUNT = 6;
   }
   renderGallery();
 
-  // --- Photo strip (first photos from the same manifest) ---
-  var strip = document.getElementById("strip");
-  if (strip) {
-    var stripItems = items.slice(0, 6);
-    var n = stripItems.length || 5;
-    for (var si = 0; si < n; si++) {
-      var sli = document.createElement("li");
-      sli.className = "strip__item";
-      var it0 = stripItems[si];
-      if (it0) {
-        var sb = document.createElement("button");
-        sb.type = "button";
-        sb.className = "strip__btn";
-        sb.setAttribute("aria-label", "View photo " + (si + 1) + " larger");
-        var sim = document.createElement("img");
-        sim.src = it0.src;
-        sim.alt = it0.alt;
-        sim.width = 160;
-        sim.height = 200;
-        sim.loading = "lazy";
-        sim.decoding = "async";
-        sb.appendChild(sim);
-        sb.addEventListener(
-          "click",
-          (function (x, b) {
-            return function () {
-              openLightbox(x, b);
-            };
-          })(it0, sb),
-        );
-        sim.addEventListener(
-          "error",
-          (function (x, li) {
-            return function () {
-              x.failed = true;
-              li.innerHTML = "";
-              li.appendChild(placeholderTile(4, 5));
-            };
-          })(it0, sli),
-        );
-        sli.appendChild(sb);
-      } else {
-        sli.appendChild(placeholderTile(4, 5));
-      }
-      strip.appendChild(sli);
-    }
-  }
-
-  // --- Add to calendar (all-day until the ceremony time is confirmed) ---
+  // --- Add to calendar: Thursday, August 5, 2027, 5:00 PM to 11:00 PM Pacific (PDT, UTC-7) ---
   var EVENT = {
     title: "Sofia & Blake's Wedding",
-    start: "20270805",
-    end: "20270806", // all-day events end on the next day (exclusive)
-    startIso: "2027-08-05",
-    endIso: "2027-08-06",
+    startUtc: "20270806T000000Z",
+    endUtc: "20270806T060000Z",
+    startIso: "2027-08-05T17:00:00-07:00",
+    endIso: "2027-08-05T23:00:00-07:00",
     location:
       "Bel-Air Bay Club, 16801 Pacific Coast Hwy, Pacific Palisades, CA 90272",
-    details: "Save the date. Formal invitation to follow.",
+    details:
+      "Save the date. 5:00 PM to 11:00 PM Pacific. Formal invitation to follow.",
   };
   var calGoogle = document.getElementById("calGoogle");
   var calOutlookWeb = document.getElementById("calOutlookWeb");
@@ -414,9 +409,10 @@ var PLACEHOLDER_COUNT = 6;
       "&text=" +
       encodeURIComponent(EVENT.title) +
       "&dates=" +
-      EVENT.start +
+      EVENT.startUtc +
       "/" +
-      EVENT.end +
+      EVENT.endUtc +
+      "&ctz=America%2FLos_Angeles" +
       "&details=" +
       encodeURIComponent(EVENT.details) +
       "&location=" +
@@ -428,10 +424,9 @@ var PLACEHOLDER_COUNT = 6;
       "&subject=" +
       encodeURIComponent(EVENT.title) +
       "&startdt=" +
-      EVENT.startIso +
+      encodeURIComponent(EVENT.startIso) +
       "&enddt=" +
-      EVENT.endIso +
-      "&allday=true" +
+      encodeURIComponent(EVENT.endIso) +
       "&body=" +
       encodeURIComponent(EVENT.details) +
       "&location=" +
@@ -456,8 +451,8 @@ var PLACEHOLDER_COUNT = 6;
       "BEGIN:VEVENT",
       "UID:sofia-blake-20270805@save-the-date",
       "DTSTAMP:" + stamp,
-      "DTSTART;VALUE=DATE:" + EVENT.start,
-      "DTEND;VALUE=DATE:" + EVENT.end,
+      "DTSTART:" + EVENT.startUtc,
+      "DTEND:" + EVENT.endUtc,
       "SUMMARY:" + icsEscape(EVENT.title),
       "LOCATION:" + icsEscape(EVENT.location),
       "DESCRIPTION:" + icsEscape(EVENT.details),
