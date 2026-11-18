@@ -30,6 +30,15 @@ jobs:
         with:
           ref: feature/rsvp
           path: site/preview
+      - name: Point the preview's link-preview URLs at /preview/
+        run: |
+          [ -f site/preview/index.html ] || exit 0
+          sed -i 's#https://100sun.github.io/precious-wedding/#https://100sun.github.io/precious-wedding/preview/#g' site/preview/index.html
+      - name: Build Korean share pages (ko.html) where the generator exists
+        run: |
+          [ -f site/tools/og/make-ko.mjs ] && (cd site && node tools/og/make-ko.mjs)
+          [ -f site/preview/tools/og/make-ko.mjs ] && (cd site/preview && node tools/og/make-ko.mjs https://100sun.github.io/precious-wedding/preview/)
+          true
       - run: rm -rf site/.git site/preview/.git site/preview/.github
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
