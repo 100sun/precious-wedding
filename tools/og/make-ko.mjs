@@ -27,19 +27,19 @@ function meta(key, value) {
 }
 
 swap(/<html lang="en">/, '<html lang="ko" data-default-lang="ko">', "<html>");
-swap(/<title>[^<]*<\/title>/, "<title>Sofia &amp; Blake 결혼합니다</title>", "<title>");
+swap(/<title>[^<]*<\/title>/, "<title>선혜 &amp; 블레이크 결혼합니다</title>", "<title>");
 meta(
   "description",
-  "Sofia & Blake가 2027년 8월 5일 목요일, 캘리포니아 퍼시픽 팰리세이즈의 Bel-Air Bay Club에서 결혼합니다. 7월 1일까지 참석 여부를 알려 주세요.",
+  "선혜 & 블레이크가 2027년 8월 5일 목요일, 캘리포니아 퍼시픽 팰리세이즈의 Bel-Air Bay Club에서 결혼합니다. 7월 1일까지 참석 여부를 알려 주세요.",
 );
 meta("og:url", BASE + "ko.html");
-meta("og:title", "Sofia & Blake · 결혼식에 초대합니다");
+meta("og:title", "선혜 & 블레이크 · 결혼식에 초대합니다");
 meta("og:description", "2027년 8월 5일 목요일 · Bel-Air Bay Club · 7월 1일까지 회신 부탁드립니다");
 meta("og:image", BASE + "images/og-envelope-ko.png");
 meta("twitter:image", BASE + "images/og-envelope-ko.png");
 meta(
   "og:image:alt",
-  "Sofia & Blake가 보낸 편지: 하늘색 왁스로 봉인된 아이보리 레이스 봉투",
+  "선혜 & 블레이크가 보낸 편지: 하늘색 왁스로 봉인된 아이보리 레이스 봉투",
 );
 // og:locale helps some apps pick the right language
 swap(

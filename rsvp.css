@@ -356,6 +356,33 @@ html.is-dev:lang(ko) {
   letter-spacing: 0.04em;
 }
 
+/* Korean names (선혜 & 블레이크): the script font has no Hangul, so the
+   names use the Korean serif, set smaller and lighter to sit like the script */
+.is-dev .ko-name {
+  font-family: "Gowun Batang", "Apple Myungjo", serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+.is-dev .intro__names .ko-name,
+.is-dev .hero__names .ko-name,
+.is-dev .footer__sign .ko-name {
+  font-size: 0.6em;
+  vertical-align: 0.08em;
+}
+@media (max-width: 560px) {
+  .is-dev .intro__names .ko-name,
+  .is-dev .hero__names .ko-name,
+  .is-dev .footer__sign .ko-name {
+    font-size: 0.48em;
+    letter-spacing: 0.02em;
+  }
+}
+.is-dev .nav__brand .ko-name {
+  color: inherit;
+  letter-spacing: 0.12em;
+}
+
 /* dev badge */
 .is-dev .dev-badge {
   position: fixed;

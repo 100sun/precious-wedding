@@ -1,6 +1,10 @@
 /* Korean copy for the dev-preview site. English stays in index.html; rsvp.js
    swaps these in by data-i18n key. Have a native speaker proofread before launch. */
 window.SITE_KO = {
+  "names.nav": "<span class=\"ko-name\">선혜</span> <span>&amp;</span> <span class=\"ko-name\">블레이크</span>",
+  "names.amp": "<span class=\"ko-name\">선혜</span> <span class=\"amp\">&amp;</span> <span class=\"ko-name\">블레이크</span>",
+  "names.couple": "<span class=\"ko-name\">선혜</span> <span class=\"intro__amp\">&amp;</span> <span class=\"ko-name\">블레이크</span>",
+
   "nav.venue": "장소",
   "nav.schedule": "일정",
   "nav.details": "안내",
