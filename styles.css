@@ -121,6 +121,7 @@ h3 {
 }
 h2 {
   font-size: clamp(2.4rem, 8vw, 3.6rem);
+  font-style: italic;
 }
 h2 em {
   font-style: italic;
