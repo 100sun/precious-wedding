@@ -278,8 +278,7 @@
           </div>
         </div>
         <div class="hero__body">
-          <p class="eyebrow">Save the Date</p>
-          <p class="hero__sub">Formal invitation to follow</p>
+          <p class="hero__sub">Save the date</p>
           <div
             class="countdown"
             role="timer"
@@ -415,9 +414,6 @@
         <div class="section__head reveal">
           <p class="eyebrow">The Venue</p>
           <h2>Bel-Air Bay Club</h2>
-          <p>
-            Pacific Palisades, California, where the bluffs meet the Pacific.
-          </p>
           <address class="venue__address">
             16801 Pacific Coast Hwy<br />Pacific Palisades, CA 90272
           </address>
@@ -510,20 +506,18 @@
         <div class="details__grid">
           <div class="card reveal">
             <h3>Dress Code</h3>
-            <p>Cocktail attire</p>
+            <p>Cocktail attire is requested.</p>
           </div>
           <div class="card reveal">
             <h3>Kids &amp; Pets</h3>
             <p>
-              We love them, but this will be an adults-only celebration, and
-              pets aren't able to join us.
+              We kindly request an adults-only celebration. Pets cannot be
+              accommodated.
             </p>
           </div>
           <div class="card reveal">
             <h3>Plus-Ones</h3>
-            <p>
-              If you have questions about a guest, please contact us directly.
-            </p>
+            <p>Please contact us regarding a plus-one.</p>
           </div>
         </div>
       </section>
@@ -535,48 +529,64 @@
           <h2>Travel &amp; Stay</h2>
           <!-- OPEN ITEM: couple to double-check drive times and venue address. -->
           <p class="travel__note">
-            All drive times are estimates and vary with traffic.
+            Drive times are estimates and vary with traffic.
           </p>
         </div>
         <div class="travel__grid">
           <article class="card reveal">
             <h3>Fly</h3>
-            <ul class="travel__list">
-              <li>
-                <strong>LAX (primary).</strong> About 15 miles from Bel-Air Bay
-                Club, roughly 25 to 40 minutes by car (estimate).
-              </li>
-              <li>
-                <strong>Burbank, BUR (alternate).</strong> Roughly 40 to 60
-                minutes by car (estimate).
-              </li>
-            </ul>
+            <p>
+              Los Angeles International (LAX) is about 25–40 minutes from the
+              venue.
+            </p>
           </article>
           <article class="card reveal">
-            <h3>Where to Stay</h3>
+            <h3>Stay</h3>
             <p>
-              Hotels in the Santa Monica area are the easiest and most
-              recommended place to stay. You will be close to the venue, about a
-              15 to 25 minute drive (estimate), with options for every budget.
+              We recommend hotels in Santa Monica, about 15–25 minutes away.
             </p>
           </article>
           <article class="card reveal">
             <h3>Getting Around</h3>
-            <ul class="travel__list">
-              <li>Uber / Lyft rideshare recommended.</li>
-              <li>Valet available with reservation.</li>
-            </ul>
+            <p>
+              We recommend arriving by rideshare. Valet is available by
+              reservation.
+            </p>
           </article>
           <article class="card reveal" aria-live="polite">
-            <h3>August 5 at the Coast</h3>
+            <h3>On the Day</h3>
             <dl class="travel__facts">
               <div>
-                <dt>Sunset</dt>
-                <dd id="sunsetTime">Calculating…</dd>
+                <dt>
+                  <svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M4 17h16M7 17a5 5 0 0 1 10 0M12 7V5M5.6 10.6 4.2 9.2M18.4 10.6l1.4-1.4M8 20h8"
+                    />
+                  </svg>
+                  <span>Sunset</span>
+                </dt>
+                <dd id="sunsetTime">…</dd>
               </div>
               <div>
-                <dt id="tempLabel">Temperature</dt>
-                <dd id="tempValue">Loading…</dd>
+                <dt>
+                  <svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0zM12 11v5"
+                    />
+                  </svg>
+                  <span id="tempLabel">Evening</span>
+                </dt>
+                <dd id="tempValue">…</dd>
               </div>
             </dl>
             <p class="travel__small" id="tempNote"></p>
@@ -591,32 +601,13 @@
           <h2>He asked. <em>She said yes.</em></h2>
           <!-- PLACEHOLDER WORDING: replace with your own story. -->
           <p class="proposal__story" id="proposalStory">
-            Placeholder story: a few sentences about the day Blake proposed will
-            go here. We'll share the real details soon.
+            Our story is coming soon.
           </p>
         </div>
         <ul class="gallery" id="gallery" aria-label="Proposal photos"></ul>
         <p class="gallery__note" id="galleryNote" hidden>
           Photos from the proposal are coming soon.
         </p>
-      </section>
-
-      <!-- Thank-you note -->
-      <section
-        class="section thanks"
-        id="thanks"
-        aria-label="A note from Sofia and Blake"
-      >
-        <div class="thanks__note reveal">
-          <p>
-            Thank you so much for your love, support, and effort to travel and
-            celebrate with us. We cannot wait to see you by Malibu!
-          </p>
-          <p>
-            More details to come. Please reach out to us directly if you have
-            any questions.
-          </p>
-        </div>
       </section>
     </main>
 
@@ -660,13 +651,18 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-      <p class="footer__names">Sofia <span class="amp">&amp;</span> Blake</p>
-      <p class="footer__date">
-        Thursday, August 5, 2027 · 5:00 PM – 11:00 PM<br />
-        Bel-Air Bay Club · Pacific Palisades, California
+    <footer class="footer" id="thanks">
+      <p class="footer__note">
+        Thank you for traveling to celebrate with us.<br />
+        We look forward to seeing you in Malibu.
       </p>
-      <p class="footer__thanks">Formal invitation to follow.</p>
+      <p class="footer__small">
+        Formal invitation to follow. Please do not hesitate to reach out with
+        any questions.
+      </p>
+      <p class="footer__sign">
+        Sofia <span class="amp">&amp;</span> Blake · 08.05.2027
+      </p>
     </footer>
 
     <script src="script.js"></script>

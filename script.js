@@ -7,35 +7,15 @@
      { file: "proposal-03.jpg", alt: "Describe the photo", caption: "Optional" }
    Leave the list empty to show the "Photo coming soon" placeholders.
    ------------------------------------------------------------ */
+// Shown in filename order (sorted automatically, so 2.jpg comes before 10.jpg).
+// cover.jpg is the hero photo and is not part of the gallery.
 var PROPOSAL_PHOTOS = [
-  {
-    file: "proposal-01.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
-  {
-    file: "proposal-02.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
-  {
-    file: "proposal-03.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
-  {
-    file: "proposal-04.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
-  {
-    file: "proposal-05.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
-  {
-    file: "proposal-06.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
-  {
-    file: "proposal-07.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-  },
+  { file: "1.jpg", alt: "Sofia and Blake on the day of the proposal" },
+  { file: "2.jpg", alt: "Sofia and Blake on the day of the proposal" },
+  { file: "3.jpg", alt: "Sofia and Blake on the day of the proposal" },
+  { file: "4.jpg", alt: "Sofia and Blake on the day of the proposal" },
+  { file: "5.jpg", alt: "Sofia and Blake on the day of the proposal" },
+  { file: "6.jpg", alt: "Sofia and Blake on the day of the proposal" },
 ];
 var PROPOSAL_DIR = "images/proposal/";
 var PLACEHOLDER_COUNT = 6;
@@ -234,21 +214,29 @@ var PLACEHOLDER_COUNT = 6;
   // --- Proposal gallery ---
   var gallery = document.getElementById("gallery");
   var galleryNote = document.getElementById("galleryNote");
-  // one portrait ratio keeps the grid even
+  // placeholder tiles use one portrait ratio; real photos keep their own shape
   var RATIOS = [[4, 5]];
-  var items = PROPOSAL_PHOTOS.map(function (p, i) {
-    var o = typeof p === "string" ? { file: p } : p;
-    var r = RATIOS[i % RATIOS.length];
-    return {
-      src: PROPOSAL_DIR + o.file,
-      alt: o.alt || "Sofia and Blake, proposal photo " + (i + 1),
-      caption: o.caption || "",
-      w: r[0],
-      h: r[1],
-      failed: false,
-      li: null,
-    };
-  });
+  var items = PROPOSAL_PHOTOS.map(function (p) {
+    return typeof p === "string" ? { file: p } : p;
+  })
+    .filter(function (o) {
+      return o.file !== "cover.jpg";
+    })
+    .sort(function (a, b) {
+      return a.file.localeCompare(b.file, "en", { numeric: true });
+    })
+    .map(function (o, i) {
+      var r = RATIOS[i % RATIOS.length];
+      return {
+        src: PROPOSAL_DIR + o.file,
+        alt: o.alt || "Sofia and Blake, proposal photo " + (i + 1),
+        caption: o.caption || "",
+        w: r[0],
+        h: r[1],
+        failed: false,
+        li: null,
+      };
+    });
 
   function placeholderTile(w, h) {
     var d = document.createElement("div");
@@ -282,17 +270,12 @@ var PLACEHOLDER_COUNT = 6;
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "gallery__btn";
-      btn.style.aspectRatio = it.w + " / " + it.h;
       btn.setAttribute("aria-label", "View photo " + (i + 1) + " larger");
       var img = document.createElement("img");
       img.src = it.src;
       img.alt = it.alt;
-      img.width = it.w * 200;
-      img.height = it.h * 200;
       img.loading = "lazy";
       img.decoding = "async";
-      img.style.height = "100%";
-      img.style.objectFit = "cover";
       img.addEventListener("error", function () {
         it.failed = true;
         var ph = placeholderTile(it.w, it.h);
@@ -573,9 +556,7 @@ var PLACEHOLDER_COUNT = 6;
     } catch (err) {
       sunsetText = null;
     }
-    sunsetEl.textContent = sunsetText
-      ? "About " + sunsetText + " PT"
-      : "Around 7:50 PM PT";
+    sunsetEl.textContent = sunsetText || "7:50 PM";
   }
   // Weather for the event window, 5:00-11:00 PM Pacific (hours 17-23 inclusive),
   // from Open-Meteo hourly temperature_2m in Fahrenheit:
@@ -693,12 +674,7 @@ var PLACEHOLDER_COUNT = 6;
   function showWeather(w) {
     tempLabel.textContent =
       w.kind === "forecast" ? "Evening forecast" : "Typical evening";
-    tempEl.textContent =
-      "Evening (5–11 PM): " +
-      Math.round(w.high) +
-      "° high · " +
-      Math.round(w.low) +
-      "° low";
+    tempEl.textContent = Math.round(w.high) + "° / " + Math.round(w.low) + "°";
     tempNote.textContent = "";
   }
   if (tempEl && tempLabel && tempNote) {

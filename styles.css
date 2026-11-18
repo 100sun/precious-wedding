@@ -2,21 +2,21 @@
 /* Mobile-first. Calm, editorial, minimal. */
 
 :root {
-  /* palette: mostly white, soft sage/eucalyptus, warm neutrals, a touch of sky */
+  /* palette: warm neutrals, Malibu blue signature accent, sage greenery */
   --bg: #ffffff;
   --paper: #ffffff;
   --ivory: #fbf8f2;
   --cream: #f4efe5; /* linen */
   --sand: #e3d8c5;
-  --ink: #3a342d; /* warm taupe-brown text, 12.3:1 on white */
+  --ink: #3a342d; /* warm taupe-brown text and headings, 12.3:1 on white */
   --muted: #6b6257; /* taupe, 6.0:1 on white */
-  --green: #4e6350; /* eucalyptus: headings, buttons, 6.5:1 on white */
-  --green-deep: #3d4f3f;
-  --sage: #a9b8a2; /* hairlines and line art only */
-  --sky: #9cc3e0; /* decorative sky accent (hairlines) */
-  --sky-ink: #3b7499; /* sky accent for text and icons, 5.1:1 on white */
+  --accent-soft: #7fb3d5; /* Malibu sky: hairlines, seal highlight */
+  --accent: #3b7499; /* Pacific blue: links, buttons, countdown, 5.1:1 on white */
+  --accent-deep: #2e5f80; /* hover / pressed, 6.9:1 on white */
+  --green: #4e6350; /* eucalyptus, secondary details */
+  --sage: #a9b8a2; /* botanical line art and dividers */
   --line: #ebe5da;
-  --overlay: rgba(38, 44, 36, 0.42); /* hero photo tint */
+  --overlay: rgba(36, 34, 32, 0.42); /* hero photo tint */
   /* fine-line botanical sprig (original drawing) used as a divider */
   --sprig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24'%3E%3Cg fill='none' stroke='%23a9b8a2' stroke-width='.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M58 12C46 11.2 30 12.6 12 11M62 12C74 11.2 90 12.6 108 11M54 12C51 6.5 46 5.5 43 6C45 10 50 11.4 54 12M44 12C41 17.5 36 18.5 33 18C35 14 40 12.6 44 12M34 12C31 6.5 26 5.5 23 6C25 10 30 11.4 34 12M24 12C21 17.5 16 18.5 13 18C15 14 20 12.6 24 12M66 12C69 6.5 74 5.5 77 6C75 10 70 11.4 66 12M76 12C79 17.5 84 18.5 87 18C85 14 80 12.6 76 12M86 12C89 6.5 94 5.5 97 6C95 10 90 11.4 86 12M96 12C99 17.5 104 18.5 107 18C105 14 100 12.6 96 12'/%3E%3C/g%3E%3Ccircle cx='60' cy='12' r='1.6' fill='none' stroke='%239cc3e0' stroke-width='.9'/%3E%3C/svg%3E");
   --serif: "Cormorant Garamond", "Times New Roman", serif;
@@ -31,11 +31,11 @@
   --env-inside: #ece4d3;
   --env-gold: #cdb98a;
   --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-  /* wax seal: deep eucalyptus green */
-  --wax-hi: #7f9677;
-  --wax-mid: #4b6147;
-  --wax-lo: #2f412f;
-  --wax-deep: #1e2b1f;
+  /* wax seal: Malibu blue */
+  --wax-hi: #9cc6e2;
+  --wax-mid: #4a86b0;
+  --wax-lo: #2f6189;
+  --wax-deep: #1d4362;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -70,7 +70,7 @@ img {
   max-width: 100%;
 }
 a {
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 h1,
 h2,
@@ -78,21 +78,21 @@ h3 {
   font-family: var(--serif);
   font-weight: 400;
   line-height: 1.15;
-  color: var(--green);
+  color: var(--ink);
 }
 h2 {
   font-size: clamp(2.4rem, 8vw, 3.6rem);
 }
 h2 em {
   font-style: italic;
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 h3 {
   font-size: 1.6rem;
 }
 
 :focus-visible {
-  outline: 2px solid var(--sky-ink);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -111,7 +111,7 @@ h3 {
   z-index: 300;
   padding: 0.75rem 1rem;
   background: var(--paper);
-  color: var(--green);
+  color: var(--accent);
 }
 .skip-link:focus {
   top: 1rem;
@@ -135,7 +135,7 @@ h3 {
 }
 .amp {
   font-style: italic;
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 
 /* ===== Navigation ===== */
@@ -167,7 +167,7 @@ h3 {
   font-family: var(--serif);
   font-size: 0.95rem;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.26em;
   min-height: 44px;
@@ -176,7 +176,7 @@ h3 {
 }
 .nav__brand span {
   font-style: italic;
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 .nav__toggle {
   width: 44px;
@@ -194,7 +194,7 @@ h3 {
   display: block;
   width: 24px;
   height: 1px;
-  background: var(--green);
+  background: var(--ink);
 }
 .nav__links {
   display: none;
@@ -222,7 +222,7 @@ h3 {
   border-top: 1px solid var(--line);
 }
 .nav__links a:hover {
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 
 @media (min-width: 768px) {
@@ -359,10 +359,10 @@ h3 {
   font-family: var(--serif);
   font-size: clamp(1.6rem, 8vw, 2.4rem);
   line-height: 1.1;
-  color: var(--green);
+  color: var(--ink);
 }
 .envelope__card-names em {
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 .envelope__card-rule {
   width: 36px;
@@ -548,7 +548,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--green-deep);
+  background: #33302c;
   color: #fff;
 }
 .hero__photo {
@@ -570,7 +570,7 @@ h3 {
   background:
     radial-gradient(
       ellipse at 50% 50%,
-      rgba(38, 44, 36, 0.24),
+      rgba(36, 34, 32, 0.24),
       transparent 70%
     ),
     var(--overlay);
@@ -658,7 +658,7 @@ h3 {
   width: 100%;
   margin: 3rem 0 2.5rem;
   padding: 2.25rem 0;
-  border-top: 1px solid var(--sky);
+  border-top: 1px solid var(--accent-soft);
   border-bottom: 1px solid var(--line);
   text-align: center;
 }
@@ -675,7 +675,7 @@ h3 {
   font-size: clamp(2.4rem, 11vw, 4.25rem);
   font-weight: 400;
   line-height: 1;
-  color: var(--green);
+  color: var(--accent);
   font-variant-numeric: lining-nums tabular-nums;
 }
 .countdown__item span {
@@ -749,13 +749,21 @@ h3 {
   font-size: 1.3rem;
   font-style: italic;
 }
+/* every photo shown whole (no cropping), in filename order left to right */
 .gallery {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 1rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+@media (min-width: 1024px) {
   .gallery {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -772,7 +780,9 @@ h3 {
   overflow: hidden;
 }
 .gallery__btn img {
+  display: block;
   width: 100%;
+  height: auto;
   transition: opacity 0.3s var(--ease);
 }
 .gallery__btn:hover img {
@@ -854,10 +864,10 @@ h3 {
   gap: 0.6rem;
   min-height: 48px;
   padding: 0 1.25rem;
-  border: 1px solid var(--green);
+  border: 1px solid var(--accent);
   border-radius: 999px;
   background: transparent;
-  color: var(--green);
+  color: var(--accent);
   font-family: var(--sans);
   font-size: 0.9rem;
   font-weight: 400;
@@ -869,7 +879,7 @@ h3 {
 }
 .pill:hover,
 .pill[aria-expanded="true"] {
-  background: var(--green);
+  background: var(--accent);
   color: var(--paper);
 }
 .icon--chev {
@@ -892,7 +902,7 @@ h3 {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(60, 70, 55, 0.08);
+  box-shadow: 0 8px 24px rgba(40, 60, 75, 0.08);
   text-align: left;
 }
 .menu__list[hidden] {
@@ -917,7 +927,7 @@ h3 {
   cursor: pointer;
 }
 .menu__list .icon {
-  color: var(--sky-ink);
+  color: var(--accent);
 }
 .menu__list a:hover,
 .menu__list button:hover,
@@ -939,7 +949,7 @@ h3 {
     transform: none;
     padding: 0.75rem 0.75rem calc(0.75rem + env(safe-area-inset-bottom));
     border-radius: 16px 16px 0 0;
-    box-shadow: 0 -8px 32px rgba(60, 70, 55, 0.12);
+    box-shadow: 0 -8px 32px rgba(40, 60, 75, 0.12);
   }
 }
 /* ===== Travel ===== */
@@ -965,42 +975,30 @@ h3 {
   color: var(--ink);
 }
 .travel__facts {
-  display: grid;
-  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
 }
 .travel__facts dt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
 }
+.travel__facts dt .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
 .travel__facts dd {
+  margin-top: 0.3rem;
   font-family: var(--serif);
   font-size: 1.35rem;
-  color: var(--green);
-}
-.thanks__note {
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.35rem, 4.5vw, 1.7rem);
-  line-height: 1.55;
-  color: var(--green);
-}
-.thanks__note::before {
-  content: "";
-  display: block;
-  width: 56px;
-  height: 1px;
-  margin: 0 auto 3rem;
-  background: var(--sage);
-}
-.thanks__note p + p {
-  margin-top: 1rem;
-  font-size: 0.85em;
-  color: var(--muted);
+  color: var(--ink);
 }
 
 /* ===== Lightbox ===== */
@@ -1047,7 +1045,7 @@ h3 {
   border-radius: 50%;
   font-size: 1.6rem;
   line-height: 1;
-  color: var(--green);
+  color: var(--accent);
   cursor: pointer;
 }
 .lightbox__close {
@@ -1092,24 +1090,33 @@ h3 {
   background: var(--paper);
   text-align: center;
 }
-.footer__names {
+.footer::before {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 19px;
+  margin: 0 auto 2rem;
+  background: var(--sprig) center / contain no-repeat;
+}
+.footer__note {
+  text-wrap: balance;
   font-family: var(--serif);
-  font-size: 2.2rem;
-  color: var(--green);
+  font-size: clamp(1.35rem, 4.5vw, 1.7rem);
+  line-height: 1.5;
+  color: var(--ink);
 }
-.footer__date {
+.footer__small {
   margin-top: 1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  line-height: 2;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.footer__thanks {
-  margin-top: 1.25rem;
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.1rem;
+  color: var(--muted);
+}
+.footer__sign {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
