@@ -141,6 +141,7 @@
     }
     store(LANG_KEY, lang);
     if (typeof translateTemp === "function") translateTemp();
+    if (typeof convertTemp === "function") convertTemp();
   }
 
   // the weather label is filled in later by script.js; translate it when it lands
@@ -159,6 +160,28 @@
   }
   if (tempLabel && window.MutationObserver) {
     new MutationObserver(translateTemp).observe(tempLabel, { childList: true });
+  }
+
+  // temperatures: script.js writes "79° / 67°" in Fahrenheit; Korean shows °C
+  var tempValue = document.getElementById("tempValue");
+  function toC(f) {
+    return Math.round(((f - 32) * 5) / 9);
+  }
+  function convertTemp() {
+    if (!tempValue) return;
+    var cur = tempValue.textContent;
+    var m = cur.match(/^(-?\d+)°\s*\/\s*(-?\d+)°$/);
+    if (m) tempValue.dataset.f = m[1] + "," + m[2]; // script.js wrote °F
+    if (!tempValue.dataset.f) return;
+    var f = tempValue.dataset.f.split(",").map(Number);
+    var want =
+      lang === "ko"
+        ? toC(f[0]) + "°C / " + toC(f[1]) + "°C"
+        : f[0] + "° / " + f[1] + "°";
+    if (cur !== want) tempValue.textContent = want;
+  }
+  if (tempValue && window.MutationObserver) {
+    new MutationObserver(convertTemp).observe(tempValue, { childList: true });
   }
 
   var langBtn = document.getElementById("langBtn");
