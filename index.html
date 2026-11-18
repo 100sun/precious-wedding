@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Save the date: Sofia & Blake are getting married on August 5, 2027 at the Bel-Air Bay Club in Pacific Palisades, California. Formal invitation to follow."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Save the Date · Sofia &amp; Blake · August 5, 2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="#top" class="nav__brand">S <span>&amp;</span> B</a>
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__links" id="navLinks">
+          <a href="#proposal">The Proposal</a>
+          <a href="#details">The Date</a>
+          <a href="#travel">Getting There</a>
+          <a href="#venue" class="nav__cta">Bel-Air Bay Club</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Opening-the-letter intro -->
+    <div class="intro" id="intro" role="dialog" aria-label="Opening invitation">
+      <button type="button" class="intro__skip" id="introSkip">Skip</button>
+      <button
+        type="button"
+        class="envelope"
+        id="envelope"
+        aria-label="Open the envelope"
+      >
+        <span class="envelope__back"></span>
+        <span class="envelope__card">
+          <span class="envelope__card-eyebrow">Save the Date</span>
+          <span class="envelope__card-names">Sofia <em>&amp;</em> Blake</span>
+          <span class="envelope__card-rule"></span>
+          <span class="envelope__card-date">August 5, 2027</span>
+          <span class="envelope__card-venue">Bel-Air Bay Club</span>
+        </span>
+        <span class="envelope__front"></span>
+        <span class="envelope__flap"></span>
+        <span class="envelope__seal">S <em>&amp;</em> B</span>
+      </button>
+      <p class="intro__hint" id="introHint">Tap to open</p>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero__overlay"></div>
+
+      <!-- Sun -->
+      <div class="hero__sun" aria-hidden="true"></div>
+
+      <!-- Floating sparkle particles -->
+      <div class="hero__particles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <!-- Palm trees -->
+      <div class="palm palm--left" aria-hidden="true">
+        <svg viewBox="0 0 220 420" preserveAspectRatio="xMidYMax meet">
+          <path
+            class="palm__trunk"
+            d="M96 420 C92 320 86 230 100 150 C104 125 112 110 120 100"
+          />
+          <g class="palm__fronds">
+            <path
+              class="frond"
+              d="M120 100 C70 70 30 72 2 92 C40 80 82 90 120 104 Z"
+            />
+            <path
+              class="frond"
+              d="M120 100 C78 48 40 30 6 28 C46 40 90 70 120 104 Z"
+            />
+            <path
+              class="frond"
+              d="M120 100 C118 46 132 8 160 -8 C140 28 128 66 122 104 Z"
+            />
+            <path
+              class="frond"
+              d="M120 100 C160 60 206 54 240 70 C196 62 150 78 122 104 Z"
+            />
+            <path
+              class="frond"
+              d="M120 100 C150 110 196 120 226 150 C188 122 146 112 122 106 Z"
+            />
+          </g>
+        </svg>
+      </div>
+      <div class="palm palm--right" aria-hidden="true">
+        <svg viewBox="0 0 220 420" preserveAspectRatio="xMidYMax meet">
+          <path
+            class="palm__trunk"
+            d="M124 420 C128 320 134 230 120 150 C116 125 108 110 100 100"
+          />
+          <g class="palm__fronds">
+            <path
+              class="frond"
+              d="M100 100 C150 70 190 72 218 92 C180 80 138 90 100 104 Z"
+            />
+            <path
+              class="frond"
+              d="M100 100 C142 48 180 30 214 28 C174 40 130 70 100 104 Z"
+            />
+            <path
+              class="frond"
+              d="M100 100 C102 46 88 8 60 -8 C80 28 92 66 98 104 Z"
+            />
+            <path
+              class="frond"
+              d="M100 100 C60 60 14 54 -20 70 C24 62 70 78 98 104 Z"
+            />
+            <path
+              class="frond"
+              d="M100 100 C70 110 24 120 -6 150 C32 122 74 112 98 106 Z"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Save the Date</p>
+        <h1 class="hero__names">
+          <span class="word">Sofia</span>
+          <span class="amp">&amp;</span>
+          <span class="word">Blake</span>
+        </h1>
+        <p class="hero__sub">are getting married</p>
+        <div class="hero__meta">
+          <span>Thursday</span>
+          <span class="dot">·</span>
+          <span>August 5, 2027</span>
+          <span class="dot">·</span>
+          <span>Bel-Air Bay Club</span>
+          <span class="dot">·</span>
+          <span>Pacific Palisades, California</span>
+        </div>
+        <p class="hero__sub">Formal invitation to follow</p>
+        <a href="#proposal" class="btn btn--light btn--glow"
+          >See the Proposal</a
+        >
+      </div>
+
+      <!-- Animated ocean waves -->
+      <div class="hero__waves" aria-hidden="true">
+        <svg viewBox="0 24 150 28" preserveAspectRatio="none">
+          <defs>
+            <path
+              id="wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+            />
+          </defs>
+          <g class="waves">
+            <use href="#wave" x="48" y="0" class="wave wave1" />
+            <use href="#wave" x="48" y="3" class="wave wave2" />
+            <use href="#wave" x="48" y="5" class="wave wave3" />
+            <use href="#wave" x="48" y="7" class="wave wave4" />
+          </g>
+        </svg>
+      </div>
+
+      <a href="#details" class="hero__scroll" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown" aria-label="Countdown to the wedding">
+      <p class="eyebrow countdown__title">Time until we say I do</p>
+      <div class="countdown__grid" id="countdown">
+        <div class="countdown__item">
+          <strong data-unit="days">—</strong><span>Days</span>
+        </div>
+        <div class="countdown__item">
+          <strong data-unit="hours">—</strong><span>Hours</span>
+        </div>
+        <div class="countdown__item">
+          <strong data-unit="minutes">—</strong><span>Minutes</span>
+        </div>
+        <div class="countdown__item">
+          <strong data-unit="seconds">—</strong><span>Seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo strip (first photos from the same manifest) -->
+    <section class="strip" aria-label="Photos of Sofia and Blake">
+      <ul class="strip__track" id="strip"></ul>
+    </section>
+
+    <!-- The Proposal -->
+    <section class="section proposal" id="proposal">
+      <div class="section__head reveal">
+        <p class="eyebrow">The Proposal</p>
+        <h2>He asked. <span class="amp">She said yes.</span></h2>
+        <!-- PLACEHOLDER WORDING: replace with your own story. -->
+        <p class="proposal__story" id="proposalStory">
+          Placeholder story: a few sentences about the day Blake proposed will
+          go here. We'll share the real details soon.
+        </p>
+      </div>
+      <ul class="gallery" id="gallery" aria-label="Proposal photos"></ul>
+      <p class="gallery__note" id="galleryNote" hidden>
+        Photos from the proposal are coming soon.
+      </p>
+    </section>
+
+    <!-- Details teaser -->
+    <section class="section details" id="details">
+      <div class="section__head reveal">
+        <p class="eyebrow">Mark Your Calendar</p>
+        <h2>Save the Date</h2>
+      </div>
+      <div class="details__grid">
+        <div class="card reveal">
+          <span class="card__icon" aria-hidden="true">&#9826;</span>
+          <h3>Date</h3>
+          <p>Thursday<br />August 5, 2027</p>
+        </div>
+        <div class="card reveal">
+          <span class="card__icon" aria-hidden="true">&#9826;</span>
+          <h3>Venue</h3>
+          <p>Bel-Air Bay Club<br />Pacific Palisades, California</p>
+        </div>
+        <div class="card reveal">
+          <span class="card__icon" aria-hidden="true">&#9826;</span>
+          <h3>What's Next</h3>
+          <p>Details and a formal invitation<br />to follow</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue -->
+    <section class="venue" id="venue">
+      <div class="venue__inner reveal">
+        <p class="eyebrow">The Venue</p>
+        <h2>Bel-Air Bay Club</h2>
+        <p>Pacific Palisades, California, where the bluffs meet the Pacific.</p>
+        <address class="venue__address">
+          16801 Pacific Coast Hwy<br />Pacific Palisades, CA 90272
+        </address>
+        <div class="venue__map" aria-hidden="true">
+          <span class="venue__pin"></span>
+          <span class="venue__map-label">Bel-Air Bay Club</span>
+        </div>
+        <div class="venue__actions">
+          <a
+            class="btn btn--dark"
+            href="https://www.google.com/maps/search/?api=1&amp;query=Bel-Air+Bay+Club+Pacific+Palisades+CA"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Google Maps<span class="sr-only"> (opens in a new tab)</span></a
+          >
+          <a
+            class="btn btn--dark"
+            href="https://maps.apple.com/?q=Bel-Air+Bay+Club&amp;address=16801+Pacific+Coast+Hwy%2C+Pacific+Palisades%2C+CA+90272"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Apple Maps<span class="sr-only"> (opens in a new tab)</span></a
+          >
+        </div>
+        <h3 class="venue__cal-title">Add to Calendar</h3>
+        <!-- PLACEHOLDER: all-day event until the ceremony time is confirmed. -->
+        <div class="venue__actions" id="calendarButtons">
+          <a
+            class="btn btn--outline"
+            id="calGoogle"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="#"
+            >Google<span class="sr-only">
+              Calendar (opens in a new tab)</span
+            ></a
+          >
+          <button type="button" class="btn btn--outline" id="calApple">
+            Apple (.ics)
+          </button>
+          <button type="button" class="btn btn--outline" id="calOutlookIcs">
+            Outlook (.ics)
+          </button>
+          <a
+            class="btn btn--outline"
+            id="calOutlookWeb"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="#"
+            >Outlook.com<span class="sr-only"> (opens in a new tab)</span></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Getting There / Travel -->
+    <section class="section travel" id="travel">
+      <div class="section__head reveal">
+        <p class="eyebrow">Getting There</p>
+        <h2>Travel &amp; Stay</h2>
+        <!-- OPEN ITEM: couple to double-check drive times, hotels and venue address. -->
+        <p class="travel__note">
+          Drive times are approximate and vary with traffic.
+        </p>
+      </div>
+      <div class="travel__grid">
+        <article class="card reveal">
+          <h3>Fly</h3>
+          <ul class="travel__list">
+            <li>
+              <strong>LAX (primary).</strong> About 15 miles from Bel-Air Bay
+              Club. Roughly 25 to 40 minutes by car depending on traffic.
+            </li>
+            <li>
+              <strong>Burbank, BUR (alternate).</strong> Roughly 40 to 60
+              minutes by car depending on traffic (estimate).
+            </li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Getting Around</h3>
+          <ul class="travel__list">
+            <li>Uber / Lyft recommended.</li>
+            <li>Valet available with reservation.</li>
+          </ul>
+        </article>
+        <article class="card reveal travel__sun" aria-live="polite">
+          <h3>August 5 at the Coast</h3>
+          <dl class="travel__facts">
+            <div>
+              <dt>Sunset</dt>
+              <dd id="sunsetTime">Calculating…</dd>
+            </div>
+            <div>
+              <dt id="tempLabel">Temperature</dt>
+              <dd id="tempValue">Loading…</dd>
+            </div>
+          </dl>
+          <p class="travel__small" id="tempNote"></p>
+        </article>
+      </div>
+      <div class="travel__stay reveal">
+        <h3>Where to Stay</h3>
+        <p class="travel__note">
+          Santa Monica is about 15 to 25 minutes from the venue by car
+          (estimate). We have not arranged a room block.
+        </p>
+        <ul class="hotels">
+          <li>
+            <a
+              href="https://www.shuttersonthebeach.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><strong>Shutters on the Beach</strong
+              ><span
+                >Beachfront classic right on the sand.<span class="sr-only">
+                  (opens in a new tab)</span
+                ></span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.hotelcasadelmar.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><strong>Hotel Casa del Mar</strong
+              ><span
+                >Historic Italian Renaissance hotel on the beach.<span
+                  class="sr-only"
+                >
+                  (opens in a new tab)</span
+                ></span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.fairmont.com/santa-monica/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><strong>Fairmont Miramar</strong
+              ><span
+                >Palm-lined grounds above Santa Monica's bluffs.<span
+                  class="sr-only"
+                >
+                  (opens in a new tab)</span
+                ></span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.viceroyhotelsandresorts.com/en/santamonica"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><strong>Viceroy Santa Monica</strong
+              ><span
+                >Modern, design-forward stay near the beach.<span
+                  class="sr-only"
+                >
+                  (opens in a new tab)</span
+                ></span
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- Lightbox -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Proposal photo viewer"
+      hidden
+    >
+      <button
+        type="button"
+        class="lightbox__close"
+        id="lbClose"
+        aria-label="Close photo viewer"
+      >
+        &times;
+      </button>
+      <button
+        type="button"
+        class="lightbox__nav lightbox__nav--prev"
+        id="lbPrev"
+        aria-label="Previous photo"
+      >
+        &#8249;
+      </button>
+      <figure class="lightbox__figure">
+        <img id="lbImg" alt="" />
+        <figcaption id="lbCap"></figcaption>
+      </figure>
+      <button
+        type="button"
+        class="lightbox__nav lightbox__nav--next"
+        id="lbNext"
+        aria-label="Next photo"
+      >
+        &#8250;
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <h2 class="footer__names">Sofia <span class="amp">&amp;</span> Blake</h2>
+      <p class="footer__date">
+        August 5, 2027 · Bel-Air Bay Club · Pacific Palisades, California
+      </p>
+      <p class="footer__thanks">Formal invitation to follow.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
