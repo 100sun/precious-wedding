@@ -265,60 +265,6 @@
   }
 }
 
-/* Stay card: expandable hotel picks */
-.is-dev .hotels {
-  margin-top: 0.9rem;
-}
-.is-dev .hotels summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-height: 44px;
-  list-style: none;
-  color: var(--accent);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-}
-.is-dev .hotels summary::-webkit-details-marker {
-  display: none;
-}
-.is-dev .hotels summary::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-right: 1px solid currentColor;
-  border-bottom: 1px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s var(--ease);
-}
-.is-dev .hotels[open] summary::after {
-  transform: translateY(2px) rotate(-135deg);
-}
-.is-dev .hotels__list {
-  list-style: none;
-  margin: 0.4rem 0 0;
-  padding: 0;
-}
-.is-dev .hotels__list li {
-  padding: 0.55rem 0;
-}
-.is-dev .hotels__list a {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  color: var(--ink);
-  text-decoration-color: var(--accent-soft);
-  text-underline-offset: 3px;
-}
-.is-dev .hotels__list a:hover {
-  color: var(--accent);
-}
-.is-dev .hotels__note {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
 /* dinner: 2 x 2 on phones, one row on wider screens */
 .is-dev .choice__row--grid {
   display: grid;
