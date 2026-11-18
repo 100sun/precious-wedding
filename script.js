@@ -9,13 +9,16 @@
    ------------------------------------------------------------ */
 // Shown in filename order (sorted automatically, so 2.jpg comes before 10.jpg).
 // cover.jpg is the hero photo and is not part of the gallery.
+// Optional phone-sized copy: put it in images/proposal/sm/ with the same name
+// and give both widths (width: original, small: the sm/ copy) so phones load
+// the smaller file. See images/proposal/README.txt.
 var PROPOSAL_PHOTOS = [
-  { file: "1.jpg", alt: "Sofia and Blake on the day of the proposal" },
-  { file: "2.jpg", alt: "Sofia and Blake on the day of the proposal" },
-  { file: "3.jpg", alt: "Sofia and Blake on the day of the proposal" },
-  { file: "4.jpg", alt: "Sofia and Blake on the day of the proposal" },
-  { file: "5.jpg", alt: "Sofia and Blake on the day of the proposal" },
-  { file: "6.jpg", alt: "Sofia and Blake on the day of the proposal" },
+  { file: "1.jpg", alt: "Sofia and Blake on the day of the proposal", width: 1133, small: 760 },
+  { file: "2.jpg", alt: "Sofia and Blake on the day of the proposal", width: 1123, small: 760 },
+  { file: "3.jpg", alt: "Sofia and Blake on the day of the proposal", width: 2000, small: 1080 },
+  { file: "4.jpg", alt: "Sofia and Blake on the day of the proposal", width: 2000, small: 1080 },
+  { file: "5.jpg", alt: "Sofia and Blake on the day of the proposal", width: 1500, small: 760 },
+  { file: "6.jpg", alt: "Sofia and Blake on the day of the proposal", width: 2000, small: 1080 },
 ];
 var PROPOSAL_DIR = "images/proposal/";
 var PLACEHOLDER_COUNT = 6;
@@ -316,6 +319,11 @@ var PLACEHOLDER_COUNT = 6;
       var r = RATIOS[i % RATIOS.length];
       return {
         src: PROPOSAL_DIR + o.file,
+        srcset:
+          o.width && o.small
+            ? PROPOSAL_DIR + "sm/" + o.file + " " + o.small + "w, " +
+              PROPOSAL_DIR + o.file + " " + o.width + "w"
+            : "",
         alt: o.alt || "Sofia and Blake, proposal photo " + (i + 1),
         caption: o.caption || "",
         w: r[0],
@@ -336,11 +344,10 @@ var PLACEHOLDER_COUNT = 6;
   }
   function addLi(child, i, cls) {
     var li = document.createElement("li");
-    li.className = "gallery__item reveal" + (cls ? " " + cls : "");
-    li.style.setProperty("--i", String(i % 6));
+    li.className = "gallery__item" + (cls ? " " + cls : "");
+    li.setAttribute("aria-roledescription", "slide");
     li.appendChild(child);
     gallery.appendChild(li);
-    observeReveal(li);
     return li;
   }
   function renderGallery() {
@@ -351,6 +358,7 @@ var PLACEHOLDER_COUNT = 6;
         addLi(placeholderTile(r[0], r[1]), k, "gallery__item--ph");
       }
       if (galleryNote) galleryNote.hidden = false;
+      setupCarousel();
       return;
     }
     items.forEach(function (it, i) {
@@ -359,9 +367,14 @@ var PLACEHOLDER_COUNT = 6;
       btn.className = "gallery__btn";
       btn.setAttribute("aria-label", "View photo " + (i + 1) + " larger");
       var img = document.createElement("img");
+      if (it.srcset) {
+        img.srcset = it.srcset;
+        img.sizes = "(min-width: 768px) 640px, 86vw";
+      }
       img.src = it.src;
       img.alt = it.alt;
-      img.loading = "lazy";
+      // the first two slides load right away, the rest as they come near
+      img.loading = i < 2 ? "eager" : "lazy";
       img.decoding = "async";
       img.addEventListener("error", function () {
         it.failed = true;
@@ -381,6 +394,82 @@ var PLACEHOLDER_COUNT = 6;
       });
       it.li = addLi(btn, i);
     });
+    setupCarousel();
+  }
+
+  // --- Photo carousel: swipe, prev/next buttons, arrow keys, "1 / 6" ---
+  var galPrev = document.getElementById("galPrev");
+  var galNext = document.getElementById("galNext");
+  var galCount = document.getElementById("galCount");
+  var galIndex = -1;
+  function slides() {
+    return gallery.children;
+  }
+  function slideLeft(el) {
+    return el.offsetLeft - (gallery.clientWidth - el.offsetWidth) / 2;
+  }
+  function currentSlide() {
+    var list = slides();
+    var best = 0;
+    var bestDist = Infinity;
+    for (var i = 0; i < list.length; i++) {
+      var d = Math.abs(slideLeft(list[i]) - gallery.scrollLeft);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    }
+    return best;
+  }
+  function updateCarousel() {
+    var n = slides().length;
+    var i = currentSlide();
+    if (i === galIndex) return;
+    galIndex = i;
+    galCount.textContent = i + 1 + " / " + n;
+    galPrev.disabled = i === 0;
+    galNext.disabled = i === n - 1;
+  }
+  function goSlide(i) {
+    var list = slides();
+    if (i < 0 || i >= list.length) return;
+    gallery.scrollTo({
+      left: slideLeft(list[i]),
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  }
+  function setupCarousel() {
+    if (!galPrev || !galNext || !galCount) return;
+    var queued = false;
+    gallery.addEventListener(
+      "scroll",
+      function () {
+        if (queued) return;
+        queued = true;
+        window.requestAnimationFrame(function () {
+          queued = false;
+          updateCarousel();
+        });
+      },
+      { passive: true },
+    );
+    galPrev.addEventListener("click", function () {
+      goSlide(currentSlide() - 1);
+    });
+    galNext.addEventListener("click", function () {
+      goSlide(currentSlide() + 1);
+    });
+    gallery.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        e.preventDefault();
+        goSlide(currentSlide() + (e.key === "ArrowRight" ? 1 : -1));
+      }
+    });
+    window.addEventListener("resize", function () {
+      galIndex = -1;
+      updateCarousel();
+    });
+    updateCarousel();
   }
 
   // --- Lightbox ---
