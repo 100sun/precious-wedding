@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -24,7 +24,7 @@
     <!-- Navigation -->
     <header class="nav" id="nav">
       <div class="nav__inner">
-        <a href="#top" class="nav__brand">S <span>&amp;</span> B</a>
+        <a href="#top" class="nav__brand">Sofia <span>&amp;</span> Blake</a>
         <button
           type="button"
           class="nav__toggle"
@@ -71,85 +71,161 @@
     <main id="main">
       <!-- Hero: names, date and time, countdown, add to calendar -->
       <section class="hero" id="top">
-        <p class="eyebrow">Save the Date</p>
-        <h1 class="hero__names">
-          Sofia <span class="amp">&amp;</span> Blake
-        </h1>
-        <p class="hero__sub">are getting married</p>
-        <span class="rule" aria-hidden="true"></span>
-        <p class="hero__meta">
-          Thursday, August 5, 2027<br />
-          5:00 PM – 11:00 PM
-        </p>
-        <p class="hero__place">
-          Bel-Air Bay Club · Pacific Palisades, California
-        </p>
-        <div class="countdown" role="timer" aria-label="Countdown to the wedding">
-          <p class="eyebrow">Until we say I do</p>
-          <div class="countdown__grid" id="countdown">
-            <div class="countdown__item">
-              <strong data-unit="days">—</strong><span>Days</span>
+        <div class="hero__banner">
+          <img
+            class="hero__photo"
+            src="images/proposal/cover.jpg"
+            alt=""
+            width="538"
+            height="349"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="hero__content">
+            <p class="hero__eyebrow">The Wedding of</p>
+            <h1 class="hero__names">
+              Sofia <span class="amp">&amp;</span> Blake
+            </h1>
+            <p class="hero__meta">
+              <span>Thursday, August 5, 2027</span
+              ><span class="hero__dot" aria-hidden="true"> · </span
+              ><span>5:00–11:00 PM</span>
+            </p>
+            <p class="hero__place">Bel-Air Bay Club · Pacific Palisades</p>
+          </div>
+        </div>
+        <div class="hero__body">
+          <p class="eyebrow">Save the Date</p>
+          <p class="hero__sub">Formal invitation to follow</p>
+          <div
+            class="countdown"
+            role="timer"
+            aria-label="Countdown to the wedding"
+          >
+            <p class="eyebrow">Until we say I do</p>
+            <div class="countdown__grid" id="countdown">
+              <div class="countdown__item">
+                <strong data-unit="days">—</strong><span>Days</span>
+              </div>
+              <div class="countdown__item">
+                <strong data-unit="hours">—</strong><span>Hours</span>
+              </div>
+              <div class="countdown__item">
+                <strong data-unit="minutes">—</strong><span>Minutes</span>
+              </div>
+              <div class="countdown__item">
+                <strong data-unit="seconds">—</strong><span>Seconds</span>
+              </div>
             </div>
-            <div class="countdown__item">
-              <strong data-unit="hours">—</strong><span>Hours</span>
-            </div>
-            <div class="countdown__item">
-              <strong data-unit="minutes">—</strong><span>Minutes</span>
-            </div>
-            <div class="countdown__item">
-              <strong data-unit="seconds">—</strong><span>Seconds</span>
+          </div>
+          <div class="actions">
+            <div class="menu">
+              <button
+                type="button"
+                class="pill"
+                id="calBtn"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="calMenu"
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="3.5" y="5" width="17" height="15.5" rx="1.5" />
+                  <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+                </svg>
+                <span>Add to calendar</span>
+                <svg
+                  class="icon icon--chev"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <ul
+                class="menu__list"
+                id="calMenu"
+                role="menu"
+                aria-labelledby="calBtn"
+                hidden
+              >
+                <li role="none">
+                  <a
+                    role="menuitem"
+                    id="calGoogle"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg
+                      class="icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3.5" y="5" width="17" height="15.5" rx="1.5" />
+                      <path d="M3.5 9.5h17M8 3v4M16 3v4" /></svg
+                    ><span>Google Calendar</span
+                    ><span class="sr-only"> (opens in a new tab)</span></a
+                  >
+                </li>
+                <li role="none">
+                  <button type="button" role="menuitem" id="calApple">
+                    <svg
+                      class="icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"
+                      /></svg
+                    ><span>Apple Calendar (.ics)</span>
+                  </button>
+                </li>
+                <li role="none">
+                  <a
+                    role="menuitem"
+                    id="calOutlookWeb"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg
+                      class="icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
+                      /></svg
+                    ><span>Outlook.com</span
+                    ><span class="sr-only"> (opens in a new tab)</span></a
+                  >
+                </li>
+                <li role="none">
+                  <button type="button" role="menuitem" id="calOutlookIcs">
+                    <svg
+                      class="icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"
+                      /></svg
+                    ><span>Other (.ics)</span>
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="actions">
-          <div class="menu">
-            <button
-              type="button"
-              class="pill"
-              id="calBtn"
-              aria-haspopup="menu"
-              aria-expanded="false"
-              aria-controls="calMenu"
-            >
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5" /><path d="M3.5 9.5h17M8 3v4M16 3v4" /></svg>
-              <span>Add to calendar</span>
-              <svg class="icon icon--chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
-            </button>
-            <ul class="menu__list" id="calMenu" role="menu" aria-labelledby="calBtn" hidden>
-              <li role="none">
-                <a
-                  role="menuitem"
-                  id="calGoogle"
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5" /><path d="M3.5 9.5h17M8 3v4M16 3v4" /></svg><span>Google Calendar</span><span class="sr-only"> (opens in a new tab)</span></a
-                >
-              </li>
-              <li role="none">
-                <button type="button" role="menuitem" id="calApple">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" /></svg><span>Apple Calendar (.ics)</span>
-                </button>
-              </li>
-              <li role="none">
-                <a
-                  role="menuitem"
-                  id="calOutlookWeb"
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg><span>Outlook.com</span><span class="sr-only"> (opens in a new tab)</span></a
-                >
-              </li>
-              <li role="none">
-                <button type="button" role="menuitem" id="calOutlookIcs">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" /></svg><span>Other (.ics)</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="hero__note">Formal invitation to follow</p>
       </section>
 
       <!-- Venue -->
@@ -157,7 +233,9 @@
         <div class="section__head reveal">
           <p class="eyebrow">The Venue</p>
           <h2>Bel-Air Bay Club</h2>
-          <p>Pacific Palisades, California, where the bluffs meet the Pacific.</p>
+          <p>
+            Pacific Palisades, California, where the bluffs meet the Pacific.
+          </p>
           <address class="venue__address">
             16801 Pacific Coast Hwy<br />Pacific Palisades, CA 90272
           </address>
@@ -172,18 +250,51 @@
               aria-expanded="false"
               aria-controls="mapsMenu"
             >
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"
+                />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg>
               <span>Directions</span>
-              <svg class="icon icon--chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+              <svg
+                class="icon icon--chev"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </button>
-            <ul class="menu__list" id="mapsMenu" role="menu" aria-labelledby="mapsBtn" hidden>
+            <ul
+              class="menu__list"
+              id="mapsMenu"
+              role="menu"
+              aria-labelledby="mapsBtn"
+              hidden
+            >
               <li role="none">
                 <a
                   role="menuitem"
                   href="https://www.google.com/maps/search/?api=1&amp;query=Bel-Air+Bay+Club+Pacific+Palisades+CA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4zM9 4v14M15 6v14" /></svg><span>Google Maps</span><span class="sr-only"> (opens in a new tab)</span></a
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4zM9 4v14M15 6v14"
+                    /></svg
+                  ><span>Google Maps</span
+                  ><span class="sr-only"> (opens in a new tab)</span></a
                 >
               </li>
               <li role="none">
@@ -192,7 +303,15 @@
                   href="https://maps.apple.com/?q=Bel-Air+Bay+Club&amp;address=16801+Pacific+Coast+Hwy%2C+Pacific+Palisades%2C+CA+90272"
                   target="_blank"
                   rel="noopener noreferrer"
-                  ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4 4 11l7 2 2 7 7-16z" /></svg><span>Apple Maps</span><span class="sr-only"> (opens in a new tab)</span></a
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M20 4 4 11l7 2 2 7 7-16z" /></svg
+                  ><span>Apple Maps</span
+                  ><span class="sr-only"> (opens in a new tab)</span></a
                 >
               </li>
             </ul>
@@ -255,9 +374,8 @@
             <h3>Where to Stay</h3>
             <p>
               Hotels in the Santa Monica area are the easiest and most
-              recommended place to stay. You will be close to the venue, about
-              a 15 to 25 minute drive (estimate), with options for every
-              budget.
+              recommended place to stay. You will be close to the venue, about a
+              15 to 25 minute drive (estimate), with options for every budget.
             </p>
           </article>
           <article class="card reveal">
@@ -302,7 +420,11 @@
       </section>
 
       <!-- Thank-you note -->
-      <section class="section thanks" id="thanks" aria-label="A note from Sofia and Blake">
+      <section
+        class="section thanks"
+        id="thanks"
+        aria-label="A note from Sofia and Blake"
+      >
         <div class="thanks__note reveal">
           <p>
             Thank you so much for your love, support, and effort to travel and
