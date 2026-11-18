@@ -27,6 +27,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="rsvp.css" />
     <!-- Link preview. Social sites need absolute URLs; the site lives at
          https://100sun.github.io/precious-wedding/ (GitHub Pages).
          Regenerate the image with: node tools/og/render-og.mjs -->
@@ -75,6 +76,16 @@
         <a href="#top" class="nav__brand">Sofia <span>&amp;</span> Blake</a>
         <button
           type="button"
+          class="lang"
+          id="langBtn"
+          data-dev-only
+          hidden
+          aria-label="Switch language"
+        >
+          한국어
+        </button>
+        <button
+          type="button"
           class="nav__toggle"
           id="navToggle"
           aria-label="Open menu"
@@ -84,10 +95,17 @@
           <span></span><span></span>
         </button>
         <nav class="nav__links" id="navLinks" aria-label="Main">
-          <a href="#venue">Venue</a>
-          <a href="#details">Details</a>
-          <a href="#travel">Travel</a>
-          <a href="#photos">Photos</a>
+          <a href="#venue" data-i18n="nav.venue">Venue</a>
+          <a href="#schedule" data-dev-only hidden data-i18n="nav.schedule"
+            >Schedule</a
+          >
+          <a href="#details" data-i18n="nav.details">Details</a>
+          <a href="#travel" data-i18n="nav.travel">Travel</a>
+          <a href="#photos" data-i18n="nav.photos">Photos</a>
+          <a href="#rsvp" data-dev-only hidden data-i18n="nav.rsvp">RSVP</a>
+          <a href="#registry" data-dev-only hidden data-i18n="nav.registry"
+            >Registry</a
+          >
         </nav>
       </div>
     </header>
@@ -281,10 +299,19 @@
 
     <!-- Opening: "You have mail" envelope; opens to a keepsake collage -->
     <section class="intro" id="intro" aria-label="Opening invitation">
-      <button type="button" class="intro__skip" id="introSkip">Skip</button>
+      <button
+        type="button"
+        class="intro__skip"
+        id="introSkip"
+        data-i18n="intro.skip"
+      >
+        Skip
+      </button>
       <div class="mail" id="mail">
         <div class="intro__head" id="introHead">
-          <p class="intro__eyebrow">You have mail from</p>
+          <p class="intro__eyebrow" data-i18n="intro.mail">
+            You have mail from
+          </p>
           <p class="intro__names">Sofia <span class="amp">&amp;</span> Blake</p>
         </div>
 
@@ -548,7 +575,12 @@
               </symbol>
             </defs>
             <!-- stems gathered at the tie -->
-            <g fill="none" stroke="#8ea292" stroke-width="1.1" stroke-linecap="round">
+            <g
+              fill="none"
+              stroke="#8ea292"
+              stroke-width="1.1"
+              stroke-linecap="round"
+            >
               <path d="M42 106Q28 72 24 38" />
               <path d="M42 106Q80 74 110 42" />
               <path d="M42 106Q92 100 114 84" />
@@ -556,35 +588,217 @@
               <path d="M42 106Q62 70 82 38" />
               <path d="M42 106Q40 78 52 52" />
             </g>
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(25 52) scale(1.3) rotate(-10)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(23 38) scale(1.15) rotate(15)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(29 66) scale(1.2) rotate(20)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(34 48) scale(1.0) rotate(-30)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(96 50) scale(1.3) rotate(-50)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(108 44) scale(1.15) rotate(-20)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(104 62) scale(1.2) rotate(-70)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(88 60) scale(1.0) rotate(-55)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(106 84) scale(1.2) rotate(-80)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(114 82) scale(1.0) rotate(-30)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(95 92) scale(1.2) rotate(-100)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(84 30) scale(1.0) rotate(10)" />
-            <use href="#ksLeaf" x="-6" y="-6" width="12" height="12" transform="translate(44 40) scale(1.0) rotate(-15)" />
-            <use href="#ksRose" x="-20" y="-20" width="40" height="40" transform="translate(52 58) scale(0.62) rotate(-20)" />
-            <use href="#ksRose" x="-20" y="-20" width="40" height="40" transform="translate(86 44) scale(0.5) rotate(25)" />
-            <use href="#ksBud" x="-10" y="-10" width="20" height="20" transform="translate(100 70) scale(0.95) rotate(62)" />
-            <use href="#ksBud" x="-10" y="-10" width="20" height="20" transform="translate(36 60) scale(0.95) rotate(-35)" />
-            <use href="#ksBud" x="-10" y="-10" width="20" height="20" transform="translate(60 34) scale(0.85) rotate(5)" />
-            <use href="#ksRose" x="-20" y="-20" width="40" height="40" transform="translate(70 66) scale(0.92) rotate(12)" />
-            <use href="#ksRose" x="-20" y="-20" width="40" height="40" transform="translate(90 78) scale(0.66) rotate(-25)" />
-            <use href="#ksRose" x="-20" y="-20" width="40" height="40" transform="translate(56 84) scale(0.54) rotate(30)" />
-            <use href="#ksRose" x="-20" y="-20" width="40" height="40" transform="translate(72 44) scale(0.62) rotate(-10)" />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(25 52) scale(1.3) rotate(-10)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(23 38) scale(1.15) rotate(15)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(29 66) scale(1.2) rotate(20)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(34 48) scale(1.0) rotate(-30)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(96 50) scale(1.3) rotate(-50)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(108 44) scale(1.15) rotate(-20)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(104 62) scale(1.2) rotate(-70)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(88 60) scale(1.0) rotate(-55)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(106 84) scale(1.2) rotate(-80)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(114 82) scale(1.0) rotate(-30)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(95 92) scale(1.2) rotate(-100)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(84 30) scale(1.0) rotate(10)"
+            />
+            <use
+              href="#ksLeaf"
+              x="-6"
+              y="-6"
+              width="12"
+              height="12"
+              transform="translate(44 40) scale(1.0) rotate(-15)"
+            />
+            <use
+              href="#ksRose"
+              x="-20"
+              y="-20"
+              width="40"
+              height="40"
+              transform="translate(52 58) scale(0.62) rotate(-20)"
+            />
+            <use
+              href="#ksRose"
+              x="-20"
+              y="-20"
+              width="40"
+              height="40"
+              transform="translate(86 44) scale(0.5) rotate(25)"
+            />
+            <use
+              href="#ksBud"
+              x="-10"
+              y="-10"
+              width="20"
+              height="20"
+              transform="translate(100 70) scale(0.95) rotate(62)"
+            />
+            <use
+              href="#ksBud"
+              x="-10"
+              y="-10"
+              width="20"
+              height="20"
+              transform="translate(36 60) scale(0.95) rotate(-35)"
+            />
+            <use
+              href="#ksBud"
+              x="-10"
+              y="-10"
+              width="20"
+              height="20"
+              transform="translate(60 34) scale(0.85) rotate(5)"
+            />
+            <use
+              href="#ksRose"
+              x="-20"
+              y="-20"
+              width="40"
+              height="40"
+              transform="translate(70 66) scale(0.92) rotate(12)"
+            />
+            <use
+              href="#ksRose"
+              x="-20"
+              y="-20"
+              width="40"
+              height="40"
+              transform="translate(90 78) scale(0.66) rotate(-25)"
+            />
+            <use
+              href="#ksRose"
+              x="-20"
+              y="-20"
+              width="40"
+              height="40"
+              transform="translate(56 84) scale(0.54) rotate(30)"
+            />
+            <use
+              href="#ksRose"
+              x="-20"
+              y="-20"
+              width="40"
+              height="40"
+              transform="translate(72 44) scale(0.62) rotate(-10)"
+            />
             <!-- thin satin ribbon: tie, bow and trailing ends -->
             <g stroke-linecap="round" stroke-linejoin="round">
-              <path d="M44 114Q41 124 33 128M46 115Q50 124 58 127" fill="none" stroke="#8fb9d6" stroke-width="2.2" />
-              <path d="M44 114Q41 124 33 128M46 115Q50 124 58 127" fill="none" stroke="#d7e8f4" stroke-width="1.2" />
-              <path d="M37 98Q50 94 52 103Q42 108 36 105Z" fill="#cfe3f1" stroke="#8fb9d6" stroke-width=".7" />
-              <path d="M44 103Q36 94 28 98Q28 106 38 106Z" fill="#cfe3f1" stroke="#8fb9d6" stroke-width=".7" />
-              <ellipse cx="44" cy="104" rx="3.4" ry="2.8" fill="#bcd8ec" stroke="#8fb9d6" stroke-width=".7" />
+              <path
+                d="M44 114Q41 124 33 128M46 115Q50 124 58 127"
+                fill="none"
+                stroke="#8fb9d6"
+                stroke-width="2.2"
+              />
+              <path
+                d="M44 114Q41 124 33 128M46 115Q50 124 58 127"
+                fill="none"
+                stroke="#d7e8f4"
+                stroke-width="1.2"
+              />
+              <path
+                d="M37 98Q50 94 52 103Q42 108 36 105Z"
+                fill="#cfe3f1"
+                stroke="#8fb9d6"
+                stroke-width=".7"
+              />
+              <path
+                d="M44 103Q36 94 28 98Q28 106 38 106Z"
+                fill="#cfe3f1"
+                stroke="#8fb9d6"
+                stroke-width=".7"
+              />
+              <ellipse
+                cx="44"
+                cy="104"
+                rx="3.4"
+                ry="2.8"
+                fill="#bcd8ec"
+                stroke="#8fb9d6"
+                stroke-width=".7"
+              />
             </g>
           </svg>
         </div>
@@ -728,17 +942,23 @@
             ><svg viewBox="0 0 100 100"><use href="#waxSeal" /></svg
           ></span>
         </button>
-        <p class="intro__hint" id="introHint">Tap the envelope to open</p>
+        <p class="intro__hint" id="introHint" data-i18n="intro.hint">
+          Tap the envelope to open
+        </p>
       </div>
 
       <div class="intro__after" id="introAfter">
         <div class="intro__after-inner">
-          <p class="intro__names intro__names--after">Save the Date</p>
+          <p class="intro__names intro__names--after" data-i18n="intro.std">
+            Save the Date
+          </p>
           <p class="intro__eyebrow intro__eyebrow--couple">
             Sofia <span class="intro__amp">&amp;</span> Blake
           </p>
-          <p class="intro__line">Thursday, August 5, 2027</p>
-          <p class="intro__eyebrow intro__eyebrow--join">
+          <p class="intro__line" data-i18n="date.long">
+            Thursday, August 5, 2027
+          </p>
+          <p class="intro__eyebrow intro__eyebrow--join" data-i18n="intro.join">
             We hope you can join us
           </p>
           <p
@@ -799,13 +1019,17 @@
             decoding="async"
           />
           <div class="hero__content">
-            <p class="hero__eyebrow">The Wedding of</p>
+            <p class="hero__eyebrow" data-i18n="hero.eyebrow">The Wedding of</p>
             <h1 class="hero__names">
               Sofia <span class="amp">&amp;</span> Blake
             </h1>
             <span class="pearls hero__pearls" aria-hidden="true"></span>
-            <p class="hero__meta">Thursday, August 5, 2027</p>
-            <p class="hero__place">5:00 – 11:00 PM · Bel-Air Bay Club</p>
+            <p class="hero__meta" data-i18n="date.long">
+              Thursday, August 5, 2027
+            </p>
+            <p class="hero__place" data-i18n="hero.place">
+              5:00 – 11:00 PM · Bel-Air Bay Club
+            </p>
           </div>
         </div>
         <div class="hero__body">
@@ -828,7 +1052,7 @@
                   <rect x="3.5" y="5" width="17" height="15.5" rx="1.5" />
                   <path d="M3.5 9.5h17M8 3v4M16 3v4" />
                 </svg>
-                <span>Add to calendar</span>
+                <span data-i18n="hero.cal">Add to calendar</span>
                 <svg
                   class="icon icon--chev"
                   viewBox="0 0 24 24"
@@ -1017,7 +1241,7 @@
           </svg>
         </figure>
         <div class="section__head reveal">
-          <p class="eyebrow">The Venue</p>
+          <p class="eyebrow" data-i18n="venue.eyebrow">The Venue</p>
           <h2>Bel-Air Bay Club</h2>
           <address class="venue__address">
             16801 Pacific Coast Hwy<br />Pacific Palisades, CA 90272
@@ -1044,7 +1268,7 @@
                 />
                 <circle cx="12" cy="9.5" r="2.5" />
               </svg>
-              <span>Directions</span>
+              <span data-i18n="venue.directions">Directions</span>
               <svg
                 class="icon icon--chev"
                 viewBox="0 0 24 24"
@@ -1102,27 +1326,156 @@
         </div>
       </section>
 
+      <!-- Schedule (dev preview only: hidden until the dev flag is on) -->
+      <section class="section schedule" id="schedule" data-dev-only hidden>
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="schedule.eyebrow">The Evening</p>
+          <h2 data-i18n="schedule.title">Schedule</h2>
+        </div>
+        <!-- Confirmed: arrival 4:30, ceremony 5:30. -->
+        <ol class="schedule__list">
+          <li class="schedule__item reveal">
+            <svg
+              class="schedule__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M16 10h16l-2 30H18zM17.5 20h13M24 25c-2 2.5-2 4.5 0 6 2-1.5 2-3.5 0-6z"
+              />
+            </svg>
+            <div>
+              <p class="schedule__time">4:30 PM</p>
+              <h3 data-i18n="schedule.arrive.h">Arrival</h3>
+              <p class="schedule__sub" data-i18n="schedule.arrive.p">
+                Allow extra time for PCH traffic
+              </p>
+            </div>
+          </li>
+          <li class="schedule__item reveal">
+            <svg
+              class="schedule__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="18" cy="29" r="9" />
+              <circle cx="30" cy="29" r="9" />
+              <path d="M24 7l3.5 4.5L24 16l-3.5-4.5zM24 16v4" />
+            </svg>
+            <div>
+              <p class="schedule__time">5:30 PM</p>
+              <h3 data-i18n="schedule.ceremony.h">Ceremony</h3>
+              <p class="schedule__sub" data-i18n="schedule.ceremony.p">
+                Ocean Lawn
+              </p>
+            </div>
+          </li>
+          <li class="schedule__item reveal">
+            <svg
+              class="schedule__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 12h24L24 28zM24 28v12M17 40h14M16 18h16" />
+            </svg>
+            <div>
+              <p class="schedule__time">6:00 PM</p>
+              <h3 data-i18n="schedule.cocktail.h">Cocktail Hour</h3>
+              <p class="schedule__sub" data-i18n="schedule.cocktail.p">
+                Living Room &amp; Patio
+              </p>
+            </div>
+          </li>
+          <li class="schedule__item reveal">
+            <svg
+              class="schedule__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="24" cy="26" r="11" />
+              <circle cx="24" cy="26" r="6.5" />
+              <path
+                d="M7 14v10M5 14v6a2 2 0 0 0 4 0v-6M7 24v14M42 14c-3 2-3 8 0 10v14"
+              />
+            </svg>
+            <div>
+              <p class="schedule__time">7:00 PM</p>
+              <h3 data-i18n="schedule.dinner.h">Dinner &amp; Dancing</h3>
+              <p class="schedule__sub" data-i18n="schedule.dinner.p">
+                Indoor Dining Room
+              </p>
+            </div>
+          </li>
+          <li class="schedule__item reveal">
+            <svg
+              class="schedule__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M10 42 29 19M29 19l-3-1M29 19l-1 3M33 7v6M42 16h-6M39 9l-4 4M23 8v3M38 25l-3-1M27 10l-2 3M41 6l1-2M44 24l2 1"
+              />
+              <circle cx="33" cy="16" r="1.4" />
+            </svg>
+            <div>
+              <p class="schedule__time">11:00 PM</p>
+              <h3 data-i18n="schedule.sendoff.h">Send-Off</h3>
+            </div>
+          </li>
+        </ol>
+      </section>
+
       <!-- Details -->
       <section class="section details" id="details">
         <div class="section__head reveal">
-          <p class="eyebrow">Good to Know</p>
-          <h2>The Details</h2>
+          <p class="eyebrow" data-i18n="details.eyebrow">Good to Know</p>
+          <h2 data-i18n="details.title">The Details</h2>
         </div>
         <div class="details__grid">
           <div class="card reveal">
-            <h3>Dress Code</h3>
-            <p>Cocktail attire is required.</p>
+            <h3 data-i18n="details.dress.h">Dress Code</h3>
+            <p data-i18n="details.dress.p" data-live-only>
+              Cocktail attire is required.
+            </p>
+            <p data-dev-only hidden>
+              <span data-i18n="details.dress.dev"
+                >Cocktail attire. Please keep in mind the ceremony is on the
+                Ocean Lawn, and dress for the weather.</span
+              >
+              <a
+                class="card__link"
+                href="https://www.google.com/search?q=weather+Bel-Air+Bay+Club+Pacific+Palisades+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="travel.forecast">Wedding-day forecast</span
+                ><span class="sr-only"> (opens in a new tab)</span></a
+              >
+            </p>
+          </div>
+          <div class="card reveal" data-dev-only hidden>
+            <h3 data-i18n="details.arrive.h">Arrival</h3>
+            <p data-i18n="details.arrive.p">
+              Please arrive at 4:30, not before. Allow extra time for PCH
+              traffic.
+            </p>
           </div>
           <div class="card reveal">
-            <h3>Kids &amp; Pets</h3>
-            <p>
+            <h3 data-i18n="details.kids.h">Kids &amp; Pets</h3>
+            <p data-i18n="details.kids.p">
               We kindly request an adults-only celebration. Pets cannot be
               accommodated.
             </p>
           </div>
           <div class="card reveal">
-            <h3>Plus-Ones</h3>
-            <p>Please contact us regarding a plus-one.</p>
+            <h3 data-i18n="details.plus.h">Plus-Ones</h3>
+            <p data-i18n="details.plus.p">
+              Please contact us regarding a plus-one.
+            </p>
           </div>
         </div>
       </section>
@@ -1130,31 +1483,126 @@
       <!-- Getting There / Travel -->
       <section class="section travel" id="travel">
         <div class="section__head reveal">
-          <p class="eyebrow">Getting There</p>
-          <h2>Travel &amp; Stay</h2>
+          <p class="eyebrow" data-i18n="travel.eyebrow">Getting There</p>
+          <h2 data-i18n="travel.title">Travel &amp; Stay</h2>
           <!-- OPEN ITEM: couple to double-check drive times and venue address. -->
         </div>
         <div class="travel__grid">
           <article class="card reveal">
-            <h3>Fly</h3>
-            <p>
+            <h3 data-i18n="travel.fly.h">Fly</h3>
+            <p data-i18n="travel.fly.p">
               Los Angeles International (LAX) is about 25 minutes from the
               venue.
             </p>
           </article>
           <article class="card reveal">
-            <h3>Stay</h3>
-            <p>We recommend hotels in Santa Monica, about 10 minutes away.</p>
+            <h3 data-i18n="travel.stay.h">Stay</h3>
+            <p data-i18n="travel.stay.p" data-live-only>
+              We recommend hotels in Santa Monica, about 10 minutes away.
+            </p>
+            <div data-dev-only hidden>
+              <p data-i18n="travel.stay.dev">
+                Most guests stay in Santa Monica, 10–15 minutes south.
+              </p>
+              <details class="hotels">
+                <summary data-i18n="hotels.toggle">Our hotel picks</summary>
+                <ul class="hotels__list">
+                  <li>
+                    <a
+                      href="https://www.google.com/travel/search?q=Channel+Road+Inn+Santa+Monica+Aug+5+2027+to+Aug+6+2027"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Channel Road Inn<span class="sr-only">
+                        (opens Google Hotels in a new tab)</span
+                      ></a
+                    >
+                    <span class="hotels__note"
+                      >$$$ ·
+                      <span data-i18n="hotels.closest"
+                        >Closest to venue</span
+                      ></span
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.google.com/travel/search?q=The+Huntley+Hotel+Santa+Monica+Aug+5+2027+to+Aug+6+2027"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >The Huntley<span class="sr-only">
+                        (opens Google Hotels in a new tab)</span
+                      ></a
+                    >
+                    <span class="hotels__note"
+                      >$$$ ·
+                      <span data-i18n="hotels.huntley"
+                        >Modern &amp; central</span
+                      ></span
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.google.com/travel/search?q=Santa+Monica+Proper+Hotel+Aug+5+2027+to+Aug+6+2027"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Santa Monica Proper<span class="sr-only">
+                        (opens Google Hotels in a new tab)</span
+                      ></a
+                    >
+                    <span class="hotels__note"
+                      >$$$$ ·
+                      <span data-i18n="hotels.proper"
+                        >Design-forward luxury</span
+                      ></span
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.google.com/travel/search?q=Shutters+on+the+Beach+Santa+Monica+Aug+5+2027+to+Aug+6+2027"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Shutters on the Beach<span class="sr-only">
+                        (opens Google Hotels in a new tab)</span
+                      ></a
+                    >
+                    <span class="hotels__note"
+                      >$$$$ ·
+                      <span data-i18n="hotels.shutters"
+                        >Classic beachfront</span
+                      ></span
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.google.com/travel/search?q=Hotel+Casa+del+Mar+Santa+Monica+Aug+5+2027+to+Aug+6+2027"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Hotel Casa del Mar<span class="sr-only">
+                        (opens Google Hotels in a new tab)</span
+                      ></a
+                    >
+                    <span class="hotels__note"
+                      >$$$$ ·
+                      <span data-i18n="hotels.casa"
+                        >Grand beachfront</span
+                      ></span
+                    >
+                  </li>
+                </ul>
+              </details>
+            </div>
           </article>
           <article class="card reveal">
-            <h3>Getting Around</h3>
-            <p>
+            <h3 data-i18n="travel.around.h">Getting Around</h3>
+            <p data-i18n="travel.around.p" data-live-only>
               We recommend arriving by rideshare. Valet is available by
               reservation.
             </p>
+            <p data-i18n="travel.around.dev" data-dev-only hidden>
+              Rideshare is easiest. If you drive, valet is required.
+            </p>
           </article>
           <article class="card reveal" aria-live="polite">
-            <h3>On the Day</h3>
+            <h3 data-i18n="travel.day.h">On the Day</h3>
             <dl class="travel__facts">
               <div>
                 <dt>
@@ -1168,7 +1616,7 @@
                       d="M4 17h16M7 17a5 5 0 0 1 10 0M12 7V5M5.6 10.6 4.2 9.2M18.4 10.6l1.4-1.4M8 20h8"
                     />
                   </svg>
-                  <span>Sunset</span>
+                  <span data-i18n="travel.sunset">Sunset</span>
                 </dt>
                 <dd id="sunsetTime">…</dd>
               </div>
@@ -1197,8 +1645,8 @@
       <!-- The Proposal photos -->
       <section class="section proposal" id="photos">
         <div class="section__head reveal">
-          <p class="eyebrow">Our Story</p>
-          <h2>The Proposal</h2>
+          <p class="eyebrow" data-i18n="photos.eyebrow">Our Story</p>
+          <h2 data-i18n="photos.title">The Proposal</h2>
         </div>
         <div
           class="carousel"
@@ -1250,7 +1698,265 @@
           Photos from the proposal are coming soon.
         </p>
       </section>
+
+      <!-- RSVP (dev preview only) -->
+      <section class="section rsvp" id="rsvp" data-dev-only hidden>
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="rsvp.eyebrow">Kindly Reply</p>
+          <h2 data-i18n="rsvp.title">RSVP</h2>
+          <p data-i18n="rsvp.intro">
+            Kindly reply by July 1, 2027. One reply per party, please.
+          </p>
+        </div>
+        <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+          <!-- spam trap: real guests never see or fill this -->
+          <div class="rsvp__trap" aria-hidden="true">
+            <label
+              >Website
+              <input
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <fieldset class="field choice">
+            <legend data-i18n="rsvp.party">Who is replying?</legend>
+            <div class="choice__row">
+              <label class="choice__opt">
+                <input type="radio" name="party" value="1" checked />
+                <span data-i18n="rsvp.solo">Just me</span>
+              </label>
+              <label class="choice__opt">
+                <input type="radio" name="party" value="2" />
+                <span data-i18n="rsvp.plus">Me + 1</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="person" id="rsvpPerson1">
+            <h3 class="person__h" id="rsvpHead1" data-i18n="rsvp.you" hidden>You</h3>
+            <div class="field">
+              <label for="rsvpName1" data-i18n="rsvp.name">Full name</label>
+              <input
+                id="rsvpName1"
+                name="p1_name"
+                type="text"
+                maxlength="100"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <fieldset class="field choice">
+              <legend data-i18n="rsvp.attending">Will you attend?</legend>
+              <div class="choice__row">
+                <label class="choice__opt">
+                  <input type="radio" name="p1_attending" value="yes" required />
+                  <span data-i18n="rsvp.yes">Yes</span>
+                </label>
+                <label class="choice__opt">
+                  <input type="radio" name="p1_attending" value="no" />
+                  <span data-i18n="rsvp.no">No</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="rsvp__yes" id="rsvpYes1" hidden>
+              <fieldset class="field choice">
+                <legend data-i18n="rsvp.entree">Dinner</legend>
+                <!-- Venue asks for generic choices; final menu is set later. -->
+                <div class="choice__row choice__row--grid">
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="beef" />
+                    <span data-i18n="rsvp.beef">Beef</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="chicken" />
+                    <span data-i18n="rsvp.chicken">Chicken</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="fish" />
+                    <span data-i18n="rsvp.fish">Fish</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="vegetarian" />
+                    <span data-i18n="rsvp.veg">Vegetarian</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="field">
+                <label for="rsvpDiet1" data-i18n="rsvp.diet"
+                  >Allergies or dietary needs (optional)</label
+                >
+                <input
+                  id="rsvpDiet1"
+                  name="p1_dietary"
+                  type="text"
+                  maxlength="300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="person" id="rsvpPerson2" hidden>
+            <h3 class="person__h" id="rsvpHead2" data-i18n="rsvp.guest2" hidden>Your +1</h3>
+            <div class="field">
+              <label for="rsvpName2" data-i18n="rsvp.name">Full name</label>
+              <input
+                id="rsvpName2"
+                name="p2_name"
+                type="text"
+                maxlength="100"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <fieldset class="field choice">
+              <legend data-i18n="rsvp.attending">Will you attend?</legend>
+              <div class="choice__row">
+                <label class="choice__opt">
+                  <input type="radio" name="p2_attending" value="yes" required />
+                  <span data-i18n="rsvp.yes">Yes</span>
+                </label>
+                <label class="choice__opt">
+                  <input type="radio" name="p2_attending" value="no" />
+                  <span data-i18n="rsvp.no">No</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="rsvp__yes" id="rsvpYes2" hidden>
+              <fieldset class="field choice">
+                <legend data-i18n="rsvp.entree">Dinner</legend>
+                <!-- Venue asks for generic choices; final menu is set later. -->
+                <div class="choice__row choice__row--grid">
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="beef" />
+                    <span data-i18n="rsvp.beef">Beef</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="chicken" />
+                    <span data-i18n="rsvp.chicken">Chicken</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="fish" />
+                    <span data-i18n="rsvp.fish">Fish</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="vegetarian" />
+                    <span data-i18n="rsvp.veg">Vegetarian</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="field">
+                <label for="rsvpDiet2" data-i18n="rsvp.diet"
+                  >Allergies or dietary needs (optional)</label
+                >
+                <input
+                  id="rsvpDiet2"
+                  name="p2_dietary"
+                  type="text"
+                  maxlength="300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <fieldset class="field choice" id="rsvpCar" hidden>
+            <legend data-i18n="rsvp.car">Bringing a car?</legend>
+            <div class="choice__row">
+              <label class="choice__opt">
+                <input type="radio" name="car" value="yes" />
+                <span data-i18n="rsvp.carYes">Yes</span>
+              </label>
+              <label class="choice__opt">
+                <input type="radio" name="car" value="no" />
+                <span data-i18n="rsvp.carNo">No</span>
+              </label>
+            </div>
+            <p
+              class="field__hint"
+              id="rsvpValet"
+              data-i18n="rsvp.valet"
+              hidden
+            >
+              Valet is required.
+            </p>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="pill pill--solid" id="rsvpSubmit">
+              <span data-i18n="rsvp.send">Send RSVP</span>
+            </button>
+          </div>
+          <p
+            class="rsvp__status"
+            id="rsvpStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div class="actions">
+            <button type="button" class="pill" id="rsvpAgain" hidden>
+              <span data-i18n="rsvp.again">RSVP for another guest</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Honeymoon fund (dev preview only) -->
+      <section class="section registry" id="registry" data-dev-only hidden>
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="registry.eyebrow">With Gratitude</p>
+          <h2 data-i18n="registry.title">Honeymoon Fund</h2>
+          <p data-i18n="registry.intro">
+            Having you there means everything. If you wish to give a gift, we’d love
+            help toward our honeymoon.
+          </p>
+        </div>
+        <!-- OPEN ITEM: replace every placeholder value below (data-copy and
+             the visible text) with the real Venmo, Zelle and bank details. -->
+        <div class="details__grid registry__grid">
+          <div class="card reveal" data-show-lang="en">
+            <h3>Venmo</h3>
+            <p class="registry__value">@your-venmo</p>
+            <button
+              type="button"
+              class="pill pill--small"
+              data-copy="@your-venmo"
+            >
+              <span data-i18n="registry.copy">Copy</span>
+            </button>
+          </div>
+          <div class="card reveal" data-show-lang="en">
+            <h3>Zelle</h3>
+            <p class="registry__value">zelle@example.com</p>
+            <button
+              type="button"
+              class="pill pill--small"
+              data-copy="zelle@example.com"
+            >
+              <span data-i18n="registry.copy">Copy</span>
+            </button>
+          </div>
+          <div class="card reveal registry__kr" data-show-lang="ko">
+            <h3 data-i18n="registry.kr">Korean Bank Transfer</h3>
+            <p class="registry__value">000-000-000000</p>
+            <p class="registry__bank">은행명 · 예금주</p>
+            <button
+              type="button"
+              class="pill pill--small"
+              data-copy="000-000-000000"
+            >
+              <span data-i18n="registry.copy">Copy</span>
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <p class="dev-badge" data-dev-only hidden>
+      Dev preview · not public
+      <a href="?dev=0">exit</a>
+    </p>
 
     <!-- Lightbox -->
     <div
@@ -1294,11 +2000,13 @@
     <!-- Footer -->
     <footer class="footer" id="thanks">
       <span class="spray" aria-hidden="true"></span>
-      <p class="footer__note">
+      <p class="footer__note" data-i18n="footer.note">
         Thank you for traveling to celebrate with us.<br />
         We look forward to seeing you on the coast.
       </p>
-      <p class="footer__line">Formal invitation to follow.</p>
+      <p class="footer__line" data-i18n="footer.line" data-live-only>
+        Formal invitation to follow.
+      </p>
       <span class="pearls" aria-hidden="true"></span>
       <p class="footer__sign">Sofia <span class="amp">&amp;</span> Blake</p>
       <p class="footer__credit">
@@ -1313,5 +2021,7 @@
     </footer>
 
     <script src="script.js" defer></script>
+    <script src="i18n-ko.js" defer></script>
+    <script src="rsvp.js" defer></script>
   </body>
 </html>
