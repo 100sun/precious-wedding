@@ -66,6 +66,8 @@ window.SITE_KO = {
   "travel.stay.dev": "대부분 차로 약 10분 거리인 산타모니카에 머무십니다.",
   "hotels.toggle": "추천 호텔",
   "hotels.perNight": "/1박",
+  "hotels.hgi": "가성비 · 마리나 델 레이",
+  "hotels.courtyard": "깔끔한 시내 중심",
   "hotels.fine": "8월 5–6일 기준 Google 호텔 요금이며 변동될 수 있습니다.",
   "hotels.closest": "장소에서 가장 가까움",
   "hotels.huntley": "모던 · 중심가",
