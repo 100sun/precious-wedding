@@ -70,12 +70,12 @@ var PLACEHOLDER_COUNT = 6;
     introState = "open";
     introTimers.forEach(window.clearTimeout);
     intro.classList.add("intro--open");
-    // flap opens, card rises, then the intro fades
+    // seal cracks apart, flap opens, card rises, then the intro fades
     introLater(function () {
       intro.classList.add("intro--leaving");
       document.body.classList.remove("intro-playing");
-    }, 1500);
-    introLater(finishIntro, 2100);
+    }, 1800);
+    introLater(finishIntro, 2400);
   }
   if (intro && envelope) {
     if (reduceMotion) {

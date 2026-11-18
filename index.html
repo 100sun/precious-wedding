@@ -44,6 +44,181 @@
       </div>
     </header>
 
+    <!-- Wax seal artwork (drawn once, used by both seal halves) -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="waxBody" cx="36%" cy="30%" r="75%">
+          <stop offset="0" class="wax-hi" />
+          <stop offset="0.45" class="wax-mid" />
+          <stop offset="1" class="wax-lo" />
+        </radialGradient>
+        <radialGradient id="waxWell" cx="58%" cy="64%" r="70%">
+          <stop offset="0" class="wax-mid" />
+          <stop offset="1" class="wax-lo" />
+        </radialGradient>
+        <linearGradient id="waxRim" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" class="wax-hi" />
+          <stop offset="0.55" class="wax-mid" />
+          <stop offset="1" class="wax-deep" />
+        </linearGradient>
+        <filter id="waxGrain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.9"
+            numOctaves="2"
+            seed="7"
+          />
+          <feColorMatrix
+            values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0"
+          />
+          <feComposite in2="SourceGraphic" operator="in" />
+        </filter>
+        <filter id="waxInset" x="-10%" y="-10%" width="120%" height="120%">
+          <feGaussianBlur stdDeviation="1.6" />
+        </filter>
+        <filter id="waxSoft" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.2" />
+        </filter>
+        <clipPath id="waxWellClip"><circle cx="50" cy="50" r="31" /></clipPath>
+        <symbol id="waxSeal" viewBox="0 0 100 100">
+          <!-- puddle with uneven rim -->
+          <path
+            id="waxBlob"
+            fill="url(#waxBody)"
+            d="M97.7 50C97.8 54.3 95.5 58.8 93.8 62.9C92.1 66.9 89.9 70.5 87.6 74.2C85.3 77.8 83 81.5 79.9 84.5C76.9 87.6 73.4 91.2 69.5 92.6C65.5 94 60.4 92.5 56.1 92.7C51.9 92.9 47.9 93.9 43.7 93.6C39.6 93.3 35.4 92.3 31.3 91C27.2 89.6 23 87.9 19.4 85.3C15.8 82.8 11.8 79.6 9.8 75.8C7.8 72 7.5 66.9 7.1 62.6C6.8 58.3 7.7 54.2 7.7 50C7.8 45.8 7.1 41.8 7.4 37.5C7.8 33.2 7.6 27.7 9.9 24.2C12.1 20.7 17.5 19.1 21 16.5C24.5 13.9 27.3 10.7 31.1 8.5C34.8 6.4 39.1 4.3 43.3 3.6C47.6 3 52.1 4 56.5 4.5C60.9 5.1 66.1 4.8 69.7 6.9C73.3 9 75.7 13.9 78.3 17.3C81 20.7 83 23.9 85.5 27.2C88 30.5 91.5 33.4 93.5 37.2C95.5 41 97.7 45.7 97.7 50Z"
+          />
+          <!-- soft swell of the wax around the stamp -->
+          <circle
+            cx="50"
+            cy="50"
+            r="39"
+            fill="none"
+            stroke-width="5"
+            class="wax-swell"
+            filter="url(#waxSoft)"
+          />
+          <!-- raised ring -->
+          <circle
+            cx="50"
+            cy="50"
+            r="34"
+            fill="none"
+            stroke="url(#waxRim)"
+            stroke-width="3.2"
+          />
+          <!-- impressed well with inner shadow -->
+          <circle cx="50" cy="50" r="31" fill="url(#waxWell)" />
+          <g clip-path="url(#waxWellClip)">
+            <circle
+              cx="47"
+              cy="46"
+              r="33"
+              fill="none"
+              stroke-width="5"
+              class="wax-shade"
+              filter="url(#waxInset)"
+            />
+          </g>
+          <!-- beaded inner border -->
+          <circle
+            cx="50"
+            cy="50"
+            r="28"
+            fill="none"
+            stroke-width="1"
+            stroke-dasharray="0.1 2.6"
+            stroke-linecap="round"
+            class="wax-bead"
+          />
+          <!-- laurel sprigs -->
+          <g class="wax-leaf">
+            <ellipse
+              cx="61.5"
+              cy="71.6"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(-63 61.5 71.6)"
+            />
+            <ellipse
+              cx="66.1"
+              cy="68.5"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(-76 66.1 68.5)"
+            />
+            <ellipse
+              cx="69.8"
+              cy="64.4"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(-89 69.8 64.4)"
+            />
+            <ellipse
+              cx="72.6"
+              cy="59.6"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(-102 72.6 59.6)"
+            />
+            <ellipse
+              cx="38.5"
+              cy="71.6"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(63 38.5 71.6)"
+            />
+            <ellipse
+              cx="33.9"
+              cy="68.5"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(76 33.9 68.5)"
+            />
+            <ellipse
+              cx="30.2"
+              cy="64.4"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(89 30.2 64.4)"
+            />
+            <ellipse
+              cx="27.4"
+              cy="59.6"
+              rx="2.6"
+              ry="1.05"
+              transform="rotate(102 27.4 59.6)"
+            />
+          </g>
+          <!-- engraved monogram: shadow, highlight, face -->
+          <g class="wax-mono" text-anchor="middle">
+            <text x="50.7" y="56.7" class="wax-mono__shadow">S&amp;B</text>
+            <text x="49.4" y="55.4" class="wax-mono__light">S&amp;B</text>
+            <text x="50" y="56" class="wax-mono__face">S&amp;B</text>
+          </g>
+          <!-- wax grain -->
+          <use href="#waxBlob" filter="url(#waxGrain)" opacity="0.18" />
+          <!-- specular highlights -->
+          <ellipse
+            cx="33"
+            cy="25"
+            rx="14"
+            ry="6"
+            transform="rotate(-32 33 25)"
+            class="wax-gloss"
+            filter="url(#waxSoft)"
+          />
+          <ellipse
+            cx="27"
+            cy="29"
+            rx="3.2"
+            ry="1.4"
+            transform="rotate(-40 27 29)"
+            class="wax-glint"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
     <!-- Opening-the-letter intro -->
     <div class="intro" id="intro" role="dialog" aria-label="Opening invitation">
       <button type="button" class="intro__skip" id="introSkip">Skip</button>
@@ -63,7 +238,14 @@
         </span>
         <span class="envelope__front"></span>
         <span class="envelope__flap"></span>
-        <span class="envelope__seal">S&amp;B</span>
+        <span class="envelope__seal" aria-hidden="true">
+          <span class="seal__half seal__half--l"
+            ><svg viewBox="0 0 100 100"><use href="#waxSeal" /></svg
+          ></span>
+          <span class="seal__half seal__half--r"
+            ><svg viewBox="0 0 100 100"><use href="#waxSeal" /></svg
+          ></span>
+        </span>
       </button>
       <p class="intro__hint" id="introHint">Tap to open</p>
     </div>
