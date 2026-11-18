@@ -480,7 +480,9 @@ var PLACEHOLDER_COUNT = 6;
   var LAT = 34.0359;
   var LON = -118.5517;
   var WED = { y: 2027, m: 8, d: 5 };
-  var STATIC_WEATHER = { kind: "static", high: 75, low: 63, evening: 66 };
+  // Quiet fallback if the weather fetch fails: average 5-11 PM high/low for
+  // Aug 1-10, 2022-2026, from Open-Meteo archive hourly data (computed Nov 2026).
+  var STATIC_WEATHER = { kind: "typical", high: 79, low: 67 };
   var sunsetEl = document.getElementById("sunsetTime");
   var tempEl = document.getElementById("tempValue");
   var tempLabel = document.getElementById("tempLabel");
@@ -550,19 +552,24 @@ var PLACEHOLDER_COUNT = 6;
       ? "About " + sunsetText + " PT"
       : "Around 7:50 PM PT";
   }
+  // Weather for the event window, 5:00-11:00 PM Pacific (hours 17-23 inclusive),
+  // from Open-Meteo hourly temperature_2m in Fahrenheit:
+  // - within the forecast window (about 16 days out): live hourly forecast for Aug 5, 2027
+  // - otherwise: archive hourly data for Aug 1-10 of the last 5 complete Augusts;
+  //   each day's 5-11 PM max and min are averaged across all days and years.
+  //   The archive lags a few days, so an August only counts after Aug 20.
+  // Guests only see a short label and the numbers; failures fall back silently.
   var weatherCache = null;
+  var EVENT_HOURS = [17, 23];
   function pad2(n) {
     return (n < 10 ? "0" : "") + n;
   }
   function avg(list) {
-    var v = list.filter(function (x) {
-      return typeof x === "number";
-    });
-    if (!v.length) return null;
+    if (!list.length) return null;
     return (
-      v.reduce(function (s, x) {
-        return s + x;
-      }, 0) / v.length
+      list.reduce(function (sum, x) {
+        return sum + x;
+      }, 0) / list.length
     );
   }
   function getJson(url) {
@@ -571,13 +578,22 @@ var PLACEHOLDER_COUNT = 6;
       return r.json();
     });
   }
-  function eveningTemps(hourly) {
-    var out = [];
+  // Per-day { high, low } over the event hours from an hourly response.
+  function eventWindowByDay(hourly) {
+    var days = {};
     hourly.time.forEach(function (t, i) {
       var hr = parseInt(t.slice(11, 13), 10);
-      if (hr >= 18 && hr <= 20) out.push(hourly.temperature_2m[i]);
+      var v = hourly.temperature_2m[i];
+      if (hr < EVENT_HOURS[0] || hr > EVENT_HOURS[1] || typeof v !== "number")
+        return;
+      var key = t.slice(0, 10);
+      var d = days[key] || (days[key] = { high: v, low: v });
+      if (v > d.high) d.high = v;
+      if (v < d.low) d.low = v;
     });
-    return out;
+    return Object.keys(days).map(function (k) {
+      return days[k];
+    });
   }
   function loadWeather() {
     if (weatherCache) return Promise.resolve(weatherCache);
@@ -588,8 +604,8 @@ var PLACEHOLDER_COUNT = 6;
       LAT +
       "&longitude=" +
       LON +
-      "&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles" +
-      "&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m";
+      "&hourly=temperature_2m&temperature_unit=fahrenheit" +
+      "&timezone=America%2FLos_Angeles";
     var req;
     if (daysAhead > -1 && daysAhead <= 15) {
       req = getJson(
@@ -600,21 +616,17 @@ var PLACEHOLDER_COUNT = 6;
           "&end_date=" +
           dateStr,
       ).then(function (j) {
-        return {
-          kind: "forecast",
-          high: j.daily.temperature_2m_max[0],
-          low: j.daily.temperature_2m_min[0],
-          evening: avg(eveningTemps(j.hourly)),
-        };
+        var d = eventWindowByDay(j.hourly)[0];
+        if (!d) throw new Error("No data");
+        return { kind: "forecast", high: d.high, low: d.low };
       });
     } else {
-      // Archive data lags a few days, so use the last three complete Augusts.
       var now = new Date();
       var last =
         now.getMonth() > 7 || (now.getMonth() === 7 && now.getDate() > 20)
           ? now.getFullYear()
           : now.getFullYear() - 1;
-      var years = [last, last - 1, last - 2];
+      var years = [last, last - 1, last - 2, last - 3, last - 4];
       req = Promise.all(
         years.map(function (y) {
           return getJson(
@@ -628,19 +640,22 @@ var PLACEHOLDER_COUNT = 6;
           );
         }),
       ).then(function (res) {
-        var hi = [];
-        var lo = [];
-        var ev = [];
+        var days = [];
         res.forEach(function (j) {
-          hi = hi.concat(j.daily.temperature_2m_max);
-          lo = lo.concat(j.daily.temperature_2m_min);
-          ev = ev.concat(eveningTemps(j.hourly));
+          days = days.concat(eventWindowByDay(j.hourly));
         });
         return {
           kind: "typical",
-          high: avg(hi),
-          low: avg(lo),
-          evening: avg(ev),
+          high: avg(
+            days.map(function (d) {
+              return d.high;
+            }),
+          ),
+          low: avg(
+            days.map(function (d) {
+              return d.low;
+            }),
+          ),
         };
       });
     }
@@ -651,26 +666,15 @@ var PLACEHOLDER_COUNT = 6;
     });
   }
   function showWeather(w) {
-    function f(n) {
-      return Math.round(n) + "°F";
-    }
-    if (w.kind === "forecast") {
-      tempLabel.textContent = "Forecast for August 5";
-      tempNote.textContent = "Live forecast from Open-Meteo.";
-    } else {
-      tempLabel.textContent = "Typical for early August";
-      tempNote.textContent =
-        (w.kind === "typical"
-          ? "Average of Aug 1–10 in recent years (Open-Meteo archive), not a forecast. "
-          : "Approximate typical conditions, not a forecast. ") +
-        "The live forecast will appear within 16 days of the wedding.";
-    }
+    tempLabel.textContent =
+      w.kind === "forecast" ? "Evening forecast" : "Typical evening";
     tempEl.textContent =
-      "High " +
-      f(w.high) +
-      " · Low " +
-      f(w.low) +
-      (w.evening != null ? " · Evening " + f(w.evening) : "");
+      "Evening (5–11 PM): " +
+      Math.round(w.high) +
+      "° high · " +
+      Math.round(w.low) +
+      "° low";
+    tempNote.textContent = "";
   }
   if (tempEl && tempLabel && tempNote) {
     if (window.fetch) {

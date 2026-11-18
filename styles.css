@@ -730,6 +730,9 @@ h3 {
   margin-top: 0.75rem;
   font-size: 0.85rem;
 }
+.travel__small:empty {
+  display: none;
+}
 .travel__list {
   list-style: none;
   display: grid;
