@@ -1,0 +1,16 @@
+name: Rebuild dev preview
+# A push to feature/rsvp re-runs the main deploy, which publishes the branch
+# at /preview/. The deploy itself always runs from main, so the live site is
+# whatever main holds.
+on:
+  push:
+    branches: [feature/rsvp]
+permissions:
+  actions: write
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow run deploy.yml --ref main --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}

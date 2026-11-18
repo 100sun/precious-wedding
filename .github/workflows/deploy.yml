@@ -1,30 +1,39 @@
 name: Deploy to GitHub Pages
-
+# Live site: main at the root.
+# Dev preview: feature/rsvp at /preview/ (rebuilt by preview-trigger.yml).
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
+    # the github-pages environment only accepts deploys from main
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: site
+      - name: Add dev preview (feature/rsvp) at /preview/
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: feature/rsvp
+          path: site/preview
+      - run: rm -rf site/.git site/preview/.git site/preview/.github
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: site
       - id: deployment
         uses: actions/deploy-pages@v4
