@@ -1170,6 +1170,52 @@
       <section class="section venue" id="venue">
         <figure class="venue__sketch reveal" aria-hidden="true">
           <svg viewBox="0 0 600 224">
+            <!-- soft sunset behind the sketch: sky wash, low half-sun, shimmer -->
+            <defs>
+              <linearGradient id="vSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#cfe2f0" stop-opacity="0" />
+                <stop offset="0.28" stop-color="#cfe2f0" />
+                <stop offset="0.6" stop-color="#e6eef1" />
+                <stop offset="1" stop-color="#f4e6cc" />
+              </linearGradient>
+              <linearGradient id="vSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f3ead9" />
+                <stop offset="1" stop-color="#e6eff5" stop-opacity="0" />
+              </linearGradient>
+              <radialGradient id="vGlow">
+                <stop offset="0" stop-color="#f7ead0" stop-opacity="0.9" />
+                <stop offset="1" stop-color="#f7ead0" stop-opacity="0" />
+              </radialGradient>
+              <radialGradient
+                id="vFade"
+                cx="50%"
+                cy="50%"
+                r="58%"
+                gradientTransform="translate(0 0.02) scale(1 1.1)"
+              >
+                <stop offset="0.6" stop-color="#fff" />
+                <stop offset="1" stop-color="#fff" stop-opacity="0" />
+              </radialGradient>
+              <mask id="vMask">
+                <rect width="600" height="224" fill="url(#vFade)" />
+              </mask>
+              <clipPath id="vAbove"><rect width="600" height="118" /></clipPath>
+            </defs>
+            <g class="sketch__sky" mask="url(#vMask)" stroke="none">
+              <rect y="14" width="600" height="104" fill="url(#vSky)" />
+              <rect y="118" width="600" height="58" fill="url(#vSea)" />
+              <circle cx="524" cy="116" r="60" fill="url(#vGlow)" />
+              <circle
+                cx="524"
+                cy="118"
+                r="16"
+                fill="#f1dfbb"
+                clip-path="url(#vAbove)"
+              />
+            </g>
+            <g class="sketch__shimmer">
+              <path d="M506 124h36M512 130h24M517 136h14M521 142h6" />
+            </g>
             <g class="sketch__land">
               <path d="M0 96C70 70 130 62 190 78s120 10 170-6 140-22 240 6" />
               <path d="M0 176H600" />

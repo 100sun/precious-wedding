@@ -13,12 +13,42 @@
 // and give both widths (width: original, small: the sm/ copy) so phones load
 // the smaller file. See images/proposal/README.txt.
 var PROPOSAL_PHOTOS = [
-  { file: "1.jpg", alt: "Sofia and Blake on the day of the proposal", width: 1133, small: 760 },
-  { file: "2.jpg", alt: "Sofia and Blake on the day of the proposal", width: 1123, small: 760 },
-  { file: "3.jpg", alt: "Sofia and Blake on the day of the proposal", width: 2000, small: 1080 },
-  { file: "4.jpg", alt: "Sofia and Blake on the day of the proposal", width: 2000, small: 1080 },
-  { file: "5.jpg", alt: "Sofia and Blake on the day of the proposal", width: 1500, small: 760 },
-  { file: "6.jpg", alt: "Sofia and Blake on the day of the proposal", width: 2000, small: 1080 },
+  {
+    file: "1.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+    width: 1133,
+    small: 760,
+  },
+  {
+    file: "2.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+    width: 1123,
+    small: 760,
+  },
+  {
+    file: "3.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+    width: 2000,
+    small: 1080,
+  },
+  {
+    file: "4.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+    width: 2000,
+    small: 1080,
+  },
+  {
+    file: "5.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+    width: 1500,
+    small: 760,
+  },
+  {
+    file: "6.jpg",
+    alt: "Sofia and Blake on the day of the proposal",
+    width: 2000,
+    small: 1080,
+  },
 ];
 var PROPOSAL_DIR = "images/proposal/";
 var PLACEHOLDER_COUNT = 6;
@@ -82,7 +112,8 @@ var PLACEHOLDER_COUNT = 6;
       skipBtn.addEventListener("click", function () {
         openEnvelope();
         var top = document.getElementById("top");
-        if (top) top.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+        if (top)
+          top.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
       });
     }
     document.addEventListener("keydown", function (e) {
@@ -112,7 +143,8 @@ var PLACEHOLDER_COUNT = 6;
     record.classList.toggle("is-playing", playing);
     record.setAttribute("aria-pressed", playing ? "true" : "false");
     record.setAttribute("aria-label", playing ? "Pause music" : "Play music");
-    if (recordText) recordText.textContent = playing ? "Tap to pause" : "Tap to play";
+    if (recordText)
+      recordText.textContent = playing ? "Tap to pause" : "Tap to play";
   }
   function playSong() {
     if (!song) {
@@ -159,7 +191,10 @@ var PLACEHOLDER_COUNT = 6;
       song.muted = !song.muted;
       muteBtn.classList.toggle("is-muted", song.muted);
       muteBtn.setAttribute("aria-pressed", song.muted ? "true" : "false");
-      muteBtn.setAttribute("aria-label", song.muted ? "Unmute music" : "Mute music");
+      muteBtn.setAttribute(
+        "aria-label",
+        song.muted ? "Unmute music" : "Mute music",
+      );
     });
   }
   document.addEventListener("visibilitychange", function () {
@@ -194,9 +229,16 @@ var PLACEHOLDER_COUNT = 6;
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
   links.querySelectorAll("a").forEach(function (a) {
-    a.addEventListener("click", function () {
+    a.addEventListener("click", function (e) {
       links.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+      // closing the menu reflows the page, so scroll to the section ourselves
+      var target = document.getElementById(a.hash.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      if (history.pushState) history.pushState(null, "", a.hash);
     });
   });
 
@@ -320,8 +362,17 @@ var PLACEHOLDER_COUNT = 6;
         src: PROPOSAL_DIR + o.file,
         srcset:
           o.width && o.small
-            ? PROPOSAL_DIR + "sm/" + o.file + " " + o.small + "w, " +
-              PROPOSAL_DIR + o.file + " " + o.width + "w"
+            ? PROPOSAL_DIR +
+              "sm/" +
+              o.file +
+              " " +
+              o.small +
+              "w, " +
+              PROPOSAL_DIR +
+              o.file +
+              " " +
+              o.width +
+              "w"
             : "",
         alt: o.alt || "Sofia and Blake, proposal photo " + (i + 1),
         caption: o.caption || "",

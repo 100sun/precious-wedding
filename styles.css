@@ -1294,6 +1294,10 @@ h3 {
 .sketch__palm {
   stroke: #8fa38a;
 }
+.sketch__shimmer {
+  stroke: #e2cfaa;
+  opacity: 0.8;
+}
 .section__head {
   max-width: 640px;
   margin: 0 auto clamp(2.25rem, 8vw, 3.5rem);
