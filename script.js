@@ -1,55 +1,8 @@
 /* ===== Sofia & Blake — Wedding Site Interactions ===== */
 
-/* ------------------------------------------------------------
-   PROPOSAL PHOTOS — to add photos, drop JPGs into images/proposal/
-   and list their filenames here, in the order you want them shown.
-   A plain filename is enough. For alt text / a caption, use an object:
-     { file: "proposal-03.jpg", alt: "Describe the photo", caption: "Optional" }
-   Leave the list empty to show the "Photo coming soon" placeholders.
-   ------------------------------------------------------------ */
-// Shown in filename order (sorted automatically, so 2.jpg comes before 10.jpg).
-// cover.jpg is the hero photo and is not part of the gallery.
-// Optional phone-sized copy: put it in images/proposal/sm/ with the same name
-// and give both widths (width: original, small: the sm/ copy) so phones load
-// the smaller file. See images/proposal/README.txt.
-var PROPOSAL_PHOTOS = [
-  {
-    file: "1.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-    width: 1133,
-    small: 760,
-  },
-  {
-    file: "2.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-    width: 1123,
-    small: 760,
-  },
-  {
-    file: "3.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-    width: 2000,
-    small: 1080,
-  },
-  {
-    file: "4.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-    width: 2000,
-    small: 1080,
-  },
-  {
-    file: "5.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-    width: 1500,
-    small: 760,
-  },
-  {
-    file: "6.jpg",
-    alt: "Sofia and Blake on the day of the proposal",
-    width: 2000,
-    small: 1080,
-  },
-];
+// The proposal photos moved to gallery.js (Instagram-style post + grid).
+// This list fed the old one-photo carousel and is no longer used.
+var PROPOSAL_PHOTOS = [];
 var PROPOSAL_DIR = "images/proposal/";
 var PLACEHOLDER_COUNT = 6;
 
@@ -333,6 +286,61 @@ var PLACEHOLDER_COUNT = 6;
     if (openMenu && e.key === "Escape") closeMenu(true);
   });
 
+  // --- Copy the venue address (address line + Directions menu) ---
+  var toast = document.getElementById("toast");
+  var toastTimer = 0;
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.hidden = false;
+    toast.classList.remove("is-out");
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toast.classList.add("is-out");
+      toastTimer = window.setTimeout(function () {
+        toast.hidden = true;
+      }, 250);
+    }, 1800);
+  }
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        return copyFallback(text);
+      });
+    }
+    return copyFallback(text);
+  }
+  function copyFallback(text) {
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (err) {}
+      document.body.removeChild(ta);
+      if (ok) resolve();
+      else reject();
+    });
+  }
+  document.querySelectorAll("[data-copy-addr]").forEach(function (el) {
+    el.addEventListener("click", function () {
+      var ko = document.documentElement.lang === "ko";
+      copyText(el.getAttribute("data-copy-addr")).then(
+        function () {
+          showToast(ko ? "주소가 복사되었습니다" : "Address copied");
+        },
+        function () {
+          showToast(ko ? "복사하지 못했습니다" : "Couldn’t copy the address");
+        },
+      );
+    });
+  });
   // --- Countdown to the wedding ---
   // August 5, 2027 at 5:00 PM Pacific (UTC-7 during PDT)
   var target = new Date("2027-08-05T17:00:00-07:00").getTime();
