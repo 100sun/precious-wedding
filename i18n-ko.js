@@ -26,6 +26,9 @@ window.SITE_KO = {
   "hero.eyebrow": "저희 결혼합니다",
   "hero.place": "오후 5:00 – 11:00 · Bel-Air Bay Club",
   "hero.cal": "캘린더에 추가",
+  "hero.rsvp": "참석 회신하기",
+  "hero.rsvpBy": "7월 1일까지 회신 부탁드립니다",
+  "hero.countLabel": "일 · 시간 · 분 · 초",
 
   "venue.eyebrow": "예식 장소",
   "venue.directions": "길찾기",

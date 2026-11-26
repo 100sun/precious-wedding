@@ -76,7 +76,9 @@
     <!-- Navigation -->
     <header class="nav" id="nav">
       <div class="nav__inner">
-        <a href="#top" class="nav__brand" data-i18n="names.nav">Sofia <span>&amp;</span> Blake</a>
+        <a href="#top" class="nav__brand" data-i18n="names.nav"
+          >Sofia <span>&amp;</span> Blake</a
+        >
         <button
           type="button"
           class="lang"
@@ -102,11 +104,18 @@
           <a href="#schedule" data-dev-only hidden data-i18n="nav.schedule"
             >Schedule</a
           >
-          <a href="#details" data-i18n="nav.details">Details</a>
+          <a href="#rsvp" data-dev-only hidden data-i18n="nav.rsvp">RSVP</a>
+          <a href="#details" class="nav__more" data-i18n="nav.details"
+            >Details</a
+          >
           <a href="#travel" data-i18n="nav.travel">Travel</a>
           <a href="#photos" data-i18n="nav.photos">Photos</a>
-          <a href="#rsvp" data-dev-only hidden data-i18n="nav.rsvp">RSVP</a>
-          <a href="#registry" data-dev-only hidden data-i18n="nav.registry"
+          <a
+            href="#registry"
+            class="nav__more"
+            data-dev-only
+            hidden
+            data-i18n="nav.registry"
             >Registry</a
           >
         </nav>
@@ -315,7 +324,9 @@
           <p class="intro__eyebrow" data-i18n="intro.mail">
             You have mail from
           </p>
-          <p class="intro__names" data-i18n="names.amp">Sofia <span class="amp">&amp;</span> Blake</p>
+          <p class="intro__names" data-i18n="names.amp">
+            Sofia <span class="amp">&amp;</span> Blake
+          </p>
         </div>
 
         <!-- keepsakes tucked inside the envelope -->
@@ -955,7 +966,10 @@
           <p class="intro__names intro__names--after" data-i18n="intro.std">
             Save the Date
           </p>
-          <p class="intro__eyebrow intro__eyebrow--couple" data-i18n="names.couple">
+          <p
+            class="intro__eyebrow intro__eyebrow--couple"
+            data-i18n="names.couple"
+          >
             Sofia <span class="intro__amp">&amp;</span> Blake
           </p>
           <p class="intro__line" data-i18n="date.long">
@@ -967,6 +981,7 @@
           <p
             class="intro__count"
             id="countdown"
+            data-countdown
             role="timer"
             aria-label="Countdown to the wedding in days, hours, minutes and seconds"
           >
@@ -1038,113 +1053,156 @@
             <p class="hero__place" data-i18n="hero.place">
               5:00 – 11:00 PM · Bel-Air Bay Club
             </p>
-          </div>
-        </div>
-        <div class="hero__body">
-          <div class="actions">
-            <div class="menu">
-              <button
-                type="button"
-                class="pill"
-                id="calBtn"
-                aria-haspopup="menu"
-                aria-expanded="false"
-                aria-controls="calMenu"
+            <div class="hero__cta">
+              <p
+                class="hero__count"
+                data-countdown
+                role="timer"
+                aria-label="Countdown to the wedding in days, hours, minutes and seconds"
               >
-                <svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <rect x="3.5" y="5" width="17" height="15.5" rx="1.5" />
-                  <path d="M3.5 9.5h17M8 3v4M16 3v4" />
-                </svg>
-                <span data-i18n="hero.cal">Add to calendar</span>
-                <svg
-                  class="icon icon--chev"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              <ul
-                class="menu__list"
-                id="calMenu"
-                role="menu"
-                aria-labelledby="calBtn"
-                hidden
+                <span data-unit="days">000</span
+                ><span class="hero__sep" aria-hidden="true"> : </span
+                ><span data-unit="hours">00</span
+                ><span class="hero__sep" aria-hidden="true"> : </span
+                ><span data-unit="minutes">00</span
+                ><span class="hero__sep" aria-hidden="true"> : </span
+                ><span data-unit="seconds">00</span>
+              </p>
+              <p
+                class="hero__countlabel"
+                aria-hidden="true"
+                data-i18n="hero.countLabel"
               >
-                <li role="none">
-                  <a
-                    role="menuitem"
-                    id="calGoogle"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><svg
+                days · hours · minutes · seconds
+              </p>
+              <div class="actions">
+                <a
+                  class="pill pill--primary"
+                  href="#rsvp"
+                  data-dev-only
+                  hidden
+                  data-i18n="hero.rsvp"
+                  >RSVP</a
+                >
+                <div class="menu">
+                  <button
+                    type="button"
+                    class="pill"
+                    id="calBtn"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                    aria-controls="calMenu"
+                  >
+                    <svg
                       class="icon"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
                       focusable="false"
                     >
                       <rect x="3.5" y="5" width="17" height="15.5" rx="1.5" />
-                      <path d="M3.5 9.5h17M8 3v4M16 3v4" /></svg
-                    ><span>Google Calendar</span
-                    ><span class="sr-only"> (opens in a new tab)</span></a
-                  >
-                </li>
-                <li role="none">
-                  <button type="button" role="menuitem" id="calApple">
+                      <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+                    </svg>
+                    <span data-i18n="hero.cal">Add to calendar</span>
                     <svg
-                      class="icon"
+                      class="icon icon--chev"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
                       focusable="false"
                     >
-                      <path
-                        d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"
-                      /></svg
-                    ><span>Apple Calendar (.ics)</span>
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
                   </button>
-                </li>
-                <li role="none">
-                  <a
-                    role="menuitem"
-                    id="calOutlookWeb"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><svg
-                      class="icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path
-                        d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
-                      /></svg
-                    ><span>Outlook.com</span
-                    ><span class="sr-only"> (opens in a new tab)</span></a
+                  <ul
+                    class="menu__list"
+                    id="calMenu"
+                    role="menu"
+                    aria-labelledby="calBtn"
+                    hidden
                   >
-                </li>
-                <li role="none">
-                  <button type="button" role="menuitem" id="calOutlookIcs">
-                    <svg
-                      class="icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path
-                        d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"
-                      /></svg
-                    ><span>Other (.ics)</span>
-                  </button>
-                </li>
-              </ul>
+                    <li role="none">
+                      <a
+                        role="menuitem"
+                        id="calGoogle"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><svg
+                          class="icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <rect
+                            x="3.5"
+                            y="5"
+                            width="17"
+                            height="15.5"
+                            rx="1.5"
+                          />
+                          <path d="M3.5 9.5h17M8 3v4M16 3v4" /></svg
+                        ><span>Google Calendar</span
+                        ><span class="sr-only"> (opens in a new tab)</span></a
+                      >
+                    </li>
+                    <li role="none">
+                      <button type="button" role="menuitem" id="calApple">
+                        <svg
+                          class="icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path
+                            d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"
+                          /></svg
+                        ><span>Apple Calendar (.ics)</span>
+                      </button>
+                    </li>
+                    <li role="none">
+                      <a
+                        role="menuitem"
+                        id="calOutlookWeb"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><svg
+                          class="icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path
+                            d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
+                          /></svg
+                        ><span>Outlook.com</span
+                        ><span class="sr-only"> (opens in a new tab)</span></a
+                      >
+                    </li>
+                    <li role="none">
+                      <button type="button" role="menuitem" id="calOutlookIcs">
+                        <svg
+                          class="icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path
+                            d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"
+                          /></svg
+                        ><span>Other (.ics)</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p
+                class="hero__hint"
+                data-dev-only
+                hidden
+                data-i18n="hero.rsvpBy"
+              >
+                Kindly reply by July 1
+              </p>
             </div>
           </div>
         </div>
@@ -1330,10 +1388,21 @@
                 >
               </li>
               <li role="none">
-                <button type="button" role="menuitem" data-copy-addr="Bel-Air Bay Club, 16801 Pacific Coast Hwy, Pacific Palisades, CA 90272">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <button
+                  type="button"
+                  role="menuitem"
+                  data-copy-addr="Bel-Air Bay Club, 16801 Pacific Coast Hwy, Pacific Palisades, CA 90272"
+                >
+                  <svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
                     <rect x="8.5" y="8.5" width="11" height="11" rx="2" />
-                    <path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2" />
+                    <path
+                      d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"
+                    />
                   </svg>
                   <span data-i18n="venue.copy">Copy address</span>
                 </button>
@@ -1448,6 +1517,218 @@
         </ol>
       </section>
 
+      <!-- RSVP (dev preview only) -->
+      <section class="section rsvp" id="rsvp" data-dev-only hidden>
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="rsvp.eyebrow">Kindly Reply</p>
+          <h2 data-i18n="rsvp.title">RSVP</h2>
+          <p data-i18n="rsvp.intro">
+            Kindly reply by July 1, 2027. One reply per party, please.
+          </p>
+        </div>
+        <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+          <!-- spam trap: real guests never see or fill this -->
+          <div class="rsvp__trap" aria-hidden="true">
+            <label
+              >Website
+              <input
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+            /></label>
+          </div>
+
+          <fieldset class="field choice">
+            <legend data-i18n="rsvp.party">Who is replying?</legend>
+            <div class="choice__row">
+              <label class="choice__opt">
+                <input type="radio" name="party" value="1" checked />
+                <span data-i18n="rsvp.solo">Just me</span>
+              </label>
+              <label class="choice__opt">
+                <input type="radio" name="party" value="2" />
+                <span data-i18n="rsvp.plus">Me + 1</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="person" id="rsvpPerson1">
+            <h3 class="person__h" id="rsvpHead1" data-i18n="rsvp.you" hidden>
+              You
+            </h3>
+            <div class="field">
+              <label for="rsvpName1" data-i18n="rsvp.name">Full name</label>
+              <input
+                id="rsvpName1"
+                name="p1_name"
+                type="text"
+                maxlength="100"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <fieldset class="field choice">
+              <legend data-i18n="rsvp.attending">Will you attend?</legend>
+              <div class="choice__row">
+                <label class="choice__opt">
+                  <input
+                    type="radio"
+                    name="p1_attending"
+                    value="yes"
+                    required
+                  />
+                  <span data-i18n="rsvp.yes">Yes</span>
+                </label>
+                <label class="choice__opt">
+                  <input type="radio" name="p1_attending" value="no" />
+                  <span data-i18n="rsvp.no">No</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="rsvp__yes" id="rsvpYes1" hidden>
+              <fieldset class="field choice">
+                <legend data-i18n="rsvp.entree">Dinner</legend>
+                <!-- Venue asks for generic choices; final menu is set later. -->
+                <div class="choice__row choice__row--grid">
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="beef" />
+                    <span data-i18n="rsvp.beef">Beef</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="chicken" />
+                    <span data-i18n="rsvp.chicken">Chicken</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="fish" />
+                    <span data-i18n="rsvp.fish">Fish</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p1_entree" value="vegetarian" />
+                    <span data-i18n="rsvp.veg">Vegetarian</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="field">
+                <label for="rsvpDiet1" data-i18n="rsvp.diet"
+                  >Allergies or dietary needs (optional)</label
+                >
+                <input
+                  id="rsvpDiet1"
+                  name="p1_dietary"
+                  type="text"
+                  maxlength="300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="person" id="rsvpPerson2" hidden>
+            <h3 class="person__h" id="rsvpHead2" data-i18n="rsvp.guest2" hidden>
+              Your +1
+            </h3>
+            <div class="field">
+              <label for="rsvpName2" data-i18n="rsvp.name">Full name</label>
+              <input
+                id="rsvpName2"
+                name="p2_name"
+                type="text"
+                maxlength="100"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <fieldset class="field choice">
+              <legend data-i18n="rsvp.attending">Will you attend?</legend>
+              <div class="choice__row">
+                <label class="choice__opt">
+                  <input
+                    type="radio"
+                    name="p2_attending"
+                    value="yes"
+                    required
+                  />
+                  <span data-i18n="rsvp.yes">Yes</span>
+                </label>
+                <label class="choice__opt">
+                  <input type="radio" name="p2_attending" value="no" />
+                  <span data-i18n="rsvp.no">No</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="rsvp__yes" id="rsvpYes2" hidden>
+              <fieldset class="field choice">
+                <legend data-i18n="rsvp.entree">Dinner</legend>
+                <!-- Venue asks for generic choices; final menu is set later. -->
+                <div class="choice__row choice__row--grid">
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="beef" />
+                    <span data-i18n="rsvp.beef">Beef</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="chicken" />
+                    <span data-i18n="rsvp.chicken">Chicken</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="fish" />
+                    <span data-i18n="rsvp.fish">Fish</span>
+                  </label>
+                  <label class="choice__opt">
+                    <input type="radio" name="p2_entree" value="vegetarian" />
+                    <span data-i18n="rsvp.veg">Vegetarian</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="field">
+                <label for="rsvpDiet2" data-i18n="rsvp.diet"
+                  >Allergies or dietary needs (optional)</label
+                >
+                <input
+                  id="rsvpDiet2"
+                  name="p2_dietary"
+                  type="text"
+                  maxlength="300"
+                />
+              </div>
+            </div>
+          </div>
+
+          <fieldset class="field choice" id="rsvpCar" hidden>
+            <legend data-i18n="rsvp.car">Bringing a car?</legend>
+            <div class="choice__row">
+              <label class="choice__opt">
+                <input type="radio" name="car" value="yes" />
+                <span data-i18n="rsvp.carYes">Yes</span>
+              </label>
+              <label class="choice__opt">
+                <input type="radio" name="car" value="no" />
+                <span data-i18n="rsvp.carNo">No</span>
+              </label>
+            </div>
+            <p class="field__hint" id="rsvpValet" data-i18n="rsvp.valet" hidden>
+              Valet is required.
+            </p>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="pill pill--solid" id="rsvpSubmit">
+              <span data-i18n="rsvp.send">Send RSVP</span>
+            </button>
+          </div>
+          <p
+            class="rsvp__status"
+            id="rsvpStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div class="actions">
+            <button type="button" class="pill" id="rsvpAgain" hidden>
+              <span data-i18n="rsvp.again">RSVP for another guest</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
       <!-- Details -->
       <section class="section details" id="details">
         <div class="section__head reveal">
@@ -1463,7 +1744,8 @@
             <p data-dev-only hidden>
               <span data-i18n="details.dress.dev"
                 >Cocktail attire. Please keep in mind the ceremony is on the
-                Ocean Lawn, and dress for the weather (see On the Day below).</span
+                Ocean Lawn, and dress for the weather (see On the Day
+                below).</span
               >
             </p>
           </div>
@@ -1513,53 +1795,93 @@
               <summary data-i18n="hotels.toggle">Our hotel picks</summary>
               <ul class="hotels__list">
                 <li>
-                  <a href="https://www.google.com/travel/search?q=Hilton%20Garden%20Inn%20Marina%20del%20Rey%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MidDaGtJMllLczZaZV9pX2FVQVJvTUwyY3ZNV2h0Tldvek5EbGZFQUU4DQ&amp;ts=CAEaPAoeEhwKCi9tLzAxemhzcWs6Dk1hcmluYSBkZWwgUmV5EhoSFAoHCOsPEAgYBRIHCOsPEAgYBhgBMgIIASoMCgo6A1VTREIDEgFH" target="_blank" rel="noopener noreferrer"
-                    >Hilton Garden Inn Marina del Rey<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=Hilton%20Garden%20Inn%20Marina%20del%20Rey%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MidDaGtJMllLczZaZV9pX2FVQVJvTUwyY3ZNV2h0Tldvek5EbGZFQUU4DQ&amp;ts=CAEaPAoeEhwKCi9tLzAxemhzcWs6Dk1hcmluYSBkZWwgUmV5EhoSFAoHCOsPEAgYBRIHCOsPEAgYBhgBMgIIASoMCgo6A1VTREIDEgFH"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Hilton Garden Inn Marina del Rey<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >3★ · ~$246<span data-i18n="hotels.perNight">/night</span> ·
-                    <span data-i18n="hotels.hgi">Best value · Marina del Rey</span></span
+                    <span data-i18n="hotels.hgi"
+                      >Best value · Marina del Rey</span
+                    ></span
                   >
                 </li>
                 <li>
-                  <a href="https://www.google.com/travel/search?q=Courtyard%20by%20Marriott%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MidDaGtJME1QenQtMlVyNEJnR2cwdlp5OHhNV056Tm10M05XTjNFQUU4DQ&amp;ts=CAEaPQofEh0KDS9nLzExY3M2a3c1Y3c6DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqDAoKOgNVU0RCAxIBVg" target="_blank" rel="noopener noreferrer"
-                    >Courtyard by Marriott Santa Monica<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=Courtyard%20by%20Marriott%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MidDaGtJME1QenQtMlVyNEJnR2cwdlp5OHhNV056Tm10M05XTjNFQUU4DQ&amp;ts=CAEaPQofEh0KDS9nLzExY3M2a3c1Y3c6DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqDAoKOgNVU0RCAxIBVg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Courtyard by Marriott Santa Monica<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >3★ · ~$271<span data-i18n="hotels.perNight">/night</span> ·
-                    <span data-i18n="hotels.courtyard">Simple &amp; central</span></span
+                    <span data-i18n="hotels.courtyard"
+                      >Simple &amp; central</span
+                    ></span
                   >
                 </li>
                 <li>
-                  <a href="https://www.google.com/travel/search?q=Channel%20Road%20Inn%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MiRDaGNJc2NhYXd0R0ZzSUpaR2dzdlp5OHhkR28zWmpseWNCQUI4DQ&amp;ts=CAEaOgocEhoKCy9nLzF0ajdmOXJwOgtMb3MgQW5nZWxlcxIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q" target="_blank" rel="noopener noreferrer"
-                    >Channel Road Inn<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=Channel%20Road%20Inn%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MiRDaGNJc2NhYXd0R0ZzSUpaR2dzdlp5OHhkR28zWmpseWNCQUI4DQ&amp;ts=CAEaOgocEhoKCy9nLzF0ajdmOXJwOgtMb3MgQW5nZWxlcxIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Channel Road Inn<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >3★ · ~$335<span data-i18n="hotels.perNight">/night</span> ·
-                    <span data-i18n="hotels.closest">Closest to venue</span></span
+                    <span data-i18n="hotels.closest"
+                      >Closest to venue</span
+                    ></span
                   >
                 </li>
                 <li>
-                  <a href="https://www.google.com/travel/search?q=The%20Huntley%20Hotel%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MidDaGtJOXZMUC1vajUwdnUzQVJvTUwyY3ZNV2htTTJzNVpEWnhFQUU4DQ&amp;ts=CAEaPAoeEhwKDC9nLzFoZjNrOWQ2cToMU2FudGEgTW9uaWNhEhoSFAoHCOsPEAgYBRIHCOsPEAgYBhgBMgIIASoHCgU6A1VTRA" target="_blank" rel="noopener noreferrer"
-                    >The Huntley<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=The%20Huntley%20Hotel%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MidDaGtJOXZMUC1vajUwdnUzQVJvTUwyY3ZNV2htTTJzNVpEWnhFQUU4DQ&amp;ts=CAEaPAoeEhwKDC9nLzFoZjNrOWQ2cToMU2FudGEgTW9uaWNhEhoSFAoHCOsPEAgYBRIHCOsPEAgYBhgBMgIIASoHCgU6A1VTRA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Huntley<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >4★ · ~$392<span data-i18n="hotels.perNight">/night</span> ·
-                    <span data-i18n="hotels.huntley">Modern &amp; central</span></span
+                    <span data-i18n="hotels.huntley"
+                      >Modern &amp; central</span
+                    ></span
                   >
                 </li>
                 <li>
-                  <a href="https://www.google.com/travel/search?q=Santa%20Monica%20Proper%20Hotel%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MihDaG9JdnRlSHVzcVc3Tkx5QVJvTkwyY3ZNVEZtYUhkNGFIWnNiUkFCOA0&amp;ts=CAEaPQofEh0KDS9nLzExZmh3eGh2bG06DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q" target="_blank" rel="noopener noreferrer"
-                    >Santa Monica Proper<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=Santa%20Monica%20Proper%20Hotel%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MihDaG9JdnRlSHVzcVc3Tkx5QVJvTkwyY3ZNVEZtYUhkNGFIWnNiUkFCOA0&amp;ts=CAEaPQofEh0KDS9nLzExZmh3eGh2bG06DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Santa Monica Proper<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >5★ · ~$566<span data-i18n="hotels.perNight">/night</span> ·
-                    <span data-i18n="hotels.proper">Design-forward luxury</span></span
+                    <span data-i18n="hotels.proper"
+                      >Design-forward luxury</span
+                    ></span
                   >
                 </li>
                 <li>
-                  <a href="https://www.google.com/travel/search?q=Casa%20del%20Mar%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MiRDaGNJN0wyTTdZMlF0cmlsQVJvS0wyMHZNREkyTkRsMFloQUI4DQ&amp;ts=CAEaOgocEhoKCi9tLzAyNjQ5dGI6DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q" target="_blank" rel="noopener noreferrer"
-                    >Hotel Casa del Mar<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=Casa%20del%20Mar%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MiRDaGNJN0wyTTdZMlF0cmlsQVJvS0wyMHZNREkyTkRsMFloQUI4DQ&amp;ts=CAEaOgocEhoKCi9tLzAyNjQ5dGI6DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Hotel Casa del Mar<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >4★ · ~$643<span data-i18n="hotels.perNight">/night</span> ·
@@ -1567,16 +1889,25 @@
                   >
                 </li>
                 <li>
-                  <a href="https://www.google.com/travel/search?q=Shutters%20on%20the%20Beach%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MiNDaFlJNjVTc3dvVFl0dmRpR2dvdmJTOHdNall4TW5kekVBRTgN&amp;ts=CAEaOgocEhoKCi9tLzAyNjEyd3M6DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q" target="_blank" rel="noopener noreferrer"
-                    >Shutters on the Beach<span class="sr-only"> (opens Google Hotels in a new tab)</span></a
+                  <a
+                    href="https://www.google.com/travel/search?q=Shutters%20on%20the%20Beach%20Santa%20Monica%20Aug%205%202027%20to%20Aug%206%202027&amp;curr=USD&amp;qs=MiNDaFlJNjVTc3dvVFl0dmRpR2dvdmJTOHdNall4TW5kekVBRTgN&amp;ts=CAEaOgocEhoKCi9tLzAyNjEyd3M6DFNhbnRhIE1vbmljYRIaEhQKBwjrDxAIGAUSBwjrDxAIGAYYATICCAEqBwoFOgNVU0Q"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Shutters on the Beach<span class="sr-only">
+                      (opens Google Hotels in a new tab)</span
+                    ></a
                   >
                   <span class="hotels__note"
                     >4★ · ~$821<span data-i18n="hotels.perNight">/night</span> ·
-                    <span data-i18n="hotels.shutters">Classic beachfront</span></span
+                    <span data-i18n="hotels.shutters"
+                      >Classic beachfront</span
+                    ></span
                   >
                 </li>
               </ul>
-            <p class="hotels__fine" data-i18n="hotels.fine">Rates from Google Hotels for Aug 5–6; they may change.</p>
+              <p class="hotels__fine" data-i18n="hotels.fine">
+                Rates from Google Hotels for Aug 5–6; they may change.
+              </p>
             </details>
           </article>
           <article class="card reveal">
@@ -1673,217 +2004,14 @@
         </div>
       </section>
 
-      <!-- RSVP (dev preview only) -->
-      <section class="section rsvp" id="rsvp" data-dev-only hidden>
-        <div class="section__head reveal">
-          <p class="eyebrow" data-i18n="rsvp.eyebrow">Kindly Reply</p>
-          <h2 data-i18n="rsvp.title">RSVP</h2>
-          <p data-i18n="rsvp.intro">
-            Kindly reply by July 1, 2027. One reply per party, please.
-          </p>
-        </div>
-        <form class="rsvp__form reveal" id="rsvpForm" novalidate>
-          <!-- spam trap: real guests never see or fill this -->
-          <div class="rsvp__trap" aria-hidden="true">
-            <label
-              >Website
-              <input
-                type="text"
-                name="website"
-                tabindex="-1"
-                autocomplete="off"
-            /></label>
-          </div>
-
-          <fieldset class="field choice">
-            <legend data-i18n="rsvp.party">Who is replying?</legend>
-            <div class="choice__row">
-              <label class="choice__opt">
-                <input type="radio" name="party" value="1" checked />
-                <span data-i18n="rsvp.solo">Just me</span>
-              </label>
-              <label class="choice__opt">
-                <input type="radio" name="party" value="2" />
-                <span data-i18n="rsvp.plus">Me + 1</span>
-              </label>
-            </div>
-          </fieldset>
-
-          <div class="person" id="rsvpPerson1">
-            <h3 class="person__h" id="rsvpHead1" data-i18n="rsvp.you" hidden>You</h3>
-            <div class="field">
-              <label for="rsvpName1" data-i18n="rsvp.name">Full name</label>
-              <input
-                id="rsvpName1"
-                name="p1_name"
-                type="text"
-                maxlength="100"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <fieldset class="field choice">
-              <legend data-i18n="rsvp.attending">Will you attend?</legend>
-              <div class="choice__row">
-                <label class="choice__opt">
-                  <input type="radio" name="p1_attending" value="yes" required />
-                  <span data-i18n="rsvp.yes">Yes</span>
-                </label>
-                <label class="choice__opt">
-                  <input type="radio" name="p1_attending" value="no" />
-                  <span data-i18n="rsvp.no">No</span>
-                </label>
-              </div>
-            </fieldset>
-            <div class="rsvp__yes" id="rsvpYes1" hidden>
-              <fieldset class="field choice">
-                <legend data-i18n="rsvp.entree">Dinner</legend>
-                <!-- Venue asks for generic choices; final menu is set later. -->
-                <div class="choice__row choice__row--grid">
-                  <label class="choice__opt">
-                    <input type="radio" name="p1_entree" value="beef" />
-                    <span data-i18n="rsvp.beef">Beef</span>
-                  </label>
-                  <label class="choice__opt">
-                    <input type="radio" name="p1_entree" value="chicken" />
-                    <span data-i18n="rsvp.chicken">Chicken</span>
-                  </label>
-                  <label class="choice__opt">
-                    <input type="radio" name="p1_entree" value="fish" />
-                    <span data-i18n="rsvp.fish">Fish</span>
-                  </label>
-                  <label class="choice__opt">
-                    <input type="radio" name="p1_entree" value="vegetarian" />
-                    <span data-i18n="rsvp.veg">Vegetarian</span>
-                  </label>
-                </div>
-              </fieldset>
-              <div class="field">
-                <label for="rsvpDiet1" data-i18n="rsvp.diet"
-                  >Allergies or dietary needs (optional)</label
-                >
-                <input
-                  id="rsvpDiet1"
-                  name="p1_dietary"
-                  type="text"
-                  maxlength="300"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="person" id="rsvpPerson2" hidden>
-            <h3 class="person__h" id="rsvpHead2" data-i18n="rsvp.guest2" hidden>Your +1</h3>
-            <div class="field">
-              <label for="rsvpName2" data-i18n="rsvp.name">Full name</label>
-              <input
-                id="rsvpName2"
-                name="p2_name"
-                type="text"
-                maxlength="100"
-                autocomplete="off"
-                required
-              />
-            </div>
-            <fieldset class="field choice">
-              <legend data-i18n="rsvp.attending">Will you attend?</legend>
-              <div class="choice__row">
-                <label class="choice__opt">
-                  <input type="radio" name="p2_attending" value="yes" required />
-                  <span data-i18n="rsvp.yes">Yes</span>
-                </label>
-                <label class="choice__opt">
-                  <input type="radio" name="p2_attending" value="no" />
-                  <span data-i18n="rsvp.no">No</span>
-                </label>
-              </div>
-            </fieldset>
-            <div class="rsvp__yes" id="rsvpYes2" hidden>
-              <fieldset class="field choice">
-                <legend data-i18n="rsvp.entree">Dinner</legend>
-                <!-- Venue asks for generic choices; final menu is set later. -->
-                <div class="choice__row choice__row--grid">
-                  <label class="choice__opt">
-                    <input type="radio" name="p2_entree" value="beef" />
-                    <span data-i18n="rsvp.beef">Beef</span>
-                  </label>
-                  <label class="choice__opt">
-                    <input type="radio" name="p2_entree" value="chicken" />
-                    <span data-i18n="rsvp.chicken">Chicken</span>
-                  </label>
-                  <label class="choice__opt">
-                    <input type="radio" name="p2_entree" value="fish" />
-                    <span data-i18n="rsvp.fish">Fish</span>
-                  </label>
-                  <label class="choice__opt">
-                    <input type="radio" name="p2_entree" value="vegetarian" />
-                    <span data-i18n="rsvp.veg">Vegetarian</span>
-                  </label>
-                </div>
-              </fieldset>
-              <div class="field">
-                <label for="rsvpDiet2" data-i18n="rsvp.diet"
-                  >Allergies or dietary needs (optional)</label
-                >
-                <input
-                  id="rsvpDiet2"
-                  name="p2_dietary"
-                  type="text"
-                  maxlength="300"
-                />
-              </div>
-            </div>
-          </div>
-
-          <fieldset class="field choice" id="rsvpCar" hidden>
-            <legend data-i18n="rsvp.car">Bringing a car?</legend>
-            <div class="choice__row">
-              <label class="choice__opt">
-                <input type="radio" name="car" value="yes" />
-                <span data-i18n="rsvp.carYes">Yes</span>
-              </label>
-              <label class="choice__opt">
-                <input type="radio" name="car" value="no" />
-                <span data-i18n="rsvp.carNo">No</span>
-              </label>
-            </div>
-            <p
-              class="field__hint"
-              id="rsvpValet"
-              data-i18n="rsvp.valet"
-              hidden
-            >
-              Valet is required.
-            </p>
-          </fieldset>
-
-          <div class="actions">
-            <button type="submit" class="pill pill--solid" id="rsvpSubmit">
-              <span data-i18n="rsvp.send">Send RSVP</span>
-            </button>
-          </div>
-          <p
-            class="rsvp__status"
-            id="rsvpStatus"
-            role="status"
-            aria-live="polite"
-          ></p>
-          <div class="actions">
-            <button type="button" class="pill" id="rsvpAgain" hidden>
-              <span data-i18n="rsvp.again">RSVP for another guest</span>
-            </button>
-          </div>
-        </form>
-      </section>
-
       <!-- Honeymoon fund (dev preview only) -->
       <section class="section registry" id="registry" data-dev-only hidden>
         <div class="section__head reveal">
           <p class="eyebrow" data-i18n="registry.eyebrow">With Gratitude</p>
           <h2 data-i18n="registry.title">Honeymoon Fund</h2>
           <p data-i18n="registry.intro">
-            Having you there means everything. If you wish to give a gift, we’d love
-            help toward our honeymoon.
+            Having you there means everything. If you wish to give a gift, we’d
+            love help toward our honeymoon to Korea, Singapore, & Indonesia
           </p>
         </div>
         <!-- OPEN ITEM: replace every placeholder value below (data-copy and
@@ -1943,7 +2071,9 @@
         Formal invitation to follow.
       </p>
       <span class="pearls" aria-hidden="true"></span>
-      <p class="footer__sign" data-i18n="names.amp">Sofia <span class="amp">&amp;</span> Blake</p>
+      <p class="footer__sign" data-i18n="names.amp">
+        Sofia <span class="amp">&amp;</span> Blake
+      </p>
       <p class="footer__credit">
         Music: “Easy Lemon” by Kevin MacLeod (incompetech.com), licensed under
         <a

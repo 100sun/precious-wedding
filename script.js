@@ -344,7 +344,7 @@ var PLACEHOLDER_COUNT = 6;
   // --- Countdown to the wedding ---
   // August 5, 2027 at 5:00 PM Pacific (UTC-7 during PDT)
   var target = new Date("2027-08-05T17:00:00-07:00").getTime();
-  var cd = document.getElementById("countdown");
+  var cds = document.querySelectorAll("[data-countdown]");
   function tick() {
     var now = Date.now();
     var diff = Math.max(0, target - now);
@@ -359,11 +359,13 @@ var PLACEHOLDER_COUNT = 6;
   }
   // shown as DDD : HH : MM : SS
   function set(unit, value) {
-    var el = cd.querySelector('[data-unit="' + unit + '"]');
     var width = unit === "days" ? 3 : 2;
     var text = String(value);
     while (text.length < width) text = "0" + text;
-    if (el) el.textContent = text;
+    for (var i = 0; i < cds.length; i++) {
+      var el = cds[i].querySelector('[data-unit="' + unit + '"]');
+      if (el) el.textContent = text;
+    }
   }
   tick();
   setInterval(tick, 1000);
