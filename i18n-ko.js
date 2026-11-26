@@ -29,6 +29,7 @@ window.SITE_KO = {
 
   "venue.eyebrow": "예식 장소",
   "venue.directions": "길찾기",
+  "venue.copy": "주소 복사",
 
   "schedule.eyebrow": "당일 일정",
   "schedule.title": "일정",

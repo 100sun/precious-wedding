@@ -343,10 +343,10 @@
           </button>
           <figure class="ks ks--polaroid" aria-hidden="true">
             <img
-              src="images/proposal/4.jpg"
+              src="images/keepsakes/polaroid.jpg"
               srcset="
-                images/proposal/sm/4.jpg 1080w,
-                images/proposal/4.jpg    2000w
+                images/keepsakes/polaroid-sm.jpg 1080w,
+                images/keepsakes/polaroid.jpg    2000w
               "
               sizes="(min-width: 640px) 170px, 34vw"
               alt=""
@@ -443,10 +443,10 @@
             </svg>
             <span class="oval__photo">
               <img
-                src="images/proposal/2.jpg"
+                src="images/keepsakes/oval.jpg"
                 srcset="
-                  images/proposal/sm/2.jpg  760w,
-                  images/proposal/2.jpg    1123w
+                  images/keepsakes/oval-sm.jpg  760w,
+                  images/keepsakes/oval.jpg    1123w
                 "
                 sizes="(min-width: 640px) 180px, 34vw"
                 alt="Sofia and Blake on the day of the proposal"
@@ -1013,10 +1013,15 @@
         <div class="hero__banner">
           <img
             class="hero__photo"
-            src="images/proposal/cover.jpg"
+            src="images/keepsakes/hero.jpg"
+            srcset="
+              images/keepsakes/hero-sm.jpg 1080w,
+              images/keepsakes/hero.jpg    2000w
+            "
+            sizes="100vw"
             alt=""
-            width="538"
-            height="349"
+            width="2000"
+            height="1324"
             loading="eager"
             fetchpriority="high"
             decoding="async"
@@ -1324,9 +1329,19 @@
                   ><span class="sr-only"> (opens in a new tab)</span></a
                 >
               </li>
+              <li role="none">
+                <button type="button" role="menuitem" data-copy-addr="Bel-Air Bay Club, 16801 Pacific Coast Hwy, Pacific Palisades, CA 90272">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="8.5" y="8.5" width="11" height="11" rx="2" />
+                    <path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2" />
+                  </svg>
+                  <span data-i18n="venue.copy">Copy address</span>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
+        <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
       </section>
 
       <!-- Schedule (dev preview only: hidden until the dev flag is on) -->
@@ -1617,55 +1632,45 @@
           <p class="eyebrow" data-i18n="photos.eyebrow">Our Story</p>
           <h2 data-i18n="photos.title">The Proposal</h2>
         </div>
-        <div
-          class="carousel"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Proposal photos"
-        >
-          <ul
-            class="gallery"
-            id="gallery"
-            tabindex="0"
-            aria-label="Proposal photos. Swipe, or use the arrow keys."
-          ></ul>
-          <div class="carousel__bar">
+        <div class="ig reveal">
+          <div
+            class="ig__post"
+            id="igPost"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Proposal photos and video"
+          >
+            <div
+              class="ig__track"
+              id="igTrack"
+              tabindex="0"
+              aria-label="Proposal photos. Swipe, or use the arrow keys."
+            ></div>
+            <p class="ig__count" id="igCount" aria-hidden="true"></p>
             <button
               type="button"
-              class="carousel__btn"
-              id="galPrev"
-              aria-label="Previous photo"
+              class="ig__nav ig__nav--prev"
+              id="igPrev"
+              aria-label="Previous"
             >
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M14.5 6l-6 6 6 6" />
               </svg>
             </button>
-            <p class="carousel__count" id="galCount" aria-live="polite"></p>
             <button
               type="button"
-              class="carousel__btn"
-              id="galNext"
-              aria-label="Next photo"
+              class="ig__nav ig__nav--next"
+              id="igNext"
+              aria-label="Next"
             >
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M9.5 6l6 6-6 6" />
               </svg>
             </button>
+            <p class="sr-only" id="igLive" aria-live="polite"></p>
           </div>
+          <div class="ig__dots" id="igDots" aria-hidden="true"></div>
         </div>
-        <p class="gallery__note" id="galleryNote" hidden>
-          Photos from the proposal are coming soon.
-        </p>
       </section>
 
       <!-- RSVP (dev preview only) -->
@@ -1927,45 +1932,6 @@
       <a href="?dev=0">exit</a>
     </p>
 
-    <!-- Lightbox -->
-    <div
-      class="lightbox"
-      id="lightbox"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Proposal photo viewer"
-      hidden
-    >
-      <button
-        type="button"
-        class="lightbox__close"
-        id="lbClose"
-        aria-label="Close photo viewer"
-      >
-        &times;
-      </button>
-      <button
-        type="button"
-        class="lightbox__nav lightbox__nav--prev"
-        id="lbPrev"
-        aria-label="Previous photo"
-      >
-        &#8249;
-      </button>
-      <figure class="lightbox__figure">
-        <img id="lbImg" alt="" />
-        <figcaption id="lbCap"></figcaption>
-      </figure>
-      <button
-        type="button"
-        class="lightbox__nav lightbox__nav--next"
-        id="lbNext"
-        aria-label="Next photo"
-      >
-        &#8250;
-      </button>
-    </div>
-
     <!-- Footer -->
     <footer class="footer" id="thanks">
       <span class="spray" aria-hidden="true"></span>
@@ -1990,6 +1956,7 @@
     </footer>
 
     <script src="script.js" defer></script>
+    <script src="gallery.js" defer></script>
     <script src="i18n-ko.js" defer></script>
     <script src="rsvp.js" defer></script>
   </body>
