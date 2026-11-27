@@ -1,0 +1,10 @@
+{
+  "lace.webp": {
+    "title": "Lace doily, Belgium, 1714-1715 - Museum of Anthropology, University of British Columbia (DSC09267)",
+    "artist": "Daderot (photo); anonymous Belgian lacemaker (object)",
+    "lic": "Public domain (CC0 / PD-Mark, Wikimedia Commons)",
+    "page": "https://commons.wikimedia.org/wiki/File:Lace_doily,_Belgium,_1714-1715_-_Museum_of_Anthropology,_University_of_British_Columbia_-_DSC09267.jpg",
+    "file": "https://upload.wikimedia.org/wikipedia/commons/7/79/Lace_doily%2C_Belgium%2C_1714-1715_-_Museum_of_Anthropology%2C_University_of_British_Columbia_-_DSC09267.jpg",
+    "changes": "Cropped a 600px patch from the centre, mirrored it 2x2 into a seamless tile, converted luminance to alpha (black ground becomes transparent), tinted ivory, resized to 560px, WebP."
+  }
+}
