@@ -137,7 +137,6 @@ window.SITE_KO = {
   "trip.bali": "발리, 인도네시아",
   "trip.korea": "서울, 한국",
   "trip.singapore": "싱가포르",
-  "trip.promise": "여행지에서 사진을 보내 드릴게요.",
   "rsvp.fund": "신혼여행에 마음을 보태 주시겠어요? →",
   "registry.copied": "복사됨",
   "registry.kr": "계좌이체",

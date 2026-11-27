@@ -428,9 +428,6 @@ html.is-dev:lang(ko) {
   scroll-snap-align: start;
   box-shadow: 0 10px 28px rgba(35, 48, 60, 0.14);
 }
-.is-dev .trip__item:first-child {
-  flex-basis: 88%;
-}
 .is-dev .trip__item img {
   display: block;
   width: 100%;
@@ -466,33 +463,19 @@ html.is-dev:lang(ko) {
 @media (min-width: 768px) {
   .is-dev .trip {
     display: grid;
-    grid-template-columns: 1.25fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 14px;
     margin-inline: 0;
     padding: 0;
     overflow: visible;
   }
-  .is-dev .trip__item,
-  .is-dev .trip__item:first-child {
-    aspect-ratio: auto;
-    height: clamp(320px, 42vw, 460px);
+  .is-dev .trip__item {
+    aspect-ratio: 4 / 5;
   }
 }
 .is-dev:lang(ko) .trip__item figcaption {
   font-style: normal;
   font-size: 1.25rem;
-}
-.is-dev .trip__promise {
-  margin-top: 1.75rem;
-  text-align: center;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--muted);
-}
-.is-dev:lang(ko) .trip__promise {
-  font-style: normal;
-  font-size: 1rem;
 }
 .is-dev .rsvp__fund {
   display: inline-block;

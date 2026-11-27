@@ -53,15 +53,8 @@
   flex: 0 0 100%;
 }
 @media (min-width: 768px) {
-  /* two across per side; a lone last card stays centred */
-  .party__person {
-    flex-basis: calc(50% - 0.75rem);
-  }
-  .party__side--bride .is-lead {
-    flex-basis: 100%;
-  }
-  .party__side--bride .is-lead .party__photo {
-    max-width: calc(50% - 0.75rem);
+  .party__list {
+    gap: 2.25rem;
   }
 }
 .party__person {
@@ -96,7 +89,7 @@
 }
 @media (min-width: 768px) {
   .party__photo {
-    max-width: 200px;
+    max-width: 180px;
   }
 }
 .party__photo img {
