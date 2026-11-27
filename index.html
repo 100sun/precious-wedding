@@ -353,6 +353,21 @@
               </span>
             </span>
           </button>
+          <figure class="ks ks--print" aria-hidden="true">
+            <img
+              src="images/proposal/sm/1.jpg"
+              srcset="
+                images/proposal/sm/1.jpg  480w,
+                images/proposal/1.jpg    1080w
+              "
+              sizes="(min-width: 640px) 200px, 46vw"
+              alt=""
+              width="1080"
+              height="1350"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
           <figure class="ks ks--polaroid" aria-hidden="true">
             <img
               src="images/keepsakes/polaroid.jpg"
@@ -360,10 +375,20 @@
                 images/keepsakes/polaroid-sm.jpg 1080w,
                 images/keepsakes/polaroid.jpg    2000w
               "
-              sizes="(min-width: 640px) 170px, 34vw"
+              sizes="(min-width: 640px) 130px, 30vw"
               alt=""
               width="2000"
               height="1333"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+          <figure class="ks ks--mini" aria-hidden="true">
+            <img
+              src="images/proposal/sm/9.jpg"
+              alt=""
+              width="480"
+              height="600"
               loading="eager"
               decoding="async"
             />
@@ -376,81 +401,337 @@
               focusable="false"
             >
               <defs>
-                <linearGradient id="ovalSage" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#fdfefe" />
-                  <stop offset="0.3" stop-color="#e3eef6" />
-                  <stop offset="0.55" stop-color="#f4f8f3" />
-                  <stop offset="0.78" stop-color="#d3e4ef" />
-                  <stop offset="1" stop-color="#dde9dd" />
+                <linearGradient id="ofCream" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#fffdf8" />
+                  <stop offset=".35" stop-color="#f6efe0" />
+                  <stop offset=".7" stop-color="#fbf8f2" />
+                  <stop offset="1" stop-color="#e2e8ea" />
                 </linearGradient>
-                <radialGradient id="ovalShine" cx="0.3" cy="0.15" r="0.7">
-                  <stop offset="0" stop-color="#fff" stop-opacity="0.9" />
+                <linearGradient id="ofBevel" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#8fa9bd" />
+                  <stop offset=".5" stop-color="#e9eef0" />
+                  <stop offset="1" stop-color="#ffffff" />
+                </linearGradient>
+                <radialGradient id="ofPearl" cx=".35" cy=".3" r=".8">
+                  <stop offset="0" stop-color="#fff" />
+                  <stop offset=".6" stop-color="#f1ede4" />
+                  <stop offset="1" stop-color="#c9d6e0" />
+                </radialGradient>
+                <radialGradient id="ofShine" cx=".3" cy=".12" r=".7">
+                  <stop offset="0" stop-color="#fff" stop-opacity=".85" />
                   <stop offset="1" stop-color="#fff" stop-opacity="0" />
                 </radialGradient>
-                <radialGradient id="ovalPearl" cx="0.35" cy="0.3" r="0.8">
-                  <stop offset="0" stop-color="#fff" />
-                  <stop offset="0.6" stop-color="#eef4f8" />
-                  <stop offset="1" stop-color="#c9dbe8" />
-                </radialGradient>
               </defs>
-              <g fill="url(#ovalSage)" stroke="#8fb9d6" stroke-width="0.35">
-                <ellipse cx="50" cy="70" rx="46" ry="65" stroke="none" />
-                <path
-                  d="M90.4 70a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M89.8 80.2a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M88.1 90.2a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M85.2 99.9a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M81 109.2a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M75.5 117.6a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M68.4 125a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M60 130.5a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M50.3 133.6a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M40.3 133.6a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M30.7 130.5a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M22.3 124.9a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M15.2 117.5a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M9.8 109.1a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M5.6 99.8a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M2.6 90a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M1 80a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M0.4 69.8a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M1 59.8a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M2.7 49.8a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M5.6 40.1a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M9.8 30.8a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M15.3 22.4a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M22.4 15a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M30.8 9.5a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M40.5 6.4a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M50.5 6.4a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M60.1 9.5a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M68.5 15.1a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M75.6 22.5a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M81 30.9a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M85.2 40.2a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M88.2 50a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0M89.8 60a4.6 4.6 0 1 0 9.2 0a4.6 4.6 0 1 0-9.2 0"
-                />
+              <g fill="url(#ofCream)" stroke="#a9bfce" stroke-width=".4">
+                <circle cx="96" cy="70" r="2.7" />
+                <circle cx="95.3" cy="81.2" r="2.7" />
+                <circle cx="93.23" cy="92.06" r="2.7" />
+                <circle cx="89.84" cy="102.25" r="2.7" />
+                <circle cx="85.24" cy="111.46" r="2.7" />
+                <circle cx="79.57" cy="119.41" r="2.7" />
+                <circle cx="73" cy="125.86" r="2.7" />
+                <circle cx="65.73" cy="130.61" r="2.7" />
+                <circle cx="57.99" cy="133.52" r="2.7" />
+                <circle cx="50" cy="134.5" r="2.7" />
+                <circle cx="42.01" cy="133.52" r="2.7" />
+                <circle cx="34.27" cy="130.61" r="2.7" />
+                <circle cx="27" cy="125.86" r="2.7" />
+                <circle cx="20.43" cy="119.41" r="2.7" />
+                <circle cx="14.76" cy="111.46" r="2.7" />
+                <circle cx="10.16" cy="102.25" r="2.7" />
+                <circle cx="6.77" cy="92.06" r="2.7" />
+                <circle cx="4.7" cy="81.2" r="2.7" />
+                <circle cx="4" cy="70" r="2.7" />
+                <circle cx="4.7" cy="58.8" r="2.7" />
+                <circle cx="6.77" cy="47.94" r="2.7" />
+                <circle cx="10.16" cy="37.75" r="2.7" />
+                <circle cx="14.76" cy="28.54" r="2.7" />
+                <circle cx="20.43" cy="20.59" r="2.7" />
+                <circle cx="27" cy="14.14" r="2.7" />
+                <circle cx="34.27" cy="9.39" r="2.7" />
+                <circle cx="42.01" cy="6.48" r="2.7" />
+                <circle cx="50" cy="5.5" r="2.7" />
+                <circle cx="57.99" cy="6.48" r="2.7" />
+                <circle cx="65.73" cy="9.39" r="2.7" />
+                <circle cx="73" cy="14.14" r="2.7" />
+                <circle cx="79.57" cy="20.59" r="2.7" />
+                <circle cx="85.24" cy="28.54" r="2.7" />
+                <circle cx="89.84" cy="37.75" r="2.7" />
+                <circle cx="93.23" cy="47.94" r="2.7" />
+                <circle cx="95.3" cy="58.8" r="2.7" />
+                <ellipse cx="50" cy="70" rx="46" ry="64.5" stroke="none" />
               </g>
               <path
-                d="M93.3 73.3L99.1 73.6M92.9 79.8L98.6 80.8M91.9 86.2L97.5 87.9M90.5 92.4L95.9 94.8M88.7 98.3L93.8 101.4M86.4 104.0L91.3 107.7M83.7 109.3L88.2 113.5M80.7 114.1L84.8 118.9M77.3 118.5L81.0 123.8M73.6 122.3L76.8 128.0M69.7 125.6L72.3 131.7M65.6 128.3L67.6 134.6M61.2 130.3L62.7 136.8M56.8 131.6L57.7 138.3M52.3 132.3L52.6 139.1M47.7 132.3L47.4 139.1M43.2 131.6L42.3 138.3M38.8 130.3L37.3 136.8M34.4 128.3L32.4 134.6M30.3 125.6L27.7 131.7M26.4 122.3L23.2 128.0M22.7 118.5L19.0 123.8M19.3 114.1L15.2 118.9M16.3 109.3L11.8 113.5M13.6 104.0L8.7 107.7M11.3 98.3L6.2 101.4M9.5 92.4L4.1 94.8M8.1 86.2L2.5 87.9M7.1 79.8L1.4 80.8M6.7 73.3L0.9 73.6M6.7 66.7L0.9 66.4M7.1 60.2L1.4 59.2M8.1 53.8L2.5 52.1M9.5 47.6L4.1 45.2M11.3 41.7L6.2 38.6M13.6 36.0L8.7 32.3M16.3 30.7L11.8 26.5M19.3 25.9L15.2 21.1M22.7 21.5L19.0 16.2M26.4 17.7L23.2 12.0M30.3 14.4L27.7 8.3M34.4 11.7L32.4 5.4M38.8 9.7L37.3 3.2M43.2 8.4L42.3 1.7M47.7 7.7L47.4 0.9M52.3 7.7L52.6 0.9M56.8 8.4L57.7 1.7M61.2 9.7L62.7 3.2M65.6 11.7L67.6 5.4M69.7 14.4L72.3 8.3M73.6 17.7L76.8 12.0M77.3 21.5L81.0 16.2M80.7 25.9L84.8 21.1M83.7 30.7L88.2 26.5M86.4 36.0L91.3 32.3M88.7 41.7L93.8 38.6M90.5 47.6L95.9 45.2M91.9 53.8L97.5 52.1M92.9 60.2L98.6 59.2M93.3 66.7L99.1 66.4"
-                fill="none"
-                stroke="#6d9ec4"
-                stroke-width="0.4"
+                d="M94.43 75.54L97.42 75.79M93.08 86.46L95.98 87.19M90.42 96.88L93.14 98.06M86.53 106.48L88.99 108.09M81.54 114.97L83.66 116.95M75.58 122.1L77.3 124.39M68.85 127.64L70.12 130.18M61.54 131.43L62.32 134.14M53.89 133.36L54.15 136.15M46.11 133.36L45.85 136.15M38.46 131.43L37.68 134.14M31.15 127.64L29.88 130.18M24.42 122.1L22.7 124.39M18.46 114.97L16.34 116.95M13.47 106.48L11.01 108.09M9.58 96.88L6.86 98.06M6.92 86.46L4.02 87.19M5.57 75.54L2.58 75.79M5.57 64.46L2.58 64.21M6.92 53.54L4.02 52.81M9.58 43.12L6.86 41.94M13.47 33.52L11.01 31.91M18.46 25.03L16.34 23.05M24.42 17.9L22.7 15.61M31.15 12.36L29.88 9.82M38.46 8.57L37.68 5.86M46.11 6.64L45.85 3.85M53.89 6.64L54.15 3.85M61.54 8.57L62.32 5.86M68.85 12.36L70.12 9.82M75.58 17.9L77.3 15.61M81.54 25.03L83.66 23.05M86.53 33.52L88.99 31.91M90.42 43.12L93.14 41.94M93.08 53.54L95.98 52.81M94.43 64.46L97.42 64.21"
+                stroke="#b9ccd9"
+                stroke-width=".45"
                 stroke-linecap="round"
-                opacity="0.55"
+                fill="none"
               />
-              <ellipse cx="50" cy="70" rx="46" ry="65" fill="url(#ovalShine)" />
               <ellipse
                 cx="50"
                 cy="70"
-                rx="42.5"
-                ry="61.5"
+                rx="44.8"
+                ry="63.4"
                 fill="none"
                 stroke="#fff"
-                stroke-width="1"
-                stroke-dasharray="0.1 2.6"
-                stroke-linecap="round"
+                stroke-width=".6"
+                opacity=".9"
               />
               <ellipse
                 cx="50"
                 cy="70"
-                rx="40.4"
-                ry="59.6"
+                rx="41.8"
+                ry="60.8"
                 fill="none"
-                stroke="#6d9ec4"
-                stroke-width="0.5"
-                opacity="0.8"
+                stroke="#b9ccd9"
+                stroke-width=".5"
               />
-              <path
-                d="M50 12.5 L39.5 12.5 Q37.2 9.6 40.5 7.9 Q39.8 4.3 43.5 4.3 Q44.3 0.7 47.7 2.3 Q50.0 -0.6 52.3 2.3 Q55.7 0.7 56.5 4.3 Q60.2 4.3 59.5 7.9 Q62.8 9.6 60.5 12.5 Z"
-                fill="url(#ovalSage)"
-                stroke="#8fb9d6"
-                stroke-width="0.5"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M50 12.5L38.6 9.9M50 12.5L40.9 5.2M50 12.5L44.9 2.0M50 12.5L50.0 0.8M50 12.5L55.1 2.0M50 12.5L59.1 5.2M50 12.5L61.4 9.9M50 12.5L40.5 7.9M50 12.5L43.5 4.3M50 12.5L47.7 2.3M50 12.5L52.3 2.3M50 12.5L56.5 4.3M50 12.5L59.5 7.9"
-                fill="none"
-                stroke="#6d9ec4"
-                stroke-width="0.35"
-                stroke-linecap="round"
-                opacity="0.6"
-              />
-              <circle
+              <g fill="url(#ofPearl)" stroke="#a9bfce" stroke-width=".28">
+                <circle cx="93.3" cy="70" r="1.5" />
+                <circle cx="93.09" cy="76.1" r="1.5" />
+                <circle cx="92.47" cy="82.13" r="1.5" />
+                <circle cx="91.44" cy="88.06" r="1.5" />
+                <circle cx="90" cy="93.8" r="1.5" />
+                <circle cx="88.19" cy="99.32" r="1.5" />
+                <circle cx="86" cy="104.56" r="1.5" />
+                <circle cx="83.47" cy="109.46" r="1.5" />
+                <circle cx="80.62" cy="113.98" r="1.5" />
+                <circle cx="77.47" cy="118.08" r="1.5" />
+                <circle cx="74.06" cy="121.72" r="1.5" />
+                <circle cx="70.41" cy="124.86" r="1.5" />
+                <circle cx="66.57" cy="127.47" r="1.5" />
+                <circle cx="62.57" cy="129.52" r="1.5" />
+                <circle cx="58.45" cy="131" r="1.5" />
+                <circle cx="54.24" cy="131.9" r="1.5" />
+                <circle cx="50" cy="132.2" r="1.5" />
+                <circle cx="45.76" cy="131.9" r="1.5" />
+                <circle cx="41.55" cy="131" r="1.5" />
+                <circle cx="37.43" cy="129.52" r="1.5" />
+                <circle cx="33.43" cy="127.47" r="1.5" />
+                <circle cx="29.59" cy="124.86" r="1.5" />
+                <circle cx="25.94" cy="121.72" r="1.5" />
+                <circle cx="22.53" cy="118.08" r="1.5" />
+                <circle cx="19.38" cy="113.98" r="1.5" />
+                <circle cx="16.53" cy="109.46" r="1.5" />
+                <circle cx="14" cy="104.56" r="1.5" />
+                <circle cx="11.81" cy="99.32" r="1.5" />
+                <circle cx="10" cy="93.8" r="1.5" />
+                <circle cx="8.56" cy="88.06" r="1.5" />
+                <circle cx="7.53" cy="82.13" r="1.5" />
+                <circle cx="6.91" cy="76.1" r="1.5" />
+                <circle cx="6.7" cy="70" r="1.5" />
+                <circle cx="6.91" cy="63.9" r="1.5" />
+                <circle cx="7.53" cy="57.87" r="1.5" />
+                <circle cx="8.56" cy="51.94" r="1.5" />
+                <circle cx="10" cy="46.2" r="1.5" />
+                <circle cx="11.81" cy="40.68" r="1.5" />
+                <circle cx="14" cy="35.44" r="1.5" />
+                <circle cx="16.53" cy="30.54" r="1.5" />
+                <circle cx="19.38" cy="26.02" r="1.5" />
+                <circle cx="22.53" cy="21.92" r="1.5" />
+                <circle cx="25.94" cy="18.28" r="1.5" />
+                <circle cx="29.59" cy="15.14" r="1.5" />
+                <circle cx="33.43" cy="12.53" r="1.5" />
+                <circle cx="37.43" cy="10.48" r="1.5" />
+                <circle cx="41.55" cy="9" r="1.5" />
+                <circle cx="45.76" cy="8.1" r="1.5" />
+                <circle cx="50" cy="7.8" r="1.5" />
+                <circle cx="54.24" cy="8.1" r="1.5" />
+                <circle cx="58.45" cy="9" r="1.5" />
+                <circle cx="62.57" cy="10.48" r="1.5" />
+                <circle cx="66.57" cy="12.53" r="1.5" />
+                <circle cx="70.41" cy="15.14" r="1.5" />
+                <circle cx="74.06" cy="18.28" r="1.5" />
+                <circle cx="77.47" cy="21.92" r="1.5" />
+                <circle cx="80.62" cy="26.02" r="1.5" />
+                <circle cx="83.47" cy="30.54" r="1.5" />
+                <circle cx="86" cy="35.44" r="1.5" />
+                <circle cx="88.19" cy="40.68" r="1.5" />
+                <circle cx="90" cy="46.2" r="1.5" />
+                <circle cx="91.44" cy="51.94" r="1.5" />
+                <circle cx="92.47" cy="57.87" r="1.5" />
+                <circle cx="93.09" cy="63.9" r="1.5" />
+              </g>
+              <ellipse cx="50" cy="70" rx="46" ry="64.5" fill="url(#ofShine)" />
+              <g>
+                <g
+                  id="ofT"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <g stroke="#9fb7c9" stroke-width="3.5">
+                    <path
+                      d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                    />
+                  </g>
+                  <g stroke="url(#ofCream)" stroke-width="2.5">
+                    <path
+                      d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                    />
+                  </g>
+                  <g
+                    stroke="#fff"
+                    stroke-width=".6"
+                    opacity=".9"
+                    transform="translate(-.4 -.5)"
+                  >
+                    <path
+                      d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                    />
+                  </g>
+                  <g fill="url(#ofCream)" stroke="#9fb7c9" stroke-width=".5">
+                    <path
+                      d="M69 10.5C73 6.5 79 6.8 81 10C77.5 13 72.5 13.2 69 10.5Z M72 24.5C76 21 81.5 22 82.5 25.5C79 28 74.5 28 72 24.5Z"
+                    />
+                  </g>
+                  <g transform="translate(100 0) scale(-1 1)">
+                    <g stroke="#9fb7c9" stroke-width="3.5">
+                      <path
+                        d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                      />
+                    </g>
+                    <g stroke="url(#ofCream)" stroke-width="2.5">
+                      <path
+                        d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                      />
+                    </g>
+                    <g
+                      stroke="#fff"
+                      stroke-width=".6"
+                      opacity=".9"
+                      transform="translate(-.4 -.5)"
+                    >
+                      <path
+                        d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                      />
+                    </g>
+                    <g fill="url(#ofCream)" stroke="#9fb7c9" stroke-width=".5">
+                      <path
+                        d="M69 10.5C73 6.5 79 6.8 81 10C77.5 13 72.5 13.2 69 10.5Z M72 24.5C76 21 81.5 22 82.5 25.5C79 28 74.5 28 72 24.5Z"
+                      />
+                    </g>
+                  </g>
+                  <path
+                    d="M50 13.5L40.5 9.5Q38.5 6 42 4.2Q42.5 0.8 46 1.6Q48 -1 50 -1Q52 -1 54 1.6Q57.5 0.8 58 4.2Q61.5 6 59.5 9.5Z"
+                    fill="url(#ofCream)"
+                    stroke="#9fb7c9"
+                    stroke-width=".55"
+                  />
+                  <path
+                    d="M50 13L44 4.5M50 13L47.5 1.8M50 13L52.5 1.8M50 13L56 4.5M50 13L41.5 8.5M50 13L58.5 8.5"
+                    stroke="#b6c9d7"
+                    stroke-width=".45"
+                  />
+                  <circle
+                    cx="50"
+                    cy="12.2"
+                    r="2.6"
+                    fill="url(#ofPearl)"
+                    stroke="#a9bfce"
+                    stroke-width=".35"
+                  />
+                </g>
+              </g>
+              <g transform="translate(0 140) scale(1 -1)">
+                <g
+                  id="ofB"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <g stroke="#9fb7c9" stroke-width="3.5">
+                    <path
+                      d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                    />
+                  </g>
+                  <g stroke="url(#ofCream)" stroke-width="2.5">
+                    <path
+                      d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                    />
+                  </g>
+                  <g
+                    stroke="#fff"
+                    stroke-width=".6"
+                    opacity=".9"
+                    transform="translate(-.4 -.5)"
+                  >
+                    <path
+                      d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                    />
+                  </g>
+                  <g fill="url(#ofCream)" stroke="#9fb7c9" stroke-width=".5">
+                    <path
+                      d="M69 10.5C73 6.5 79 6.8 81 10C77.5 13 72.5 13.2 69 10.5Z M72 24.5C76 21 81.5 22 82.5 25.5C79 28 74.5 28 72 24.5Z"
+                    />
+                  </g>
+                  <g transform="translate(100 0) scale(-1 1)">
+                    <g stroke="#9fb7c9" stroke-width="3.5">
+                      <path
+                        d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                      />
+                    </g>
+                    <g stroke="url(#ofCream)" stroke-width="2.5">
+                      <path
+                        d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                      />
+                    </g>
+                    <g
+                      stroke="#fff"
+                      stroke-width=".6"
+                      opacity=".9"
+                      transform="translate(-.4 -.5)"
+                    >
+                      <path
+                        d="M50 11C53 4 60 1.5 65 5.5C68.5 9 64.5 13.5 60.5 11.5C57.5 10 58.5 6.5 61.5 6.8M50 11C53 14.5 57.5 15.6 62 14.2M56 8.5C60 9 62.5 11.5 70 10.5C76 9.5 79 13 82 18M60 14.5C66 16 70 20 71 25"
+                      />
+                    </g>
+                    <g fill="url(#ofCream)" stroke="#9fb7c9" stroke-width=".5">
+                      <path
+                        d="M69 10.5C73 6.5 79 6.8 81 10C77.5 13 72.5 13.2 69 10.5Z M72 24.5C76 21 81.5 22 82.5 25.5C79 28 74.5 28 72 24.5Z"
+                      />
+                    </g>
+                  </g>
+                  <path
+                    d="M50 13.5L40.5 9.5Q38.5 6 42 4.2Q42.5 0.8 46 1.6Q48 -1 50 -1Q52 -1 54 1.6Q57.5 0.8 58 4.2Q61.5 6 59.5 9.5Z"
+                    fill="url(#ofCream)"
+                    stroke="#9fb7c9"
+                    stroke-width=".55"
+                  />
+                  <path
+                    d="M50 13L44 4.5M50 13L47.5 1.8M50 13L52.5 1.8M50 13L56 4.5M50 13L41.5 8.5M50 13L58.5 8.5"
+                    stroke="#b6c9d7"
+                    stroke-width=".45"
+                  />
+                  <circle
+                    cx="50"
+                    cy="12.2"
+                    r="2.6"
+                    fill="url(#ofPearl)"
+                    stroke="#a9bfce"
+                    stroke-width=".35"
+                  />
+                </g>
+              </g>
+              <ellipse
                 cx="50"
-                cy="12.5"
-                r="2.3"
-                fill="url(#ovalPearl)"
-                stroke="#8fb9d6"
-                stroke-width="0.3"
+                cy="70"
+                rx="40.8"
+                ry="59.8"
+                fill="none"
+                stroke="url(#ofBevel)"
+                stroke-width="1.5"
+              />
+              <ellipse
+                cx="50"
+                cy="70"
+                rx="40.1"
+                ry="59.1"
+                fill="none"
+                stroke="#7f9db3"
+                stroke-width=".4"
+                opacity=".8"
               />
             </svg>
             <span class="oval__photo">
@@ -469,9 +750,411 @@
               />
             </span>
           </figure>
-          <p class="ks ks--tag">
-            <span class="tag__date">08 · 05 · 2027</span>
-          </p>
+          <div class="ks ks--card">
+            <p class="card__names" data-i18n="names.amp">
+              Sofia <span class="amp">&amp;</span> Blake
+            </p>
+            <p class="card__rule" aria-hidden="true"></p>
+            <p class="card__date tag__date">08 · 05 · 2027</p>
+          </div>
+          <svg
+            class="ks ks--pearls"
+            viewBox="0 0 100 40"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <defs>
+              <radialGradient id="psPearl" cx=".35" cy=".3" r=".8">
+                <stop offset="0" stop-color="#fff" />
+                <stop offset=".6" stop-color="#f4f0e8" />
+                <stop offset="1" stop-color="#c5d3de" />
+              </radialGradient>
+            </defs>
+            <circle cx="2.5" cy="7.1" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="2"
+              cy="6"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="1.3" cy="5.2" r=".6" fill="#fff" />
+            <circle cx="6.04" cy="10.5" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="5.54"
+              cy="9.4"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="4.84" cy="8.6" r=".6" fill="#fff" />
+            <circle cx="9.6" cy="13.62" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="9.1"
+              cy="12.52"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="8.4" cy="11.72" r=".6" fill="#fff" />
+            <circle
+              cx="13.17"
+              cy="16.46"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="12.67"
+              cy="15.36"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="11.97" cy="14.56" r=".6" fill="#fff" />
+            <circle
+              cx="16.75"
+              cy="19.03"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="16.25"
+              cy="17.93"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="15.55" cy="17.13" r=".6" fill="#fff" />
+            <circle
+              cx="20.34"
+              cy="21.32"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="19.84"
+              cy="20.22"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="19.14" cy="19.42" r=".6" fill="#fff" />
+            <circle
+              cx="23.94"
+              cy="23.32"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="23.44"
+              cy="22.22"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="22.74" cy="21.42" r=".6" fill="#fff" />
+            <circle
+              cx="27.56"
+              cy="25.06"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="27.06"
+              cy="23.96"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="26.36" cy="23.16" r=".6" fill="#fff" />
+            <circle
+              cx="31.19"
+              cy="26.51"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="30.69"
+              cy="25.41"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="29.99" cy="24.61" r=".6" fill="#fff" />
+            <circle
+              cx="34.83"
+              cy="27.68"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="34.33"
+              cy="26.58"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="33.63" cy="25.78" r=".6" fill="#fff" />
+            <circle
+              cx="38.48"
+              cy="28.58"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="37.98"
+              cy="27.48"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="37.28" cy="26.68" r=".6" fill="#fff" />
+            <circle cx="42.14" cy="29.2" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="41.64"
+              cy="28.1"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="40.94" cy="27.3" r=".6" fill="#fff" />
+            <circle
+              cx="45.81"
+              cy="29.54"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="45.31"
+              cy="28.44"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="44.61" cy="27.64" r=".6" fill="#fff" />
+            <circle cx="49.5" cy="29.6" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="49"
+              cy="28.5"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="48.3" cy="27.7" r=".6" fill="#fff" />
+            <circle cx="53.2" cy="29.38" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="52.7"
+              cy="28.28"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="52" cy="27.48" r=".6" fill="#fff" />
+            <circle
+              cx="56.91"
+              cy="28.89"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="56.41"
+              cy="27.79"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="55.71" cy="26.99" r=".6" fill="#fff" />
+            <circle
+              cx="60.63"
+              cy="28.12"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="60.13"
+              cy="27.02"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="59.43" cy="26.22" r=".6" fill="#fff" />
+            <circle
+              cx="64.36"
+              cy="27.07"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="63.86"
+              cy="25.97"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="63.16" cy="25.17" r=".6" fill="#fff" />
+            <circle
+              cx="68.11"
+              cy="25.74"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="67.61"
+              cy="24.64"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="66.91" cy="23.84" r=".6" fill="#fff" />
+            <circle
+              cx="71.87"
+              cy="24.13"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="71.37"
+              cy="23.03"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="70.67" cy="22.23" r=".6" fill="#fff" />
+            <circle
+              cx="75.64"
+              cy="22.25"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="75.14"
+              cy="21.15"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="74.44" cy="20.35" r=".6" fill="#fff" />
+            <circle
+              cx="79.42"
+              cy="20.09"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="78.92"
+              cy="18.99"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="78.22" cy="18.19" r=".6" fill="#fff" />
+            <circle
+              cx="83.21"
+              cy="17.64"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="82.71"
+              cy="16.54"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="82.01" cy="15.74" r=".6" fill="#fff" />
+            <circle
+              cx="87.01"
+              cy="14.93"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="86.51"
+              cy="13.83"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="85.81" cy="13.03" r=".6" fill="#fff" />
+            <circle
+              cx="90.83"
+              cy="11.93"
+              r="2.2"
+              fill="#2f4c64"
+              opacity=".22"
+            />
+            <circle
+              cx="90.33"
+              cy="10.83"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="89.63" cy="10.03" r=".6" fill="#fff" />
+            <circle cx="94.66" cy="8.65" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="94.16"
+              cy="7.55"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="93.46" cy="6.75" r=".6" fill="#fff" />
+            <circle cx="98.5" cy="5.1" r="2.2" fill="#2f4c64" opacity=".22" />
+            <circle
+              cx="98"
+              cy="4"
+              r="2.3"
+              fill="url(#psPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".3"
+            />
+            <circle cx="97.3" cy="3.2" r=".6" fill="#fff" />
+          </svg>
           <svg
             class="ks ks--bouquet"
             viewBox="0 0 120 130"
@@ -479,6 +1162,16 @@
             focusable="false"
           >
             <defs>
+              <linearGradient id="callaCream" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset=".55" stop-color="#f7f4ec" />
+                <stop offset="1" stop-color="#dbe5ea" />
+              </linearGradient>
+              <radialGradient id="bqPearl" cx=".35" cy=".3" r=".8">
+                <stop offset="0" stop-color="#fff" />
+                <stop offset=".6" stop-color="#f2eee5" />
+                <stop offset="1" stop-color="#c5d3de" />
+              </radialGradient>
               <radialGradient id="rosePetal" cx="42%" cy="38%" r="70%">
                 <stop offset="0" stop-color="#ffffff" />
                 <stop offset="0.6" stop-color="#f6f9fb" />
@@ -779,42 +1472,249 @@
               height="40"
               transform="translate(72 44) scale(0.62) rotate(-10)"
             />
-            <!-- thin satin ribbon: tie, bow and trailing ends -->
-            <g stroke-linecap="round" stroke-linejoin="round">
+            <!-- calla lilies -->
+            <g
+              fill="none"
+              stroke="#8ea292"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            >
+              <path d="M42 106Q34 84 28 62" />
+              <path d="M42 106Q76 88 100 58" />
+              <path d="M42 106Q54 70 60 42" />
+            </g>
+            <g transform="translate(28 62) rotate(-16) scale(1.15)">
               <path
-                d="M44 114Q41 124 33 128M46 115Q50 124 58 127"
+                d="M0 0C-9 -6 -11 -19 -8 -28C-4 -35 5 -34 9 -27C10 -18 6 -7 0 0Z"
+                fill="url(#callaCream)"
+                stroke="#c3d0da"
+                stroke-width=".6"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M-7 -27C-4 -33 5 -33 8.5 -27C4 -22 -3 -22 -7 -27Z"
+                fill="#dfe8ee"
+                stroke="#c3d0da"
+                stroke-width=".5"
+              />
+              <path
+                d="M-3 -21C-5 -13 -3 -6 0 0M3 -20C5 -12 3 -6 0 0"
                 fill="none"
-                stroke="#8fb9d6"
-                stroke-width="2.2"
+                stroke="#fff"
+                stroke-width=".8"
+                opacity=".85"
               />
               <path
-                d="M44 114Q41 124 33 128M46 115Q50 124 58 127"
+                d="M-8 -28C-9 -22 -8 -16 -5 -9"
                 fill="none"
-                stroke="#d7e8f4"
-                stroke-width="1.2"
+                stroke="#e9eff3"
+                stroke-width=".9"
               />
               <path
-                d="M37 98Q50 94 52 103Q42 108 36 105Z"
-                fill="#cfe3f1"
-                stroke="#8fb9d6"
-                stroke-width=".7"
-              />
-              <path
-                d="M44 103Q36 94 28 98Q28 106 38 106Z"
-                fill="#cfe3f1"
-                stroke="#8fb9d6"
-                stroke-width=".7"
+                d="M8.5 -27C9.5 -32 4 -37 0 -36"
+                fill="none"
+                stroke="#fff"
+                stroke-width=".9"
+                opacity=".9"
               />
               <ellipse
-                cx="44"
-                cy="104"
-                rx="3.4"
-                ry="2.8"
-                fill="#bcd8ec"
-                stroke="#8fb9d6"
-                stroke-width=".7"
+                cx="0.8"
+                cy="-26.5"
+                rx="1.5"
+                ry="4.6"
+                fill="#ece6c9"
+                stroke="#cbc5a4"
+                stroke-width=".4"
+                transform="rotate(8 0.8 -26.5)"
               />
             </g>
+            <g transform="translate(100 58) rotate(28) scale(1.05)">
+              <path
+                d="M0 0C-9 -6 -11 -19 -8 -28C-4 -35 5 -34 9 -27C10 -18 6 -7 0 0Z"
+                fill="url(#callaCream)"
+                stroke="#c3d0da"
+                stroke-width=".6"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M-7 -27C-4 -33 5 -33 8.5 -27C4 -22 -3 -22 -7 -27Z"
+                fill="#dfe8ee"
+                stroke="#c3d0da"
+                stroke-width=".5"
+              />
+              <path
+                d="M-3 -21C-5 -13 -3 -6 0 0M3 -20C5 -12 3 -6 0 0"
+                fill="none"
+                stroke="#fff"
+                stroke-width=".8"
+                opacity=".85"
+              />
+              <path
+                d="M-8 -28C-9 -22 -8 -16 -5 -9"
+                fill="none"
+                stroke="#e9eff3"
+                stroke-width=".9"
+              />
+              <path
+                d="M8.5 -27C9.5 -32 4 -37 0 -36"
+                fill="none"
+                stroke="#fff"
+                stroke-width=".9"
+                opacity=".9"
+              />
+              <ellipse
+                cx="0.8"
+                cy="-26.5"
+                rx="1.5"
+                ry="4.6"
+                fill="#ece6c9"
+                stroke="#cbc5a4"
+                stroke-width=".4"
+                transform="rotate(8 0.8 -26.5)"
+              />
+            </g>
+            <g transform="translate(60 42) rotate(6) scale(0.95)">
+              <path
+                d="M0 0C-9 -6 -11 -19 -8 -28C-4 -35 5 -34 9 -27C10 -18 6 -7 0 0Z"
+                fill="url(#callaCream)"
+                stroke="#c3d0da"
+                stroke-width=".6"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M-7 -27C-4 -33 5 -33 8.5 -27C4 -22 -3 -22 -7 -27Z"
+                fill="#dfe8ee"
+                stroke="#c3d0da"
+                stroke-width=".5"
+              />
+              <path
+                d="M-3 -21C-5 -13 -3 -6 0 0M3 -20C5 -12 3 -6 0 0"
+                fill="none"
+                stroke="#fff"
+                stroke-width=".8"
+                opacity=".85"
+              />
+              <path
+                d="M-8 -28C-9 -22 -8 -16 -5 -9"
+                fill="none"
+                stroke="#e9eff3"
+                stroke-width=".9"
+              />
+              <path
+                d="M8.5 -27C9.5 -32 4 -37 0 -36"
+                fill="none"
+                stroke="#fff"
+                stroke-width=".9"
+                opacity=".9"
+              />
+              <ellipse
+                cx="0.8"
+                cy="-26.5"
+                rx="1.5"
+                ry="4.6"
+                fill="#ece6c9"
+                stroke="#cbc5a4"
+                stroke-width=".4"
+                transform="rotate(8 0.8 -26.5)"
+              />
+            </g>
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M43 108C40 118 34 124 27 128L33 129.5L35 125M47 108C50 118 56 124 64 126.5L58 121.5"
+                fill="#bcd8ec"
+                stroke="#8fb9d6"
+                stroke-width=".8"
+              />
+              <path
+                d="M43 108C40 118 36 123 30 126.5"
+                fill="none"
+                stroke="#e8f2f9"
+                stroke-width="1.1"
+              />
+              <path
+                d="M44 104C34 94 28 99 30 106C34 111 41 108 44 105Z"
+                fill="#cfe3f1"
+                stroke="#8fb9d6"
+                stroke-width=".8"
+              />
+              <path
+                d="M45 104C54 94 60 99 58 106C54 111 47 108 45 105Z"
+                fill="#dcebf6"
+                stroke="#8fb9d6"
+                stroke-width=".8"
+              />
+              <path
+                d="M33 99.5C37 102 40 103.5 44 104.5M55 99.5C52 102 49 103.5 46 104.5"
+                fill="none"
+                stroke="#fff"
+                stroke-width=".6"
+                opacity=".8"
+              />
+              <ellipse
+                cx="44.6"
+                cy="105"
+                rx="3.6"
+                ry="3.1"
+                fill="#bcd8ec"
+                stroke="#8fb9d6"
+                stroke-width=".8"
+              />
+              <path
+                d="M39 110Q44 114 49 110"
+                fill="none"
+                stroke="url(#bqPearl)"
+                stroke-width="2.6"
+                stroke-dasharray=".1 3.3"
+              />
+            </g>
+            <circle
+              cx="20"
+              cy="20"
+              r="1.6"
+              fill="url(#bqPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".25"
+            />
+            <circle
+              cx="16"
+              cy="26"
+              r="1.4"
+              fill="url(#bqPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".25"
+            />
+            <circle
+              cx="102"
+              cy="28"
+              r="1.6"
+              fill="url(#bqPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".25"
+            />
+            <circle
+              cx="106"
+              cy="34"
+              r="1.4"
+              fill="url(#bqPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".25"
+            />
+            <circle
+              cx="86"
+              cy="24"
+              r="1.5"
+              fill="url(#bqPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".25"
+            />
+            <circle
+              cx="14"
+              cy="74"
+              r="1.5"
+              fill="url(#bqPearl)"
+              stroke="#bfd0dc"
+              stroke-width=".25"
+            />
           </svg>
         </div>
 
@@ -1718,7 +2618,14 @@
         </div>
         <div class="details__grid">
           <div class="card card--row reveal">
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M18 8l6 5 6-5 8 6-5 7-3-2v21H18V19l-3 2-5-7zM18 19h12" /></svg>
+            <svg
+              class="card__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M18 8l6 5 6-5 8 6-5 7-3-2v21H18V19l-3 2-5-7zM18 19h12" />
+            </svg>
             <div class="card__body">
               <h3 data-i18n="details.dress.h">Dress Code</h3>
               <p data-i18n="details.dress.p" data-live-only>
@@ -1734,7 +2641,14 @@
             </div>
           </div>
           <div class="card card--row reveal" data-dev-only hidden>
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 8a16 16 0 1 0 0 32 16 16 0 0 0 0-32zM24 15v10l7 4" /></svg>
+            <svg
+              class="card__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M24 8a16 16 0 1 0 0 32 16 16 0 0 0 0-32zM24 15v10l7 4" />
+            </svg>
             <div class="card__body">
               <h3 data-i18n="details.arrive.h">Arrival</h3>
               <p data-i18n="details.arrive.p">
@@ -1744,7 +2658,16 @@
             </div>
           </div>
           <div class="card card--row reveal">
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 40S8 30 8 19a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 11-16 21-16 21z" /></svg>
+            <svg
+              class="card__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M24 40S8 30 8 19a8 8 0 0 1 16-2 8 8 0 0 1 16 2c0 11-16 21-16 21z"
+              />
+            </svg>
             <div class="card__body">
               <h3 data-i18n="details.kids.h">Kids &amp; Pets</h3>
               <p data-i18n="details.kids.p">
@@ -1754,7 +2677,16 @@
             </div>
           </div>
           <div class="card card--row reveal">
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M17 22a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM5 40c0-7 5-12 12-12s12 5 12 12zM33 21a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM36 28c5 1 8 5 8 12h-9" /></svg>
+            <svg
+              class="card__icon"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M17 22a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM5 40c0-7 5-12 12-12s12 5 12 12zM33 21a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM36 28c5 1 8 5 8 12h-9"
+              />
+            </svg>
             <div class="card__body">
               <h3 data-i18n="details.plus.h">Plus-Ones</h3>
               <p data-i18n="details.plus.p">
@@ -2011,18 +2943,22 @@
           <h2 data-i18n="registry.title">Honeymoon Fund</h2>
           <p data-i18n="registry.intro">
             Having you there means everything. If you wish to give a gift, we’d
-            love help toward our honeymoon to Korea, Singapore, &amp; Indonesia.
+            love help toward our honeymoon to Korea, Indonesia, &amp; Singapore.
           </p>
         </div>
         <!-- Honeymoon destinations, nicest first. Free photos from
              Wikimedia Commons; credits in the footer and images/honeymoon/CREDITS.json -->
-        <div class="trip reveal" role="group" aria-label="Our honeymoon destinations">
+        <div
+          class="trip reveal"
+          role="group"
+          aria-label="Our honeymoon destinations"
+        >
           <figure class="trip__item">
             <img
               src="images/honeymoon/bali.jpg"
               srcset="
-                images/honeymoon/sm/bali.jpg 640w,
-                images/honeymoon/bali.jpg   1400w
+                images/honeymoon/sm/bali.jpg  640w,
+                images/honeymoon/bali.jpg    1400w
               "
               sizes="(min-width: 768px) 33vw, 84vw"
               alt="Bali, Indonesia"
@@ -2040,8 +2976,8 @@
             <img
               src="images/honeymoon/korea.jpg"
               srcset="
-                images/honeymoon/sm/korea.jpg 640w,
-                images/honeymoon/korea.jpg   1400w
+                images/honeymoon/sm/korea.jpg  640w,
+                images/honeymoon/korea.jpg    1400w
               "
               sizes="(min-width: 768px) 33vw, 84vw"
               alt="Seoul, Korea"
@@ -2059,8 +2995,8 @@
             <img
               src="images/honeymoon/singapore.jpg"
               srcset="
-                images/honeymoon/sm/singapore.jpg 640w,
-                images/honeymoon/singapore.jpg   1400w
+                images/honeymoon/sm/singapore.jpg  640w,
+                images/honeymoon/singapore.jpg    1400w
               "
               sizes="(min-width: 768px) 33vw, 84vw"
               alt="Singapore"
@@ -2146,11 +3082,26 @@
       </p>
       <p class="footer__credit" data-dev-only hidden>
         Honeymoon photos via Wikimedia Commons:
-        <a href="https://commons.wikimedia.org/wiki/File:Kelingking_Beach_(T-Rex_Bay)_of_Nusa_Penida,_Bali_(2025)_-_img_09.jpg" rel="noopener" target="_blank">Bali</a>
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Kelingking_Beach_(T-Rex_Bay)_of_Nusa_Penida,_Bali_(2025)_-_img_09.jpg"
+          rel="noopener"
+          target="_blank"
+          >Bali</a
+        >
         by Chainwit. (CC BY 4.0),
-        <a href="https://commons.wikimedia.org/wiki/File:Hyangwonjeong_Pavilion_and_Chwihyanggyo_Bridge_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg" rel="noopener" target="_blank">Seoul</a>
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Hyangwonjeong_Pavilion_and_Chwihyanggyo_Bridge_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg"
+          rel="noopener"
+          target="_blank"
+          >Seoul</a
+        >
         by Basile Morin (CC BY-SA 4.0),
-        <a href="https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_in_the_evening_-_20101120.jpg" rel="noopener" target="_blank">Singapore</a>
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_in_the_evening_-_20101120.jpg"
+          rel="noopener"
+          target="_blank"
+          >Singapore</a
+        >
         by Someformofhuman (CC BY-SA 3.0)
       </p>
     </footer>
