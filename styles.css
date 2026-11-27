@@ -1396,6 +1396,13 @@ h3 {
 .venue {
   --wash: var(--ivory);
 }
+@media (min-width: 640px) {
+  /* the section clip-path would cut a menu that opens below the button */
+  .venue .menu__list {
+    top: auto;
+    bottom: calc(100% + 0.5rem);
+  }
+}
 .travel {
   --wash: #eef2ec; /* sage tint */
 }
