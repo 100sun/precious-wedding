@@ -43,31 +43,93 @@
 :lang(ko) .party__tab {
   letter-spacing: 0.06em;
 }
-/* the two slides */
+/* one side at a time */
 .party__track {
-  display: flex;
-  align-items: flex-start;
-  overflow-x: auto;
-  overflow-y: hidden;
-  transition: height 0.3s var(--ease);
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.party__track::-webkit-scrollbar {
-  display: none;
+  position: relative;
 }
 .party__slide {
-  flex: 0 0 100%;
-  min-width: 0;
-  /* room so frames and shadows are not cut by the scroller */
-  padding: 8px 4px 24px;
+  position: relative;
+}
+.party__slide[hidden] {
+  display: none;
+}
+/* each side: one horizontal row; the next person peeks in */
+.party__list {
+  display: flex;
+  gap: 14px;
+  margin: 0 calc(var(--pad) * -1);
+  padding: 8px var(--pad) 24px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--pad);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;
+}
+.party__list::-webkit-scrollbar {
+  display: none;
+}
+.party__list:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.party__person {
+  flex: 0 0 62%;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+}
+@media (min-width: 768px) {
+  .party__list {
+    margin: 0;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+  }
+  /* about four and a half people across on laptops */
+  .party__person {
+    flex-basis: calc((100% - 4 * 14px) / 4.4);
+  }
+}
+/* round arrows on laptops */
+.party__nav {
+  position: absolute;
+  top: 38%;
+  display: none;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+.party__nav svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.party__nav--prev {
+  left: -8px;
+}
+.party__nav--next {
+  right: -8px;
+}
+@media (min-width: 768px) and (hover: hover) {
+  .party__nav {
+    display: grid;
+  }
+}
+.party__nav[hidden] {
+  display: none !important;
 }
 .party__hint {
-  margin-top: 1.25rem;
+  margin-top: 0.25rem;
   text-align: center;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
@@ -77,16 +139,6 @@
   .party__hint {
     display: none;
   }
-}
-/* people: one per row on every screen */
-.party__list {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 2rem;
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 0 2px;
-  list-style: none;
 }
 /* maid of honor and best men lead the slide */
 .party__person {
@@ -158,7 +210,7 @@
   color: var(--ink);
 }
 .party__line {
-  max-width: 30ch;
+  max-width: 26ch;
   margin: 0.3rem auto 0;
   font-size: 0.82rem;
   line-height: 1.45;

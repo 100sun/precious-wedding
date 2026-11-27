@@ -1,5 +1,5 @@
 /* ===== The Wedding Party =====
-   Two slides: bride's side and groom's side. Swipe, or tap the tabs.
+   Tabs pick a side; each side is one horizontal row you swipe through.
    OPEN ITEM: names, lines and photos below are placeholders.
    To add a real photo: put it in images/party/ and set `photo` to the file
    name (any size; a face-forward portrait works best). Without a photo the
@@ -81,49 +81,49 @@
       },
       {
         role: "best",
-        name: "Ryan Lagon",
+        name: "Ryan Langon",
         line: "College roommate and the reason the groom runs marathons.",
         ko: "대학 룸메이트이자 신랑을 마라톤에 빠지게 한 장본인.",
         photo: "",
       },
       {
         role: "best",
-        name: "Lucas Wright",
+        name: "Andrew Bach",
         line: "Introduced the couple, and never lets them forget it.",
         ko: "두 사람을 이어 준 주인공.",
         photo: "",
       },
       {
         role: "gm",
-        name: "Daniel Scott",
+        name: "Parker Lum",
         line: "Cousin of the groom and family DJ.",
         ko: "신랑의 사촌이자 집안의 DJ.",
         photo: "",
       },
       {
         role: "gm",
-        name: "Ryan Cooper",
+        name: "Sam Holden",
         line: "Teammate from the groom's soccer days.",
         ko: "신랑의 축구 시절 팀 동료.",
         photo: "",
       },
       {
         role: "gm",
-        name: "Owen Hayes",
+        name: "Christian Holt",
         line: "Ski trip regular and expert grill master.",
         ko: "스키 여행 단골이자 바비큐 장인.",
         photo: "",
       },
       {
         role: "gm",
-        name: "Henry Clark",
+        name: "Kevin Davison",
         line: "Groom's first friend at work.",
         ko: "신랑의 첫 직장 동료이자 친구.",
         photo: "",
       },
       {
         role: "gm",
-        name: "Leo Turner",
+        name: "Jack",
         line: "Neighbor turned brother.",
         ko: "이웃에서 형제가 된 친구.",
         photo: "",
@@ -137,10 +137,10 @@
     ["#eef4f9", "#d3e3ef"],
   ];
   var ROLES = {
-    moh: ["Maid of Honor", "메이드 오브 아너"],
-    bm: ["Bridesmaid", "브라이즈메이드"],
-    best: ["Best Man", "베스트맨"],
-    gm: ["Groomsman", "그룸즈맨"],
+    moh: ["Maid of Honor", "주 들러리"],
+    bm: ["Bridesmaid", "들러리"],
+    best: ["Best Man", "주 들러리"],
+    gm: ["Groomsman", "들러리"],
   };
   var SIDES = {
     bride: ["Bride’s Side", "신부 측"],
@@ -180,10 +180,10 @@
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // two slides: bride's side, groom's side. Swipe, or tap the tabs.
+  // Tabs pick a side; each side is one horizontal row you swipe through.
   var SIDE_KEYS = ["bride", "groom"];
   var current = 0;
-  var track = null;
+  var panels = [];
   var tabs = [];
 
   function person(p, i, side) {
@@ -218,37 +218,26 @@
     return li;
   }
 
-  // the slide area takes the height of the side being shown
-  function fitHeight() {
-    if (!track || !track.children[current]) return;
-    track.style.height = track.children[current].offsetHeight + "px";
-  }
   function setActive(i) {
     current = i;
-    window.requestAnimationFrame(fitHeight);
     tabs.forEach(function (b, k) {
       b.setAttribute("aria-selected", k === i ? "true" : "false");
       b.tabIndex = k === i ? 0 : -1;
     });
-    if (track) {
-      Array.prototype.forEach.call(track.children, function (s, k) {
-        s.setAttribute("aria-hidden", k === i ? "false" : "true");
-        s.inert = k !== i;
-      });
-    }
-  }
-  function go(i, instant) {
-    i = Math.max(0, Math.min(SIDE_KEYS.length - 1, i));
-    track.scrollTo({
-      left: i * track.clientWidth,
-      behavior: instant || reduceMotion ? "auto" : "smooth",
+    panels.forEach(function (p, k) {
+      p.hidden = k !== i;
     });
-    setActive(i);
+    var row = panels[i] && panels[i].querySelector(".party__list");
+    if (row) {
+      row.scrollLeft = 0;
+      row.dispatchEvent(new Event("scroll"));
+    }
   }
 
   function render() {
     root.textContent = "";
     tabs = [];
+    panels = [];
     var head = document.getElementById("partyHead");
     if (head) {
       head.querySelector(".eyebrow").textContent = t(HEAD.eyebrow);
@@ -258,7 +247,7 @@
     var bar = el("div", "party__tabs");
     bar.setAttribute("role", "tablist");
     bar.setAttribute("aria-label", t(HEAD.title));
-    track = el("div", "party__track");
+    var wrap = el("div", "party__track");
     SIDE_KEYS.forEach(function (side, k) {
       var b = el("button", "party__tab", t(SIDES[side]));
       b.type = "button";
@@ -266,7 +255,7 @@
       b.setAttribute("role", "tab");
       b.setAttribute("aria-controls", "partySlide-" + side);
       b.addEventListener("click", function () {
-        go(k);
+        setActive(k);
       });
       b.addEventListener("keydown", function (e) {
         if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
@@ -274,63 +263,75 @@
           var n =
             (k + (e.key === "ArrowRight" ? 1 : -1) + SIDE_KEYS.length) %
             SIDE_KEYS.length;
-          go(n);
+          setActive(n);
           tabs[n].focus();
         }
       });
       tabs.push(b);
       bar.appendChild(b);
 
-      var slide = el("div", "party__slide");
-      slide.id = "partySlide-" + side;
-      slide.setAttribute("role", "tabpanel");
-      slide.setAttribute("aria-labelledby", b.id);
+      var panel = el("div", "party__slide");
+      panel.id = "partySlide-" + side;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", b.id);
       var list = el("ul", "party__list");
+      list.tabIndex = 0;
+      list.setAttribute("aria-label", t(SIDES[side]));
       PARTY[side].forEach(function (p, i) {
         list.appendChild(person(p, i, side));
       });
-      slide.appendChild(list);
-      track.appendChild(slide);
+      panel.appendChild(list);
+
+      // round arrows (laptops); phones swipe
+      var navs = {};
+      ["prev", "next"].forEach(function (dir) {
+        var nb = el("button", "party__nav party__nav--" + dir);
+        nb.type = "button";
+        nb.setAttribute("aria-label", dir === "prev" ? "Previous" : "Next");
+        nb.innerHTML =
+          '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="' +
+          (dir === "prev" ? "M14.5 6l-6 6 6 6" : "M9.5 6l6 6-6 6") +
+          '" /></svg>';
+        nb.addEventListener("click", function () {
+          var card = list.firstElementChild;
+          var step = card
+            ? card.getBoundingClientRect().width + 14
+            : list.clientWidth;
+          list.scrollBy({
+            left: (dir === "prev" ? -1 : 1) * step,
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
+        });
+        navs[dir] = nb;
+        panel.appendChild(nb);
+      });
+      function arrows() {
+        var max = list.scrollWidth - list.clientWidth - 4;
+        navs.prev.hidden = list.scrollLeft <= 4;
+        navs.next.hidden = list.scrollLeft >= max;
+      }
+      list.addEventListener("scroll", arrows, { passive: true });
+      window.addEventListener("resize", arrows);
+      window.requestAnimationFrame(arrows);
+      list.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          navs[e.key === "ArrowRight" ? "next" : "prev"].click();
+        }
+      });
+
+      panels.push(panel);
+      wrap.appendChild(panel);
     });
     root.appendChild(bar);
-    root.appendChild(track);
+    root.appendChild(wrap);
     root.appendChild(
-      el(
-        "p",
-        "party__hint",
-        ko() ? "옆으로 넘겨 보세요" : "Swipe to see the other side",
-      ),
-    );
-
-    var queued = false;
-    track.addEventListener(
-      "scroll",
-      function () {
-        if (queued) return;
-        queued = true;
-        window.requestAnimationFrame(function () {
-          queued = false;
-          var i = Math.round(track.scrollLeft / (track.clientWidth || 1));
-          if (i !== current) setActive(i);
-        });
-      },
-      { passive: true },
+      el("p", "party__hint", ko() ? "옆으로 넘겨 보세요" : "Swipe to see everyone"),
     );
     setActive(current);
-    // keep the same side after a language switch
-    window.requestAnimationFrame(function () {
-      track.scrollLeft = current * track.clientWidth;
-    });
   }
 
   render();
-  window.addEventListener("resize", function () {
-    if (!track) return;
-    track.scrollLeft = current * track.clientWidth;
-    fitHeight();
-  });
-  // photos and fonts can change the height after first paint
-  window.addEventListener("load", fitHeight);
   // re-render when rsvp.js switches the page language
   if (window.MutationObserver) {
     new MutationObserver(render).observe(document.documentElement, {
