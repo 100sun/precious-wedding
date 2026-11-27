@@ -2120,6 +2120,17 @@ h3 {
 video.ig__media {
   cursor: pointer;
 }
+/* white-framed collages: a hairline and soft shadow make the white edge read
+   as a deliberate mat next to the full-bleed photos */
+.ig__slide--framed {
+  background: #fff;
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    0 6px 18px -10px rgba(35, 48, 60, 0.28);
+}
+.ig__slide--framed .ig__media {
+  object-fit: contain;
+}
 /* "3/14" pill on phones */
 .ig__count {
   position: absolute;

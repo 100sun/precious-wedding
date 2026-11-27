@@ -23,6 +23,8 @@
     "14.jpg",
   ];
 
+  // photos that are already full-bleed; the rest are white-framed collages
+  var FULL = ["1.jpg", "2.mp4"];
   var track = document.getElementById("igTrack");
   var dots = document.getElementById("igDots");
   var count = document.getElementById("igCount");
@@ -48,7 +50,8 @@
       " of " +
       total;
     var slide = document.createElement("div");
-    slide.className = "ig__slide";
+    slide.className =
+      "ig__slide" + (FULL.indexOf(file) < 0 ? " ig__slide--framed" : "");
     slide.setAttribute("role", "group");
     slide.setAttribute("aria-roledescription", "slide");
     slide.setAttribute("aria-label", i + 1 + " of " + total);
