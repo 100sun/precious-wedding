@@ -1821,35 +1821,37 @@ h3 {
   font-weight: 500;
   color: var(--ink);
 }
+/* On the Day: two small facts side by side, no boxes */
 .travel__facts {
   display: grid;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 340px;
+  margin: 0.75rem auto 0;
 }
 .travel__facts > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.9rem 1.1rem;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--paper);
-  text-align: left;
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  text-align: center;
+}
+.travel__facts > div + div {
+  border-left: 1px solid var(--line);
 }
 .travel__facts dt {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
 }
 .travel__facts dt .icon {
   flex: none;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   fill: none;
   stroke: var(--accent);
   stroke-width: 1.2;
@@ -1858,10 +1860,9 @@ h3 {
 }
 .travel__facts dd {
   font-family: var(--serif);
-  font-size: 1.9rem;
-  line-height: 1.1;
+  font-size: 1.3rem;
+  line-height: 1.2;
   color: var(--ink);
-  text-align: right;
 }
 .card--weather p.travel__small {
   max-width: none;
