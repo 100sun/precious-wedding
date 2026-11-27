@@ -36,30 +36,41 @@
   }
 }
 
-/* schedule: compact rows, icon + time + title */
+/* schedule: vertical list with connector on phones, timeline from 900px */
 .is-dev .schedule__list {
   list-style: none;
   max-width: 380px;
   margin: 0 auto;
   padding: 0;
+  position: relative;
+}
+.is-dev .schedule__list::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 22px;
+  width: 1px;
+  background: var(--sage);
 }
 .is-dev .schedule__item {
+  position: relative;
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 44px 1fr;
   align-items: center;
   gap: 1.1rem;
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--line);
-}
-.is-dev .schedule__item:last-child {
-  border-bottom: 1px solid var(--line);
+  padding: 0.9rem 0;
 }
 .is-dev .schedule__icon {
   width: 44px;
   height: 44px;
+  padding: 7px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px var(--line);
   fill: none;
   stroke: var(--accent);
-  stroke-width: 1;
+  stroke-width: 1.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -76,15 +87,31 @@
   font-size: 0.9rem;
   color: var(--muted);
 }
-
-/* details: four cards in dev (adds Arrival) */
-@media (min-width: 768px) {
-  .is-dev .details .details__grid {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 2rem;
+@media (min-width: 900px) {
+  .is-dev .schedule__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    max-width: none;
+  }
+  .is-dev .schedule__list::before {
+    top: 22px;
+    bottom: auto;
+    left: 10%;
+    right: 10%;
+    width: auto;
+    height: 1px;
+  }
+  .is-dev .schedule__item {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: start;
+    align-items: start;
+    gap: 0.75rem;
+    padding: 0 0.5rem;
+    text-align: center;
   }
 }
-
+/* details: four cards in dev (adds Arrival), two columns from 768px */
 /* RSVP form */
 .is-dev .rsvp__form {
   max-width: 460px;
