@@ -21,15 +21,17 @@
   }
 
   // --- 1. Dev gate ---
+  // Invite-only parts (schedule, RSVP, wedding party, honeymoon fund, Korean)
+  // show only on localhost / the local network and under /preview/.
+  // The live site never shows them; the old ?dev=1 switch is gone.
   var params = new URLSearchParams(window.location.search);
-  if (params.get("dev") === "1") store(FLAG, "1");
-  if (params.get("dev") === "0") store(FLAG, null);
-  var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(
-    window.location.hostname,
-  );
-  // the GitHub Pages copy of this branch lives under /preview/ and is always on
+  store(FLAG, null); // clear any flag left by the old ?dev=1 switch
+  var isLocal =
+    /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname) ||
+    /^(192\.168|10)\./.test(window.location.hostname);
+  // the GitHub Pages copy of feature/rsvp lives under /preview/
   var isPreview = /\/preview\//.test(window.location.pathname);
-  if (!isLocal && !isPreview && store(FLAG) !== "1") return;
+  if (!isLocal && !isPreview) return;
 
   // rsvp.css only styles under .is-dev, so live pages are untouched by it
   document.documentElement.classList.add("is-dev");
