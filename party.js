@@ -1,5 +1,5 @@
 /* ===== The Wedding Party =====
-   Tabs pick a side; each side is one horizontal row you swipe through.
+   Two rows: bride's side, then groom's side; swipe each row sideways.
    OPEN ITEM: names, lines and photos below are placeholders.
    To add a real photo: put it in images/party/ and set `photo` to the file
    name (any size; a face-forward portrait works best). Without a photo the
@@ -180,11 +180,8 @@
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Tabs pick a side; each side is one horizontal row you swipe through.
+  // Two rows: bride's side on top, groom's side below; swipe each row.
   var SIDE_KEYS = ["bride", "groom"];
-  var current = 0;
-  var panels = [];
-  var tabs = [];
 
   function person(p, i, side) {
     var li = el("li", "party__person");
@@ -218,65 +215,23 @@
     return li;
   }
 
-  function setActive(i) {
-    current = i;
-    tabs.forEach(function (b, k) {
-      b.setAttribute("aria-selected", k === i ? "true" : "false");
-      b.tabIndex = k === i ? 0 : -1;
-    });
-    panels.forEach(function (p, k) {
-      p.hidden = k !== i;
-    });
-    var row = panels[i] && panels[i].querySelector(".party__list");
-    if (row) {
-      row.scrollLeft = 0;
-      row.dispatchEvent(new Event("scroll"));
-    }
-  }
-
   function render() {
     root.textContent = "";
-    tabs = [];
-    panels = [];
     var head = document.getElementById("partyHead");
     if (head) {
       head.querySelector(".eyebrow").textContent = t(HEAD.eyebrow);
       head.querySelector("h2").textContent = t(HEAD.title);
     }
 
-    var bar = el("div", "party__tabs");
-    bar.setAttribute("role", "tablist");
-    bar.setAttribute("aria-label", t(HEAD.title));
     var wrap = el("div", "party__track");
-    SIDE_KEYS.forEach(function (side, k) {
-      var b = el("button", "party__tab", t(SIDES[side]));
-      b.type = "button";
-      b.id = "partyTab-" + side;
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-controls", "partySlide-" + side);
-      b.addEventListener("click", function () {
-        setActive(k);
-      });
-      b.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-          e.preventDefault();
-          var n =
-            (k + (e.key === "ArrowRight" ? 1 : -1) + SIDE_KEYS.length) %
-            SIDE_KEYS.length;
-          setActive(n);
-          tabs[n].focus();
-        }
-      });
-      tabs.push(b);
-      bar.appendChild(b);
-
-      var panel = el("div", "party__slide");
-      panel.id = "partySlide-" + side;
-      panel.setAttribute("role", "tabpanel");
-      panel.setAttribute("aria-labelledby", b.id);
+    SIDE_KEYS.forEach(function (side) {
+      var panel = el("div", "party__slide party__slide--" + side);
+      var h = el("h3", "party__side-title", t(SIDES[side]));
+      h.id = "partyTitle-" + side;
+      panel.appendChild(h);
       var list = el("ul", "party__list");
       list.tabIndex = 0;
-      list.setAttribute("aria-label", t(SIDES[side]));
+      list.setAttribute("aria-labelledby", h.id);
       PARTY[side].forEach(function (p, i) {
         list.appendChild(person(p, i, side));
       });
@@ -320,15 +275,12 @@
         }
       });
 
-      panels.push(panel);
       wrap.appendChild(panel);
     });
-    root.appendChild(bar);
     root.appendChild(wrap);
     root.appendChild(
       el("p", "party__hint", ko() ? "옆으로 넘겨 보세요" : "Swipe to see everyone"),
     );
-    setActive(current);
   }
 
   render();
