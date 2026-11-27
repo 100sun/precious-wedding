@@ -1394,7 +1394,7 @@ h3 {
   background: var(--wash);
 }
 .venue {
-  --wash: var(--ivory);
+  --wash: #f2f8fc; /* lightest sky */
 }
 @media (min-width: 640px) {
   /* the section clip-path would cut a menu that opens below the button */
@@ -1404,7 +1404,7 @@ h3 {
   }
 }
 .travel {
-  --wash: #eef2ec; /* sage tint */
+  --wash: #e8f1f8; /* soft sky */
 }
 .details .section__head {
   max-width: none;

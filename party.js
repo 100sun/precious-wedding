@@ -30,9 +30,9 @@
   };
   var DIR = "images/party/";
   var TINTS = [
-    ["#e9f1f7", "#c9dcea"],
-    ["#f6f0e6", "#e5d7c2"],
-    ["#edf1ea", "#cfdac8"],
+    ["#eaf3fa", "#c9dcea"],
+    ["#e4eef7", "#b9cfe2"],
+    ["#eef4f9", "#d3e3ef"],
   ];
   var ROLES = {
     moh: ["Maid of Honor", "메이드 오브 아너"],
@@ -92,7 +92,7 @@
         if (lead) li.classList.add("is-lead");
         var fig = el("div", "party__photo");
         // soft, varied tints so placeholder cards don't look identical
-        // placeholder tints from the site palette: sky, sand, sage
+        // placeholder tints: three shades of sky blue
         var tint = TINTS[(i + (side === "groom" ? 1 : 0)) % TINTS.length];
         fig.style.setProperty("--tint-a", tint[0]);
         fig.style.setProperty("--tint-b", tint[1]);
