@@ -31,7 +31,6 @@ const TYPES = {
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".woff2": "font/woff2",
-  ".webp": "image/webp",
 };
 
 // minimal static server for the repo
