@@ -132,8 +132,13 @@ window.SITE_KO = {
   "registry.eyebrow": "감사의 마음",
   "registry.title": "마음 전하실 곳",
   "registry.intro":
-    "함께해 주시는 것만으로도 큰 선물입니다. 마음을 전하고 싶으시다면 신혼여행에 소중히 쓰겠습니다.",
+    "함께해 주시는 것만으로도 큰 선물입니다. 마음을 전하고 싶으시다면 한국, 싱가포르, 인도네시아로 떠나는 신혼여행에 소중히 쓰겠습니다.",
   "registry.copy": "복사",
+  "trip.bali": "발리, 인도네시아",
+  "trip.korea": "서울, 한국",
+  "trip.singapore": "싱가포르",
+  "trip.promise": "여행지에서 사진을 보내 드릴게요.",
+  "rsvp.fund": "신혼여행에 마음을 보태 주시겠어요? →",
   "registry.copied": "복사됨",
   "registry.kr": "계좌이체",
 

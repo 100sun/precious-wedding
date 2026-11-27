@@ -46,6 +46,7 @@
   var EN = {
     "rsvp.sending": "Sending…",
     "rsvp.thanks": "Thank you. Your RSVP has been received.",
+    "rsvp.fund": "Want to help with our honeymoon? →",
     "rsvp.thanksNo": "Thank you for letting us know. We will miss you.",
     "rsvp.fail": "Something went wrong. Please try again in a moment.",
     "rsvp.notReady": "RSVP is not connected yet (no endpoint set).",
@@ -287,6 +288,7 @@
       })
         .then(function () {
           say(thanksKey);
+          if (anyYes()) addFundLink();
           form.classList.add("is-done");
           againBtn.hidden = false;
         })
@@ -296,6 +298,16 @@
         });
     });
 
+    // after a "yes", a gentle pointer to the honeymoon fund
+    function addFundLink() {
+      if (!document.getElementById("registry")) return;
+      statusEl.appendChild(document.createElement("br"));
+      var a = document.createElement("a");
+      a.href = "#registry";
+      a.className = "rsvp__fund";
+      a.textContent = t("rsvp.fund");
+      statusEl.appendChild(a);
+    }
     function payload() {
       var n = size();
       var out = { party: String(n) };

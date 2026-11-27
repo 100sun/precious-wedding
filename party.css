@@ -1,0 +1,160 @@
+/* ===== The Wedding Party (party.js) =====
+   Two columns, bride's side | groom's side, on every screen size. */
+.party__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(0.9rem, 4vw, 3.5rem);
+  max-width: 880px;
+  margin: 0 auto;
+  align-items: start;
+}
+.party__side {
+  position: relative;
+  min-width: 0;
+}
+.party__side--bride {
+  padding-right: clamp(0.45rem, 2vw, 1.75rem);
+}
+.party__side--groom {
+  padding-left: clamp(0.45rem, 2vw, 1.75rem);
+}
+/* hairline between the two sides */
+.party__side--groom::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  bottom: 0;
+  left: calc(-1 * clamp(0.45rem, 2vw, 1.75rem));
+  border-left: 1px solid var(--line);
+}
+.party__side-title {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+:lang(ko) .party__side-title {
+  letter-spacing: 0.06em;
+}
+.party__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.35rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.party__person {
+  flex: 0 0 100%;
+}
+@media (min-width: 768px) {
+  /* two across per side; a lone last card stays centred */
+  .party__person {
+    flex-basis: calc(50% - 0.75rem);
+  }
+  .party__side--bride .is-lead {
+    flex-basis: 100%;
+  }
+  .party__side--bride .is-lead .party__photo {
+    max-width: calc(50% - 0.75rem);
+  }
+}
+.party__person {
+  text-align: center;
+}
+/* arch portrait */
+.party__photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: min(128px, 100%);
+  margin: 0 auto 0.6rem;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 10px 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.75), transparent 62%),
+    linear-gradient(160deg, var(--tint-a, #e6f0f7), var(--tint-b, #c9dcea));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+    0 6px 18px rgba(35, 48, 60, 0.1);
+}
+/* thin inner frame, like a mat */
+.party__photo::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: inherit;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .party__photo {
+    max-width: 200px;
+  }
+}
+.party__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.party__initials {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  letter-spacing: 0.04em;
+  color: rgba(35, 48, 60, 0.55);
+}
+.party__role {
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+:lang(ko) .party__role {
+  letter-spacing: 0.04em;
+}
+.party__name {
+  margin-top: 0.15rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.party__line {
+  max-width: 24ch;
+  margin: 0.3rem auto 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+:lang(ko) .party__line {
+  word-break: keep-all;
+}
+/* maid of honor / best men: a touch more presence */
+.party__person.is-lead .party__name {
+  font-size: 1.3rem;
+}
+.party__person.is-lead .party__photo {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+    0 0 0 3px var(--paper),
+    0 0 0 4px var(--accent-soft),
+    0 8px 22px rgba(35, 48, 60, 0.12);
+}
+@media (max-width: 380px) {
+  .party__name {
+    font-size: 1.02rem;
+  }
+  .party__line {
+    font-size: 0.78rem;
+  }
+}

@@ -400,3 +400,103 @@ html.is-dev:lang(ko) {
   color: #bad6ea;
   margin-left: 0.4rem;
 }
+
+/* ===== Honeymoon destinations (registry) =====
+   Phones: swipe, the next photo peeks in. Laptops: three across. */
+.is-dev .trip {
+  display: flex;
+  gap: 10px;
+  /* bottom padding leaves room for the card shadow inside the scroller */
+  margin: 0 calc(var(--pad) * -1) calc(clamp(2rem, 6vw, 3rem) - 28px);
+  padding: 0 var(--pad) 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--pad);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.is-dev .trip::-webkit-scrollbar {
+  display: none;
+}
+.is-dev .trip__item {
+  position: relative;
+  flex: 0 0 84%;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: 0 10px 28px rgba(35, 48, 60, 0.14);
+}
+.is-dev .trip__item:first-child {
+  flex-basis: 88%;
+}
+.is-dev .trip__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* keep the hotel towers in frame when the photo is cropped */
+.is-dev .trip__item img[src*="singapore"] {
+  object-position: 38% 50%;
+}
+.is-dev .trip__item figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 2.75rem 1.1rem 1rem;
+  background: linear-gradient(transparent, rgba(16, 22, 28, 0.62));
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-style: italic;
+  line-height: 1.1;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+.is-dev .trip__num {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-style: normal;
+  letter-spacing: 0.22em;
+  opacity: 0.85;
+}
+@media (min-width: 768px) {
+  .is-dev .trip {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 1fr;
+    gap: 14px;
+    margin-inline: 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .is-dev .trip__item,
+  .is-dev .trip__item:first-child {
+    aspect-ratio: auto;
+    height: clamp(320px, 42vw, 460px);
+  }
+}
+.is-dev:lang(ko) .trip__item figcaption {
+  font-style: normal;
+  font-size: 1.25rem;
+}
+.is-dev .trip__promise {
+  margin-top: 1.75rem;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+.is-dev:lang(ko) .trip__promise {
+  font-style: normal;
+  font-size: 1rem;
+}
+.is-dev .rsvp__fund {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--accent-deep);
+  font-weight: 400;
+}

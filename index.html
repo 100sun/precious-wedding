@@ -28,6 +28,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="rsvp.css" />
+    <link rel="stylesheet" href="party.css" />
     <!-- Link preview. Social sites need absolute URLs; the site lives at
          https://100sun.github.io/precious-wedding/ (GitHub Pages).
          Korean preview: ko.html is generated from this file by
@@ -2015,6 +2016,14 @@
         </div>
       </section>
 
+      <!-- Wedding party (dev preview only). Names, lines, photos: party.js -->
+      <section class="section party" id="party" data-dev-only hidden>
+        <div class="section__head reveal" id="partyHead">
+          <p class="eyebrow">Standing With Us</p>
+          <h2>The Wedding Party</h2>
+        </div>
+        <div class="party__grid reveal" id="partyGrid"></div>
+      </section>
       <!-- Honeymoon fund (dev preview only) -->
       <section class="section registry" id="registry" data-dev-only hidden>
         <div class="section__head reveal">
@@ -2022,8 +2031,69 @@
           <h2 data-i18n="registry.title">Honeymoon Fund</h2>
           <p data-i18n="registry.intro">
             Having you there means everything. If you wish to give a gift, we’d
-            love help toward our honeymoon to Korea, Singapore, & Indonesia
+            love help toward our honeymoon to Korea, Singapore, &amp; Indonesia.
           </p>
+        </div>
+        <!-- Honeymoon destinations, nicest first. Free photos from
+             Wikimedia Commons; credits in the footer and images/honeymoon/CREDITS.json -->
+        <div class="trip reveal" role="group" aria-label="Our honeymoon destinations">
+          <figure class="trip__item">
+            <img
+              src="images/honeymoon/bali.jpg"
+              srcset="
+                images/honeymoon/sm/bali.jpg 640w,
+                images/honeymoon/bali.jpg   1400w
+              "
+              sizes="(min-width: 768px) 33vw, 84vw"
+              alt="Bali, Indonesia"
+              width="1400"
+              height="1050"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="trip__num" aria-hidden="true">01</span>
+              <span data-i18n="trip.bali">Bali, Indonesia</span>
+            </figcaption>
+          </figure>
+          <figure class="trip__item">
+            <img
+              src="images/honeymoon/korea.jpg"
+              srcset="
+                images/honeymoon/sm/korea.jpg 640w,
+                images/honeymoon/korea.jpg   1400w
+              "
+              sizes="(min-width: 768px) 33vw, 84vw"
+              alt="Seoul, Korea"
+              width="1400"
+              height="832"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="trip__num" aria-hidden="true">02</span>
+              <span data-i18n="trip.korea">Seoul, Korea</span>
+            </figcaption>
+          </figure>
+          <figure class="trip__item">
+            <img
+              src="images/honeymoon/singapore.jpg"
+              srcset="
+                images/honeymoon/sm/singapore.jpg 640w,
+                images/honeymoon/singapore.jpg   1400w
+              "
+              sizes="(min-width: 768px) 33vw, 84vw"
+              alt="Singapore"
+              width="1400"
+              height="934"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="trip__num" aria-hidden="true">03</span>
+              <span data-i18n="trip.singapore">Singapore</span>
+            </figcaption>
+          </figure>
         </div>
         <!-- OPEN ITEM: replace every placeholder value below (data-copy and
              the visible text) with the real Venmo, Zelle and bank details. -->
@@ -2063,6 +2133,9 @@
             </button>
           </div>
         </div>
+        <p class="trip__promise reveal" data-i18n="trip.promise">
+          We’ll send you a photo from the trip.
+        </p>
       </section>
     </main>
 
@@ -2094,11 +2167,21 @@
           >CC BY 4.0</a
         >
       </p>
+      <p class="footer__credit" data-dev-only hidden>
+        Honeymoon photos via Wikimedia Commons:
+        <a href="https://commons.wikimedia.org/wiki/File:Kelingking_Beach_(T-Rex_Bay)_of_Nusa_Penida,_Bali_(2025)_-_img_09.jpg" rel="noopener" target="_blank">Bali</a>
+        by Chainwit. (CC BY 4.0),
+        <a href="https://commons.wikimedia.org/wiki/File:Hyangwonjeong_Pavilion_and_Chwihyanggyo_Bridge_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg" rel="noopener" target="_blank">Seoul</a>
+        by Basile Morin (CC BY-SA 4.0),
+        <a href="https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_in_the_evening_-_20101120.jpg" rel="noopener" target="_blank">Singapore</a>
+        by Someformofhuman (CC BY-SA 3.0)
+      </p>
     </footer>
 
     <script src="script.js" defer></script>
     <script src="gallery.js" defer></script>
     <script src="i18n-ko.js" defer></script>
     <script src="rsvp.js" defer></script>
+    <script src="party.js" defer></script>
   </body>
 </html>
